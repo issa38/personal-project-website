@@ -18,6 +18,7 @@ const commandSearch = document.querySelector("[data-command-search]");
 const commandItems = document.querySelectorAll("[data-command-item]");
 const briefDialog = document.querySelector("[data-brief-dialog]");
 const briefOpenButtons = document.querySelectorAll("[data-brief-open]");
+const parallaxItems = document.querySelectorAll("[data-parallax]");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -30,6 +31,18 @@ function setScrollProgress() {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
   scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+}
+
+function setParallax() {
+  if (prefersReducedMotion || parallaxItems.length === 0) return;
+
+  parallaxItems.forEach((item) => {
+    const speed = Number(item.dataset.parallax) || 0;
+    const rect = item.getBoundingClientRect();
+    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+    const movement = Math.max(-28, Math.min(28, centerOffset * speed * -1));
+    item.style.transform = `translate3d(0, ${movement}px, 0)`;
+  });
 }
 
 function initReveals() {
@@ -228,7 +241,7 @@ function initStrategyCanvas() {
 
   function drawGrid(originX, originY) {
     context.save();
-    context.strokeStyle = "rgba(37, 99, 235, 0.08)";
+    context.strokeStyle = "rgba(89, 97, 65, 0.08)";
     context.lineWidth = 1;
     for (let x = -width; x < width * 2; x += 92) {
       context.beginPath();
@@ -268,14 +281,14 @@ function initStrategyCanvas() {
       const node = projected[index];
       const next = projected[(index + 1) % projected.length];
       const jump = projected[(index + 9) % projected.length];
-      context.strokeStyle = `rgba(37, 99, 235, ${0.06 + node.z * 0.08})`;
+      context.strokeStyle = `rgba(89, 97, 65, ${0.05 + node.z * 0.07})`;
       context.beginPath();
       context.moveTo(node.x, node.y);
       context.lineTo(next.x, next.y);
       context.stroke();
 
       if (index % 3 === 0) {
-        context.strokeStyle = `rgba(15, 118, 110, ${0.035 + node.z * 0.05})`;
+        context.strokeStyle = `rgba(36, 86, 191, ${0.025 + node.z * 0.04})`;
         context.beginPath();
         context.moveTo(node.x, node.y);
         context.lineTo(jump.x, jump.y);
@@ -285,7 +298,7 @@ function initStrategyCanvas() {
 
     projected.forEach((node, index) => {
       const size = 2.2 + node.z * 3.8;
-      context.fillStyle = index % 5 === 0 ? "rgba(183, 121, 31, 0.56)" : "rgba(37, 99, 235, 0.54)";
+      context.fillStyle = index % 5 === 0 ? "rgba(223, 160, 157, 0.42)" : "rgba(89, 97, 65, 0.42)";
       context.beginPath();
       context.arc(node.x, node.y, size, 0, Math.PI * 2);
       context.fill();
@@ -309,16 +322,37 @@ function initStrategyCanvas() {
   draw();
 }
 
+let scrollTicking = false;
+
+function updateScrollEffects() {
+  scrollTicking = false;
+  setHeaderState();
+  setScrollProgress();
+  setParallax();
+}
+
 window.addEventListener(
   "scroll",
   () => {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(updateScrollEffects);
+  },
+  { passive: true }
+);
+
+window.addEventListener(
+  "resize",
+  () => {
     setHeaderState();
     setScrollProgress();
+    setParallax();
   },
   { passive: true }
 );
 setHeaderState();
 setScrollProgress();
+setParallax();
 initReveals();
 initFilters();
 initActiveNav();

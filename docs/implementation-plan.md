@@ -24,7 +24,8 @@ Recommended content collections:
 ## Validation Checklist
 
 - Confirm homepage communicates value in under 30 seconds.
-- Replace placeholder email and canonical domain before launch.
+- Confirm public email, LinkedIn, GitHub, resume PDF, and canonical domain before launch.
+- Connect `isaiahmba.com` to the chosen host through Cloudflare.
 - Test at 375px, 768px, 1024px, and 1440px.
 - Verify keyboard focus states and reduced-motion behavior.
 - Run a static server and check there is no horizontal mobile scroll.
