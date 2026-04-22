@@ -16,6 +16,12 @@ python -m http.server 4173
 
 Then visit `http://localhost:4173`.
 
+## Deploy
+
+The recommended launch path is Cloudflare Pages connected to the GitHub repository. Use `exit 0` as the build command and `.` as the build output directory.
+
+See `docs/deployment-cloudflare.md` for the Cloudflare Pages and `isaiahmba.com` setup checklist.
+
 ## Structure
 
 - `index.html` contains the semantic page structure and real starter copy.
@@ -24,6 +30,7 @@ Then visit `http://localhost:4173`.
 - `assets/` contains favicon and social preview artwork.
 - `assets/files/` contains the public resume PDF.
 - `docs/` contains planning, SEO readiness, and content model notes.
+- `_headers` contains Cloudflare Pages security/canonical headers.
 
 ## Interaction Notes
 
