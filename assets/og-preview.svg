@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#FAFAFA"/>
+  <path d="M0 120h1200M0 240h1200M0 360h1200M0 480h1200M200 0v630M400 0v630M600 0v630M800 0v630M1000 0v630" stroke="#D9E0E8" stroke-width="2"/>
+  <rect x="76" y="74" width="1048" height="482" rx="8" fill="#FFFFFF" stroke="#B8C2CE" stroke-width="2"/>
+  <text x="118" y="168" fill="#2563EB" font-family="Arial, sans-serif" font-size="32" font-weight="700">OPERATIONS + FINANCE + AI SYSTEMS</text>
+  <text x="118" y="286" fill="#09090B" font-family="Arial, sans-serif" font-size="74" font-weight="800">Strategic Builder</text>
+  <text x="118" y="370" fill="#334155" font-family="Arial, sans-serif" font-size="38">Translating complexity into durable business value.</text>
+  <circle cx="922" cy="288" r="138" fill="none" stroke="#2563EB" stroke-width="7"/>
+  <circle cx="922" cy="288" r="72" fill="none" stroke="#0F766E" stroke-width="6"/>
+  <path d="M780 288h284M922 146v284" stroke="#B7791F" stroke-width="5"/>
+</svg>
