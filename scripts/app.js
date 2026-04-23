@@ -241,7 +241,7 @@ function initStrategyCanvas() {
 
   function drawGrid(originX, originY) {
     context.save();
-    context.strokeStyle = "rgba(89, 97, 65, 0.08)";
+    context.strokeStyle = "rgba(224, 217, 205, 0.06)";
     context.lineWidth = 1;
     for (let x = -width; x < width * 2; x += 92) {
       context.beginPath();
@@ -281,14 +281,14 @@ function initStrategyCanvas() {
       const node = projected[index];
       const next = projected[(index + 1) % projected.length];
       const jump = projected[(index + 9) % projected.length];
-      context.strokeStyle = `rgba(89, 97, 65, ${0.05 + node.z * 0.07})`;
+      context.strokeStyle = `rgba(163, 138, 126, ${0.05 + node.z * 0.08})`;
       context.beginPath();
       context.moveTo(node.x, node.y);
       context.lineTo(next.x, next.y);
       context.stroke();
 
       if (index % 3 === 0) {
-        context.strokeStyle = `rgba(36, 86, 191, ${0.025 + node.z * 0.04})`;
+        context.strokeStyle = `rgba(224, 217, 205, ${0.02 + node.z * 0.035})`;
         context.beginPath();
         context.moveTo(node.x, node.y);
         context.lineTo(jump.x, jump.y);
@@ -298,7 +298,7 @@ function initStrategyCanvas() {
 
     projected.forEach((node, index) => {
       const size = 2.2 + node.z * 3.8;
-      context.fillStyle = index % 5 === 0 ? "rgba(223, 160, 157, 0.42)" : "rgba(89, 97, 65, 0.42)";
+      context.fillStyle = index % 5 === 0 ? "rgba(163, 138, 126, 0.38)" : "rgba(224, 217, 205, 0.24)";
       context.beginPath();
       context.arc(node.x, node.y, size, 0, Math.PI * 2);
       context.fill();
