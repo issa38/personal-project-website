@@ -19,6 +19,8 @@ const commandItems = document.querySelectorAll("[data-command-item]");
 const briefDialog = document.querySelector("[data-brief-dialog]");
 const briefOpenButtons = document.querySelectorAll("[data-brief-open]");
 const parallaxItems = document.querySelectorAll("[data-parallax]");
+const previewButtons = document.querySelectorAll("[data-preview-button]");
+const previewPanels = document.querySelectorAll("[data-preview-panel]");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -212,6 +214,28 @@ function initStrategyBriefs() {
   });
 }
 
+function initPreviewPanels() {
+  if (previewButtons.length === 0 || previewPanels.length === 0) return;
+
+  previewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.previewButton;
+
+      previewButtons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("active", isActive);
+        item.setAttribute("aria-selected", String(isActive));
+      });
+
+      previewPanels.forEach((panel) => {
+        const isActive = panel.dataset.previewPanel === target;
+        panel.hidden = !isActive;
+        panel.classList.toggle("is-active", isActive);
+      });
+    });
+  });
+}
+
 function initStrategyCanvas() {
   if (!canvas || prefersReducedMotion) return;
 
@@ -358,4 +382,5 @@ initFilters();
 initActiveNav();
 initCommandMenu();
 initStrategyBriefs();
+initPreviewPanels();
 initStrategyCanvas();

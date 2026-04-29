@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dynamic DCF Valuation Model | Isaiah Moragne</title>
+    <meta
+      name="description"
+      content="Flagship finance case from Isaiah Moragne: a dynamic DCF valuation workbook with model outputs, assumptions, WACC, checks, and source-audit structure."
+    />
+    <meta name="author" content="Isaiah Moragne" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#131313" />
+    <link rel="canonical" href="https://isaiahmba.com/dcf-model.html" />
+    <meta property="og:title" content="Dynamic DCF Valuation Model | Isaiah Moragne" />
+    <meta
+      property="og:description"
+      content="A flagship public-company DCF model and case-study page showing valuation outputs, assumptions, model checks, and workbook architecture."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://isaiahmba.com/dcf-model.html" />
+    <meta property="og:image" content="https://isaiahmba.com/assets/og-preview.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dynamic DCF Valuation Model | Isaiah Moragne" />
+    <meta
+      name="twitter:description"
+      content="A flagship public-company DCF model and case-study page showing valuation outputs, assumptions, model checks, and workbook architecture."
+    />
+    <meta name="twitter:image" content="https://isaiahmba.com/assets/og-preview.svg" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Dynamic DCF Valuation Model",
+        "author": {
+          "@type": "Person",
+          "name": "Isaiah Moragne",
+          "url": "https://isaiahmba.com/"
+        },
+        "url": "https://isaiahmba.com/dcf-model.html",
+        "description": "A flagship public-company DCF model and case-study page showing valuation outputs, assumptions, model checks, and workbook architecture."
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="./index.html" aria-label="Return to portfolio home">
+        <span class="brand-mark" aria-hidden="true">I</span>
+        <span>
+          <span class="brand-name">Isaiah</span>
+          <span class="brand-role">Strategic Builder</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Case study navigation">
+        <a href="#overview">Overview</a>
+        <a href="#project-architecture">Build</a>
+        <a href="#memo">Memo</a>
+        <a href="#model-preview">Model</a>
+        <a href="#workbook-map">Workbook</a>
+      </nav>
+
+      <a class="nav-cta" href="./index.html">
+        <span>Home</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14m-6-6 6 6-6 6" />
+        </svg>
+      </a>
+    </header>
+
+    <main id="main" class="page-main">
+      <section id="top" class="case-hero section-pad" aria-labelledby="case-hero-title">
+        <div class="page-shell case-hero-grid">
+          <div class="case-hero-copy reveal">
+            <p class="eyebrow">Flagship Finance Case</p>
+            <h1 id="case-hero-title">Dynamic DCF Valuation Model</h1>
+            <p class="hero-lede">
+              This is the first proof-layer artifact in the portfolio: a public-company valuation workbook designed
+              to make operating assumptions, discount-rate logic, integrity checks, and source quality visible in one
+              place. The current showcase uses Apple as the live example.
+            </p>
+            <div class="hero-actions" aria-label="Case study actions">
+              <a
+                class="button button-primary"
+                href="./assets/portfolios/DCF%20Model/DCF%20Model%20Showcase%20-%20Isaiah%20Moragne,%20MBA.xlsx"
+                target="_blank"
+                rel="noopener"
+              >
+                <span>Open workbook</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7" />
+                  <path d="M8 7h9v9" />
+                </svg>
+              </a>
+              <a class="button button-secondary" href="#model-preview">Jump to model preview</a>
+              <a class="button button-ghost" href="./index.html#case-studies">Back to case studies</a>
+            </div>
+            <ul class="case-status-list" aria-label="Case status">
+              <li>Published MVP</li>
+              <li>Workbook-driven</li>
+              <li>Executive-readable</li>
+            </ul>
+          </div>
+
+          <aside class="hero-panel case-hero-rail reveal">
+            <p class="eyebrow">Current Showcase Snapshot</p>
+            <div class="rail-metric-list">
+              <div>
+                <span>Company</span>
+                <strong>Apple Inc. (AAPL)</strong>
+              </div>
+              <div>
+                <span>Workbook Timestamp</span>
+                <strong>April 29, 2026</strong>
+              </div>
+              <div>
+                <span>Selected Case</span>
+                <strong>Base</strong>
+              </div>
+              <div>
+                <span>Model Scope</span>
+                <strong>DCF, Inputs, WACC, Checks, Source Audit</strong>
+              </div>
+            </div>
+            <div class="rail-actions">
+              <a
+                class="text-link"
+                href="./assets/portfolios/DCF%20Model/DCF%20Model%20Showcase%20-%20Isaiah%20Moragne,%20MBA.xlsx"
+                target="_blank"
+                rel="noopener"
+              >
+                Open showcase workbook
+              </a>
+              <a
+                class="text-link"
+                href="./assets/portfolios/DCF%20Model/DCF%20Model%20Template.xltx"
+                target="_blank"
+                rel="noopener"
+              >
+                Open reusable template
+              </a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="overview" class="section-pad">
+        <div class="page-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Valuation Snapshot</p>
+            <h2>What the current model says.</h2>
+            <p>
+              The showcase workbook is live enough to inspect. These numbers are not presented as a stock call by
+              themselves; they are presented as proof that the model structure, assumptions, and checks can be
+              followed in public.
+            </p>
+          </div>
+
+          <div class="snapshot-grid reveal">
+            <article class="snapshot-card">
+              <span>Implied Share Price</span>
+              <strong>$173.76</strong>
+              <p>Base-case output from the DCF tab.</p>
+            </article>
+            <article class="snapshot-card">
+              <span>Current Share Price</span>
+              <strong>$270.71</strong>
+              <p>Workbook market reference at the time of refresh.</p>
+            </article>
+            <article class="snapshot-card">
+              <span>Implied Upside / Downside</span>
+              <strong>-35.8%</strong>
+              <p>The gap between intrinsic value and market price in the selected case.</p>
+            </article>
+            <article class="snapshot-card">
+              <span>WACC</span>
+              <strong>9.68%</strong>
+              <p>Built from risk-free rate, beta, ERP, and capital structure.</p>
+            </article>
+            <article class="snapshot-card">
+              <span>Integrity Note</span>
+              <strong>1 debt-cost warning</strong>
+              <p>Checks pass except the cost-of-debt fallback note in the audit layer.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="project-architecture" class="section-pad">
+        <div class="page-shell detail-grid">
+          <article class="detail-card reveal">
+            <p class="eyebrow">Project Purpose</p>
+            <h2>The project the workbook is meant to prove.</h2>
+            <p>
+              I built this model to show that I can move from a messy public-company valuation question to a
+              structured workbook with clear inputs, traceable outputs, and explicit control points. The point was not
+              only to calculate a price target. The point was to build a finance artifact that can be inspected,
+              challenged, and improved.
+            </p>
+            <p>
+              For the portfolio, this page becomes the public-facing explanation layer. The workbook does the
+              analytical heavy lifting, and this page turns that work into something a hiring manager, operator, or
+              finance-minded reviewer can understand without opening Excel first.
+            </p>
+          </article>
+
+          <article class="detail-card reveal">
+            <p class="eyebrow">What I Built</p>
+            <h2>Finance logic with operational discipline.</h2>
+            <ul class="case-bullet-list">
+              <li>A dynamic DCF output tab that surfaces enterprise value, equity value, and implied share price.</li>
+              <li>Dedicated input controls for pricing, tax, debt, beta, terminal growth, and working-capital assumptions.</li>
+              <li>A WACC build that keeps the cost-of-capital logic visible instead of burying it in one cell.</li>
+              <li>Workbook checks and source auditing so the model signals where a fallback or review is still needed.</li>
+              <li>A reusable template structure that can support additional public-company valuation cases over time.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="memo" class="section-pad">
+        <div class="page-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Companion Memo</p>
+            <h2>The reasoning behind the workbook.</h2>
+            <p>
+              The model is the artifact, but the memo is what explains how I think about it: why I built it, how the
+              scenarios were framed, and where I see the boundaries between a solid base-case tool and a fully mature
+              valuation system.
+            </p>
+          </div>
+
+          <div class="memo-grid">
+            <article class="detail-card reveal">
+              <p class="eyebrow">Thesis Framing</p>
+              <h3>Why this model mattered to build.</h3>
+              <p>
+                A major part of my MBA experience has been learning valuation from the perspective of actionable
+                finance: not just how formulas work, but how they support real decisions. My view is that firms gain
+                the most strategic advantage when quantitative conclusions and experienced business judgment are used
+                together. The math gives structure. The business lens gives meaning.
+              </p>
+              <p>
+                As my MBA has moved toward its conclusion, I wanted to understand the full mixture required to build
+                the analytical foundation for enterprise valuation, then apply that knowledge in a way that could
+                eventually support merger-and-acquisition style thinking. This workbook was part work study, part proof
+                of discipline, and part attempt to build a reusable finance asset from first principles.
+              </p>
+            </article>
+
+            <article class="detail-card reveal">
+              <p class="eyebrow">Assumption Logic</p>
+              <h3>Why the bear, base, and bull cases are intentionally restrained.</h3>
+              <p>
+                The model uses three scenario paths: Bear, Base, and Bull. The Bear case assumes 3% revenue growth,
+                which I anchored to a long-run inflation-like baseline. If a company does not materially expand, a
+                reasonable floor is that revenue may still track the general price level over time.
+              </p>
+              <p>
+                The Base case assumes 8% growth. My reasoning there is intentionally conservative: roughly five points
+                above inflation, with enough room for positive operating performance without forcing heroic execution
+                assumptions. The Bull case moves to 13%, which is still below the more aggressive 15% to 20% range
+                that bullish models often drift toward. I wanted the optimistic case to remain ambitious without
+                becoming careless.
+              </p>
+            </article>
+
+            <article class="detail-card reveal memo-span">
+              <p class="eyebrow">Model Boundaries</p>
+              <h3>Where the workbook stands today, and what it is meant to become.</h3>
+              <p>
+                This is not a comprehensive end-state valuation platform. It does not yet pull every 10-K line item in
+                a way that automatically produces the broader ratio layer I would want for a full analytical stack,
+                including deeper EBIT, PBT, PAT, quick, and liquidity comparisons. What it does do well is stand on
+                its own as a conservative base-case DCF that can be incorporated into larger frameworks later.
+              </p>
+              <p>
+                I built manual overrides into the workbook because valuation needs to adapt to the specific cost
+                structures and operating realities of different industries. That flexibility matters. At the same time,
+                I designed the model to be cautious rather than speculative, which is why warning signals appear when
+                values push outside safer ranges. The main conclusion I take from the project is that valuation only
+                becomes useful when ratios, assumptions, controls, and judgment are made to work together clearly
+                enough for someone else to inspect the logic.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="model-preview" class="section-pad">
+        <div class="page-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Model Preview</p>
+            <h2>The workbook, surfaced on the page.</h2>
+            <p>
+              This is the MVP proof layer: enough of the model is visible here to communicate structure, assumptions,
+              and quality controls, while the workbook remains available as the full artifact.
+            </p>
+          </div>
+
+          <div class="preview-shell reveal">
+            <div class="preview-switcher" role="tablist" aria-label="DCF preview sections">
+              <button class="filter-button active" type="button" role="tab" aria-selected="true" data-preview-button="summary">
+                DCF Summary
+              </button>
+              <button class="filter-button" type="button" role="tab" aria-selected="false" data-preview-button="inputs">
+                Inputs + WACC
+              </button>
+              <button class="filter-button" type="button" role="tab" aria-selected="false" data-preview-button="checks">
+                Checks + Audit
+              </button>
+            </div>
+
+            <section class="preview-panel is-active" data-preview-panel="summary">
+              <div class="preview-grid">
+                <article class="preview-card">
+                  <h3>Valuation Summary</h3>
+                  <table class="data-table">
+                    <tbody>
+                      <tr><th>PV of forecast FCFs</th><td>$645.85B</td></tr>
+                      <tr><th>PV of terminal value</th><td>$1.91T</td></tr>
+                      <tr><th>Enterprise value</th><td>$2.55T</td></tr>
+                      <tr><th>Net debt / (cash)</th><td>$54.74B</td></tr>
+                      <tr><th>Equity value</th><td>$2.61T</td></tr>
+                      <tr><th>Diluted shares</th><td>15.00B</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+
+                <article class="preview-card">
+                  <h3>Market Bridge</h3>
+                  <table class="data-table">
+                    <tbody>
+                      <tr><th>Implied share price</th><td>$173.76</td></tr>
+                      <tr><th>Current share price</th><td>$270.71</td></tr>
+                      <tr><th>Implied upside / downside</th><td>-35.8%</td></tr>
+                      <tr><th>Current market cap</th><td>$4.00T</td></tr>
+                      <tr><th>Base fiscal year</th><td>2025</td></tr>
+                      <tr><th>Revenue source status</th><td>OK</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+              </div>
+            </section>
+
+            <section class="preview-panel" data-preview-panel="inputs" hidden>
+              <div class="preview-grid">
+                <article class="preview-card">
+                  <h3>Key Controls</h3>
+                  <table class="data-table">
+                    <tbody>
+                      <tr><th>Equity risk premium</th><td>5.0%</td></tr>
+                      <tr><th>NWC assumption</th><td>3.0% of change in revenue</td></tr>
+                      <tr><th>Terminal growth</th><td>3.0%</td></tr>
+                      <tr><th>Terminal timing</th><td>Year-End</td></tr>
+                      <tr><th>NWC forecast method</th><td>Manual % of revenue change</td></tr>
+                      <tr><th>Selected case</th><td>Base</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+
+                <article class="preview-card">
+                  <h3>WACC Build</h3>
+                  <table class="data-table">
+                    <tbody>
+                      <tr><th>Risk-free rate</th><td>4.354%</td></tr>
+                      <tr><th>Beta</th><td>1.11</td></tr>
+                      <tr><th>Cost of equity</th><td>9.904%</td></tr>
+                      <tr><th>Equity weight</th><td>97.78%</td></tr>
+                      <tr><th>Debt weight</th><td>2.22%</td></tr>
+                      <tr><th>WACC</th><td>9.684%</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+              </div>
+            </section>
+
+            <section class="preview-panel" data-preview-panel="checks" hidden>
+              <div class="preview-grid">
+                <article class="preview-card">
+                  <h3>Model Checks</h3>
+                  <table class="data-table">
+                    <tbody>
+                      <tr><th>Visible workbook errors</th><td>PASS</td></tr>
+                      <tr><th>Scenario selector valid</th><td>PASS</td></tr>
+                      <tr><th>Current share price available</th><td>PASS</td></tr>
+                      <tr><th>Diluted shares available</th><td>PASS</td></tr>
+                      <tr><th>WACC positive</th><td>PASS</td></tr>
+                      <tr><th>WACC &gt; terminal growth</th><td>PASS</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+
+                <article class="preview-card">
+                  <h3>Audit Layer</h3>
+                  <table class="data-table">
+                    <tbody>
+                      <tr><th>Income statement FY</th><td>PASS</td></tr>
+                      <tr><th>Balance sheet FY</th><td>PASS</td></tr>
+                      <tr><th>Cash flow FY</th><td>PASS</td></tr>
+                      <tr><th>Beta source</th><td>PASS</td></tr>
+                      <tr><th>10Y treasury source</th><td>PASS</td></tr>
+                      <tr><th>Cost of debt source</th><td>WARN / fallback</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+              </div>
+
+              <div class="data-callout">
+                <strong>Audit note:</strong>
+                The only current issue is the cost-of-debt source warning. The workbook still completes, but the
+                source audit correctly flags that the debt-cost assumption should be reviewed instead of treated as invisible.
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="workbook-map" class="section-pad">
+        <div class="page-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Workbook Architecture</p>
+            <h2>How the workbook is organized.</h2>
+            <p>
+              The workbook is structured so a reviewer can move from the headline output to the assumptions, the cost
+              of capital, the source data, and the integrity checks without getting lost.
+            </p>
+          </div>
+
+          <div class="sheet-grid reveal">
+            <article class="sheet-card">
+              <span>Cover</span>
+              <p>Workbook orientation, usage steps, and tab map.</p>
+            </article>
+            <article class="sheet-card">
+              <span>DCF</span>
+              <p>Main valuation output with implied share price, enterprise value, and market bridge.</p>
+            </article>
+            <article class="sheet-card">
+              <span>Model Inputs</span>
+              <p>Forecast controls, manual overrides, terminal logic, and working-capital assumptions.</p>
+            </article>
+            <article class="sheet-card">
+              <span>WACC</span>
+              <p>Risk-free rate, beta, ERP, capital structure, and discount-rate build.</p>
+            </article>
+            <article class="sheet-card">
+              <span>Working Capital</span>
+              <p>Support schedule for operating working-capital logic.</p>
+            </article>
+            <article class="sheet-card">
+              <span>3 Statements</span>
+              <p>Historical balance sheet, income statement, and cash-flow data.</p>
+            </article>
+            <article class="sheet-card">
+              <span>Historical Actuals</span>
+              <p>Anchoring history used to support projections.</p>
+            </article>
+            <article class="sheet-card">
+              <span>Model Checks</span>
+              <p>Integrity tests for key inputs, relationships, and output sanity.</p>
+            </article>
+            <article class="sheet-card">
+              <span>Source Audit</span>
+              <p>Refresh diagnostics and visibility into where key inputs came from.</p>
+            </article>
+            <article class="sheet-card">
+              <span>Data Queries</span>
+              <p>Live pulls for market data, treasury rates, tax rate, shares, and related fields.</p>
+            </article>
+            <article class="sheet-card">
+              <span>Query Setup</span>
+              <p>Workbook plumbing for the live query layer.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section section-pad">
+        <div class="page-shell contact-inner reveal">
+          <p class="eyebrow">What Comes Next</p>
+          <h2>The next layer is the written investment narrative.</h2>
+          <p>
+            This MVP establishes the structure: a real workbook, a public proof page, and enough explanation to make
+            the artifact legible. The next iteration can deepen the memo itself with thesis framing, assumption
+            rationale, scenario reasoning, and what would change the conclusion.
+          </p>
+          <div class="contact-actions">
+            <a class="button button-primary" href="./index.html#contact">Contact Isaiah</a>
+            <a class="button button-secondary" href="./index.html">Return to portfolio home</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Flagship case-study layer for isaiahmba.com.</p>
+      <a href="#top">Return to top</a>
+    </footer>
+
+    <script src="./scripts/app.js" defer></script>
+  </body>
+</html>
