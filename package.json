@@ -1,0 +1,22 @@
+{
+  "name": "isaiahmba-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio site for Isaiah Moragne.",
+  "scripts": {
+    "serve": "serve -l 4173 .",
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test tests/e2e/a11y.spec.js",
+    "test:links": "linkinator http://localhost:4173 --recurse --skip \"linkedin.com|github.com|fonts.googleapis.com|fonts.gstatic.com\"",
+    "test:html": "html-validate index.html dcf-model.html",
+    "test": "npm run test:html && npm run test:e2e",
+    "ci": "npm run test:html && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.49.0",
+    "html-validate": "^9.0.0",
+    "linkinator": "^6.1.0",
+    "serve": "^14.2.4"
+  }
+}

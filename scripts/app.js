@@ -1,28 +1,16 @@
+const page = document.body.dataset.page;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 const header = document.querySelector("[data-header]");
 const scrollProgress = document.querySelector("[data-scroll-progress]");
 const revealItems = document.querySelectorAll(".reveal");
-const filterButtons = document.querySelectorAll("[data-filter]");
-const filterCards = document.querySelectorAll("[data-tags]");
-const caseFilterStatus = document.querySelector("[data-case-filter-status]");
-const projectFilterButtons = document.querySelectorAll("[data-project-filter]");
-const projectCards = document.querySelectorAll("[data-project-status]");
-const projectFilterStatus = document.querySelector("[data-project-filter-status]");
 const navLinks = document.querySelectorAll(".site-nav a");
 const navSections = Array.from(navLinks)
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
-const canvas = document.getElementById("strategy-canvas");
-const commandDialog = document.querySelector("[data-command-dialog]");
-const commandOpen = document.querySelector("[data-command-open]");
-const commandSearch = document.querySelector("[data-command-search]");
-const commandItems = document.querySelectorAll("[data-command-item]");
-const briefDialog = document.querySelector("[data-brief-dialog]");
-const briefOpenButtons = document.querySelectorAll("[data-brief-open]");
 const parallaxItems = document.querySelectorAll("[data-parallax]");
-const previewButtons = document.querySelectorAll("[data-preview-button]");
-const previewPanels = document.querySelectorAll("[data-preview-panel]");
 
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const BRIEF_POINTS_SEPARATOR = "|||";
 
 function setHeaderState() {
   header?.classList.toggle("is-scrolled", window.scrollY > 16);
@@ -38,10 +26,15 @@ function setScrollProgress() {
 function setParallax() {
   if (prefersReducedMotion || parallaxItems.length === 0) return;
 
-  parallaxItems.forEach((item) => {
-    const speed = Number(item.dataset.parallax) || 0;
-    const rect = item.getBoundingClientRect();
-    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+  const reads = Array.from(parallaxItems).map((item) => ({
+    item,
+    speed: Number(item.dataset.parallax) || 0,
+    rect: item.getBoundingClientRect(),
+  }));
+
+  const innerHeight = window.innerHeight;
+  reads.forEach(({ item, speed, rect }) => {
+    const centerOffset = rect.top + rect.height / 2 - innerHeight / 2;
     const movement = Math.max(-28, Math.min(28, centerOffset * speed * -1));
     item.style.transform = `translate3d(0, ${movement}px, 0)`;
   });
@@ -65,60 +58,102 @@ function initReveals() {
     { rootMargin: "0px 0px -12% 0px", threshold: 0.16 }
   );
 
-  revealItems.forEach((item, index) => {
-    item.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+  revealItems.forEach((item) => {
+    const siblings = Array.from(item.parentElement?.children ?? []).filter((child) =>
+      child.classList.contains("reveal")
+    );
+    const groupIndex = Math.max(0, siblings.indexOf(item));
+    item.style.transitionDelay = `${(groupIndex % 4) * 70}ms`;
     observer.observe(item);
   });
 }
 
-function initFilters() {
-  filterButtons.forEach((button) => {
+function initToggleGroup({ buttons, activeAttr, onSelect }) {
+  if (!buttons || buttons.length === 0) return;
+
+  buttons.forEach((button) => {
     button.addEventListener("click", () => {
+      buttons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("active", isActive);
+        if (activeAttr) item.setAttribute(activeAttr, String(isActive));
+      });
+      onSelect(button);
+    });
+  });
+}
+
+function initCaseFilters() {
+  const buttons = document.querySelectorAll("[data-filter]");
+  const cards = document.querySelectorAll("[data-tags]");
+  const status = document.querySelector("[data-case-filter-status]");
+
+  initToggleGroup({
+    buttons,
+    activeAttr: "aria-pressed",
+    onSelect: (button) => {
       const filter = button.dataset.filter;
       let visibleCount = 0;
-
-      filterButtons.forEach((item) => {
-        item.classList.toggle("active", item === button);
-        item.setAttribute("aria-pressed", String(item === button));
-      });
-
-      filterCards.forEach((card) => {
+      cards.forEach((card) => {
         const tags = card.dataset.tags?.split(" ") ?? [];
         const visible = filter === "all" || tags.includes(filter);
         if (visible) visibleCount += 1;
         card.classList.toggle("is-hidden", !visible);
       });
-
-      if (caseFilterStatus) {
+      if (status) {
         const label = button.textContent?.trim().toLowerCase() ?? "selected";
-        caseFilterStatus.textContent =
-          filter === "all" ? `Showing all ${visibleCount} case studies.` : `Showing ${visibleCount} ${label} case study entries.`;
+        status.textContent =
+          filter === "all"
+            ? `Showing all ${visibleCount} case studies.`
+            : `Showing ${visibleCount} ${label} case study entries.`;
       }
-    });
+    },
   });
+}
 
-  projectFilterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+function initProjectFilters() {
+  const buttons = document.querySelectorAll("[data-project-filter]");
+  const cards = document.querySelectorAll("[data-project-status]");
+  const status = document.querySelector("[data-project-filter-status]");
+
+  initToggleGroup({
+    buttons,
+    activeAttr: "aria-pressed",
+    onSelect: (button) => {
       const filter = button.dataset.projectFilter;
       let visibleCount = 0;
-
-      projectFilterButtons.forEach((item) => {
-        item.classList.toggle("active", item === button);
-        item.setAttribute("aria-pressed", String(item === button));
-      });
-
-      projectCards.forEach((card) => {
+      cards.forEach((card) => {
         const visible = filter === "all" || card.dataset.projectStatus === filter;
         if (visible) visibleCount += 1;
         card.classList.toggle("is-hidden", !visible);
       });
-
-      if (projectFilterStatus) {
+      if (status) {
         const label = button.textContent?.trim().toLowerCase() ?? "selected";
-        projectFilterStatus.textContent =
-          filter === "all" ? `Showing all ${visibleCount} project lab entries.` : `Showing ${visibleCount} ${label} project lab entries.`;
+        status.textContent =
+          filter === "all"
+            ? `Showing all ${visibleCount} project lab entries.`
+            : `Showing ${visibleCount} ${label} project lab entries.`;
       }
-    });
+    },
+  });
+}
+
+function initPreviewPanels() {
+  const buttons = document.querySelectorAll("[data-preview-button]");
+  const panels = document.querySelectorAll("[data-preview-panel]");
+  if (buttons.length === 0 || panels.length === 0) return;
+
+  initToggleGroup({
+    buttons,
+    activeAttr: "aria-selected",
+    onSelect: (button) => {
+      const target = button.dataset.previewButton;
+      panels.forEach((panel) => {
+        const isActive = panel.dataset.previewPanel === target;
+        panel.hidden = !isActive;
+        panel.classList.toggle("is-active", isActive);
+      });
+    },
   });
 }
 
@@ -159,7 +194,14 @@ function closeDialog(dialog) {
 }
 
 function initCommandMenu() {
-  commandOpen?.addEventListener("click", () => {
+  const commandDialog = document.querySelector("[data-command-dialog]");
+  const commandOpen = document.querySelector("[data-command-open]");
+  const commandSearch = document.querySelector("[data-command-search]");
+  const commandItems = document.querySelectorAll("[data-command-item]");
+
+  if (!commandDialog || !commandOpen) return;
+
+  commandOpen.addEventListener("click", () => {
     openDialog(commandDialog);
     commandSearch?.focus();
   });
@@ -188,14 +230,18 @@ function initCommandMenu() {
 }
 
 function initStrategyBriefs() {
+  const briefDialog = document.querySelector("[data-brief-dialog]");
+  const briefOpenButtons = document.querySelectorAll("[data-brief-open]");
+  if (!briefDialog || briefOpenButtons.length === 0) return;
+
+  const title = briefDialog.querySelector("[data-brief-title]");
+  const kicker = briefDialog.querySelector("[data-brief-kicker]");
+  const body = briefDialog.querySelector("[data-brief-body]");
+  const list = briefDialog.querySelector("[data-brief-list]");
+
   briefOpenButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      if (!briefDialog) return;
-      const title = briefDialog.querySelector("[data-brief-title]");
-      const kicker = briefDialog.querySelector("[data-brief-kicker]");
-      const body = briefDialog.querySelector("[data-brief-body]");
-      const list = briefDialog.querySelector("[data-brief-list]");
-      const points = button.dataset.briefPoints?.split("|") ?? [];
+      const points = button.dataset.briefPoints?.split(BRIEF_POINTS_SEPARATOR) ?? [];
 
       if (title) title.textContent = button.dataset.briefTitle ?? "Strategy Brief";
       if (kicker) kicker.textContent = button.dataset.briefKicker ?? "Strategy Brief";
@@ -214,29 +260,8 @@ function initStrategyBriefs() {
   });
 }
 
-function initPreviewPanels() {
-  if (previewButtons.length === 0 || previewPanels.length === 0) return;
-
-  previewButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const target = button.dataset.previewButton;
-
-      previewButtons.forEach((item) => {
-        const isActive = item === button;
-        item.classList.toggle("active", isActive);
-        item.setAttribute("aria-selected", String(isActive));
-      });
-
-      previewPanels.forEach((panel) => {
-        const isActive = panel.dataset.previewPanel === target;
-        panel.hidden = !isActive;
-        panel.classList.toggle("is-active", isActive);
-      });
-    });
-  });
-}
-
 function initStrategyCanvas() {
+  const canvas = document.getElementById("strategy-canvas");
   if (!canvas || prefersReducedMotion) return;
 
   const context = canvas.getContext("2d");
@@ -247,6 +272,10 @@ function initStrategyCanvas() {
   let frame = 0;
   let pointerX = 0.5;
   let pointerY = 0.5;
+  let rafId = null;
+  let isVisible = true;
+  let isOnscreen = true;
+
   const nodes = Array.from({ length: 36 }, (_, index) => ({
     angle: (Math.PI * 2 * index) / 36,
     radius: 90 + (index % 6) * 34,
@@ -329,7 +358,23 @@ function initStrategyCanvas() {
     });
     context.restore();
 
-    requestAnimationFrame(draw);
+    rafId = requestAnimationFrame(draw);
+  }
+
+  function start() {
+    if (rafId !== null) return;
+    rafId = requestAnimationFrame(draw);
+  }
+
+  function stop() {
+    if (rafId === null) return;
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  function reconcile() {
+    if (isVisible && isOnscreen) start();
+    else stop();
   }
 
   window.addEventListener("resize", resize, { passive: true });
@@ -342,8 +387,26 @@ function initStrategyCanvas() {
     { passive: true }
   );
 
+  document.addEventListener("visibilitychange", () => {
+    isVisible = document.visibilityState === "visible";
+    reconcile();
+  });
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isOnscreen = entry.isIntersecting;
+        });
+        reconcile();
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+  }
+
   resize();
-  draw();
+  start();
 }
 
 let scrollTicking = false;
@@ -374,13 +437,21 @@ window.addEventListener(
   },
   { passive: true }
 );
+
 setHeaderState();
 setScrollProgress();
 setParallax();
 initReveals();
-initFilters();
 initActiveNav();
-initCommandMenu();
-initStrategyBriefs();
-initPreviewPanels();
-initStrategyCanvas();
+
+if (page === "home") {
+  initCaseFilters();
+  initProjectFilters();
+  initCommandMenu();
+  initStrategyBriefs();
+  initStrategyCanvas();
+}
+
+if (page === "dcf") {
+  initPreviewPanels();
+}

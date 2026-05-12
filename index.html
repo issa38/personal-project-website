@@ -28,6 +28,12 @@
     />
     <meta name="twitter:image" content="https://isaiahmba.com/assets/og-preview.svg" />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Serif:wght@400;500;600;700&display=swap"
+    />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
       {
@@ -55,7 +61,7 @@
       }
     </script>
   </head>
-  <body>
+  <body data-page="home">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
 
@@ -120,7 +126,6 @@
               src="./assets/images/architectural backgrounds.png"
               alt="A dark architectural environment with reflective water, matte surfaces, and warm recessed lighting"
               decoding="async"
-              fetchpriority="high"
             />
             <img
               class="hero-studio"
@@ -133,6 +138,7 @@
                 src="./assets/images/Isaiah Moragne - Casual Cropped - No Background.jpg"
                 alt="Portrait of Isaiah Moragne"
                 decoding="async"
+                fetchpriority="high"
               />
             <div class="hero-stat-panel">
               <span class="hero-stat-kicker">Portfolio Overview</span>
@@ -247,7 +253,7 @@
         <p class="filter-status" data-case-filter-status role="status" aria-live="polite">Showing all case studies.</p>
 
         <div class="case-grid" data-filter-grid>
-          <article class="case-card reveal" data-tags="finance operations ai">
+          <article class="case-card case-card--featured reveal" data-tags="finance operations ai">
             <img
               class="card-visual"
               src="./assets/images/nature set in noir.png"
@@ -329,7 +335,7 @@
               data-brief-title="Operational Intelligence Layer for Hidden Efficiency"
               data-brief-kicker="Featured strategic case-study shell"
               data-brief-body="A reusable case-study format for diagnosing where work slows down, where value leaks across handoffs, and where targeted automation can produce measurable operating leverage."
-              data-brief-points="Map workflows and requirements before prescribing tools|Quantify cost of delay, rework, ownership gaps, and decision latency|Apply Python or agentic AI only where the value path is clear|Use the result as a future public case-study template"
+              data-brief-points="Map workflows and requirements before prescribing tools|||Quantify cost of delay, rework, ownership gaps, and decision latency|||Apply Python or agentic AI only where the value path is clear|||Use the result as a future public case-study template"
             >
               Open strategy brief
             </button>
@@ -466,7 +472,7 @@
               data-brief-title="Strategic Workflow Mapper"
               data-brief-kicker="Project lab brief"
               data-brief-body="A planned tool for translating messy workflows into requirements, risk points, automation candidates, and executive-ready improvement narratives."
-              data-brief-points="Capture workflow steps, handoffs, owners, and decision points|Flag friction by effort, ambiguity, risk, and recurrence|Suggest where dashboards, Python scripts, or AI agents could help|Output a practical improvement brief rather than a generic process map"
+              data-brief-points="Capture workflow steps, handoffs, owners, and decision points|||Flag friction by effort, ambiguity, risk, and recurrence|||Suggest where dashboards, Python scripts, or AI agents could help|||Output a practical improvement brief rather than a generic process map"
             >
               Open project brief
             </button>
@@ -490,7 +496,7 @@
               data-brief-title="Value Capture Scorecard"
               data-brief-kicker="Project lab brief"
               data-brief-body="A dashboard concept for comparing initiatives through a business lens before committing scarce time and attention."
-              data-brief-points="Score opportunities by value creation, complexity, and risk|Show where effort creates compounding advantage|Help explain tradeoffs in executive language|Create a repeatable prioritization model for future case studies"
+              data-brief-points="Score opportunities by value creation, complexity, and risk|||Show where effort creates compounding advantage|||Help explain tradeoffs in executive language|||Create a repeatable prioritization model for future case studies"
             >
               Open project brief
             </button>
@@ -514,7 +520,7 @@
               data-brief-title="Future Build Archive Slot"
               data-brief-kicker="Portfolio growth pattern"
               data-brief-body="A reserved project pattern so future work can be added with consistent strategic framing instead of scattered screenshots."
-              data-brief-points="State the business thesis before the technology stack|Explain constraints, tradeoffs, and value assumptions|Attach evidence such as screenshots, metrics, demos, or lessons|Keep the archive honest about maturity and outcomes"
+              data-brief-points="State the business thesis before the technology stack|||Explain constraints, tradeoffs, and value assumptions|||Attach evidence such as screenshots, metrics, demos, or lessons|||Keep the archive honest about maturity and outcomes"
             >
               Open archive pattern
             </button>
