@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Serif:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
     />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
@@ -80,15 +80,22 @@
     </header>
 
     <main id="main">
+      <aside class="ledger-strip" aria-label="Case ledger">
+        <span><i class="led-dot" aria-hidden="true"></i><b>Flagship case</b> &middot; live workbook, AAPL</span>
+        <span>Refreshed &middot; <b>2026.04.29</b></span>
+        <span>Scope &middot; DCF &middot; WACC &middot; checks &middot; source audit</span>
+        <span>Status &middot; <b>Published MVP</b></span>
+      </aside>
+
       <section id="top" class="case-hero section-pad" aria-labelledby="case-hero-title">
         <div class="page-shell case-hero-grid">
           <div class="case-hero-copy reveal">
-            <p class="eyebrow">Flagship Finance Case</p>
-            <h1 id="case-hero-title">Dynamic DCF Valuation Model</h1>
+            <p class="eyebrow">Flagship finance case</p>
+            <h1 id="case-hero-title">A DCF you can actually argue with.</h1>
             <p class="hero-lede">
-              This is the first proof-layer artifact in the portfolio: a public-company valuation workbook designed
-              to make operating assumptions, discount-rate logic, integrity checks, and source quality visible in one
-              place. The current showcase uses Apple as the live example.
+              Most valuations bury their assumptions. This one wears them on the outside; live inputs,
+              WACC build, scenario logic, and integrity checks all visible in the same workbook. The current
+              example is Apple, but the structure is built to swap.
             </p>
             <div class="hero-actions" aria-label="Case study actions">
               <a
@@ -156,14 +163,24 @@
       </section>
 
       <section id="overview" class="section-pad">
+        <div class="rule-divider" aria-hidden="true">
+          <span class="folio">&sect; I</span>
+          <span></span>
+          <span>Snapshot &middot; where the numbers land</span>
+        </div>
         <div class="page-shell">
+          <div class="section-folio reveal" aria-hidden="true">
+            <strong>&sect;&thinsp;I</strong>
+            <span class="folio-rule"></span>
+            <small>Snapshot</small>
+          </div>
           <div class="section-heading reveal">
-            <p class="eyebrow">Valuation Snapshot</p>
-            <h2>What the current model says.</h2>
+            <p class="eyebrow">Where the numbers land</p>
+            <h2>What the model is <span class="accent-italic">saying right now.</span></h2>
             <p>
-              The showcase workbook is live enough to inspect. These numbers are not presented as a stock call by
-              themselves; they are presented as proof that the model structure, assumptions, and checks can be
-              followed in public.
+              Not a stock pick, a snapshot of the math. The point of putting these in public is so you
+              can see exactly how I got here, push on the assumptions, and decide for yourself whether the
+              structure earns its conclusion.
             </p>
           </div>
 
@@ -198,42 +215,62 @@
       </section>
 
       <section id="project-architecture" class="section-pad">
+        <div class="rule-divider" aria-hidden="true">
+          <span class="folio">&sect; II</span>
+          <span></span>
+          <span>Build &middot; project purpose</span>
+        </div>
+        <div class="page-shell">
+          <div class="section-folio reveal" aria-hidden="true">
+            <strong>&sect;&thinsp;II</strong>
+            <span class="folio-rule"></span>
+            <small>Build</small>
+          </div>
+        </div>
         <div class="page-shell detail-grid">
           <article class="detail-card reveal">
-            <p class="eyebrow">Project Purpose</p>
-            <h2>The project the workbook is meant to prove.</h2>
+            <p class="eyebrow">Why I built it</p>
+            <h2>The point wasn't the price target.</h2>
             <p>
-              I built this model to show that I can move from a messy public-company valuation question to a
-              structured workbook with clear inputs, traceable outputs, and explicit control points. The point was not
-              only to calculate a price target. The point was to build a finance artifact that can be inspected,
-              challenged, and improved.
+              The point was to prove I can take a vague valuation question and turn it into a workbook a stranger
+              could pick up, follow, and disagree with productively. Price targets are cheap. Defensible structure is not.
             </p>
             <p>
-              For the portfolio, this page becomes the public-facing explanation layer. The workbook does the
-              analytical heavy lifting, and this page turns that work into something a hiring manager, operator, or
-              finance-minded reviewer can understand without opening Excel first.
+              This page is the explanation layer. The workbook does the analytical work; the page lets a hiring
+              manager, operator, or finance reviewer get the gist before they crack open Excel, or skip
+              Excel entirely if all they wanted was the logic.
             </p>
           </article>
 
           <article class="detail-card reveal">
-            <p class="eyebrow">What I Built</p>
-            <h2>Finance logic with operational discipline.</h2>
+            <p class="eyebrow">What's in the box</p>
+            <h2>The pieces, in plain English.</h2>
             <ul class="case-bullet-list">
-              <li>A dynamic DCF output tab that surfaces enterprise value, equity value, and implied share price.</li>
-              <li>Dedicated input controls for pricing, tax, debt, beta, terminal growth, and working-capital assumptions.</li>
-              <li>A WACC build that keeps the cost-of-capital logic visible instead of burying it in one cell.</li>
-              <li>Workbook checks and source auditing so the model signals where a fallback or review is still needed.</li>
-              <li>A reusable template structure that can support additional public-company valuation cases over time.</li>
+              <li>A DCF tab that shows enterprise value, equity value, and implied share price (not just one final number).</li>
+              <li>One control panel for the assumptions you'd actually want to push on: pricing, tax, debt, beta, terminal growth, working capital.</li>
+              <li>A WACC build that walks through cost of capital step by step, instead of hiding it in a single mystery cell.</li>
+              <li>Built-in checks that flag when a fallback was used or a number drifted into "really?" territory.</li>
+              <li>A reusable template so the next company doesn't need to be built from scratch.</li>
             </ul>
           </article>
         </div>
       </section>
 
       <section id="memo" class="section-pad">
+        <div class="rule-divider" aria-hidden="true">
+          <span class="folio">&sect; III</span>
+          <span></span>
+          <span>Memo &middot; the reasoning</span>
+        </div>
         <div class="page-shell">
+          <div class="section-folio reveal" aria-hidden="true">
+            <strong>&sect;&thinsp;III</strong>
+            <span class="folio-rule"></span>
+            <small>Companion memo</small>
+          </div>
           <div class="section-heading reveal">
             <p class="eyebrow">Companion Memo</p>
-            <h2>The reasoning behind the workbook.</h2>
+            <h2>The reasoning <span class="accent-italic">behind the workbook.</span></h2>
             <p>
               The model is the artifact, but the memo is what explains how I think about it: why I built it, how the
               scenarios were framed, and where I see the boundaries between a solid base-case tool and a fully mature
@@ -299,10 +336,20 @@
       </section>
 
       <section id="model-preview" class="section-pad">
+        <div class="rule-divider" aria-hidden="true">
+          <span class="folio">&sect; IV</span>
+          <span></span>
+          <span>Model preview &middot; on the page</span>
+        </div>
         <div class="page-shell">
+          <div class="section-folio reveal" aria-hidden="true">
+            <strong>&sect;&thinsp;IV</strong>
+            <span class="folio-rule"></span>
+            <small>Model preview</small>
+          </div>
           <div class="section-heading reveal">
             <p class="eyebrow">Model Preview</p>
-            <h2>The workbook, surfaced on the page.</h2>
+            <h2>The workbook, <span class="accent-italic">surfaced on the page.</span></h2>
             <p>
               This is the MVP proof layer: enough of the model is visible here to communicate structure, assumptions,
               and quality controls, while the workbook remains available as the full artifact.
@@ -472,10 +519,20 @@
       </section>
 
       <section id="workbook-map" class="section-pad">
+        <div class="rule-divider" aria-hidden="true">
+          <span class="folio">&sect; V</span>
+          <span></span>
+          <span>Workbook &middot; architecture</span>
+        </div>
         <div class="page-shell">
+          <div class="section-folio reveal" aria-hidden="true">
+            <strong>&sect;&thinsp;V</strong>
+            <span class="folio-rule"></span>
+            <small>Workbook architecture</small>
+          </div>
           <div class="section-heading reveal">
             <p class="eyebrow">Workbook Architecture</p>
-            <h2>How the workbook is organized.</h2>
+            <h2>How the workbook <span class="accent-italic">is organized.</span></h2>
             <p>
               The workbook is structured so a reviewer can move from the headline output to the assumptions, the cost
               of capital, the source data, and the integrity checks without getting lost.
@@ -532,24 +589,36 @@
       </section>
 
       <section class="contact-section section-pad">
+        <div class="rule-divider" aria-hidden="true">
+          <span class="folio">&sect; VI</span>
+          <span></span>
+          <span>Colophon &middot; what's next</span>
+        </div>
+        <div class="page-shell">
+          <div class="section-folio reveal" aria-hidden="true">
+            <strong>&sect;&thinsp;VI</strong>
+            <span class="folio-rule"></span>
+            <small>What's next</small>
+          </div>
+        </div>
         <div class="page-shell contact-inner reveal">
-          <p class="eyebrow">What Comes Next</p>
-          <h2>The next layer is the written investment narrative.</h2>
+          <p class="eyebrow">What's next for this case</p>
+          <h2>The memo is the next thing to grow.</h2>
           <p>
-            This MVP establishes the structure: a real workbook, a public proof page, and enough explanation to make
-            the artifact legible. The next iteration can deepen the memo itself with thesis framing, assumption
-            rationale, scenario reasoning, and what would change the conclusion.
+            The structure is solid: a real workbook, a public page, and enough explanation to follow the logic.
+            Next round, I'm deepening the memo; thesis framing, the case for and against each scenario,
+            and the specific things that would actually change my mind about the number.
           </p>
           <div class="contact-actions">
-            <a class="button button-primary" href="./index.html#contact">Contact Isaiah</a>
-            <a class="button button-secondary" href="./index.html">Return to portfolio home</a>
+            <a class="button button-primary" href="./index.html#contact">Get in touch</a>
+            <a class="button button-secondary" href="./index.html">Back to portfolio home</a>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>Flagship case-study layer for isaiahmba.com.</p>
+      <p>Flagship case for isaiahmba.com. Workbook refreshed periodically.</p>
       <a href="#top">Return to top</a>
     </footer>
 
