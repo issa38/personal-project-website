@@ -449,7 +449,6 @@ if (page === "home") {
   initProjectFilters();
   initCommandMenu();
   initStrategyBriefs();
-  initStrategyCanvas();
 }
 
 if (page === "dcf") {

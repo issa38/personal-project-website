@@ -64,7 +64,28 @@
   <body data-page="home">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
-
+    <div class="ceramic-backdrop" data-ceramic-backdrop aria-hidden="true">
+      <div class="ceramic-vignette"></div>
+      <div class="ceramic-arch">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="ceramic-slab ceramic-slab-a"></div>
+      <div class="ceramic-slab ceramic-slab-b"></div>
+      <div class="ceramic-moon"></div>
+      <div class="ceramic-plinth"></div>
+      <div class="ceramic-dot-field"></div>
+      <div class="ceramic-rule ceramic-rule-a"></div>
+      <div class="ceramic-rule ceramic-rule-b"></div>
+      <div class="ceramic-seal">IM</div>
+      <svg class="ceramic-linework" viewBox="0 0 1200 900" preserveAspectRatio="none">
+        <path data-ceramic-draw d="M70 710 C250 610 360 665 520 540 S850 360 1110 430" />
+        <path data-ceramic-draw d="M880 92 L1036 92 Q1088 92 1088 144 L1088 528" />
+        <path data-ceramic-draw d="M116 158 L330 158 L330 360 L116 360 Z" />
+        <circle data-ceramic-draw cx="955" cy="290" r="52" />
+      </svg>
+      <div class="ceramic-content-veil"></div>
+    </div>
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="Isaiah portfolio home">
         <span class="brand-mark" aria-hidden="true">I</span>
@@ -75,10 +96,10 @@
       </a>
 
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#case-studies">Case Studies</a>
+        <a href="#case-studies">Work</a>
         <a href="#method">Method</a>
+        <a href="#capabilities">Capabilities</a>
         <a href="#lab">Lab</a>
-        <a href="#notes">Notes</a>
         <a href="#resume">Resume</a>
       </nav>
 
@@ -111,7 +132,8 @@
           <header class="hero-nameplate reveal">
             <p class="hero-vol">Vol. 0.5 / Issue 01 / Functional Model</p>
             <h1 id="hero-title" class="hero-wordmark">
-              <span class="hero-given">Isaiah Moragne</span><hr>
+              <span class="hero-given">Isaiah Moragne</span>
+              <span class="hero-wordmark-rule" aria-hidden="true"></span>
               <span class="hero-wordmark-tail">a working notebook on strategy, ops, and the math behind both.</span>
             </h1>
             <p class="hero-byline">
@@ -154,7 +176,7 @@
                 </div>
                 <div>
                   <dt>// toolkit</dt>
-                  <dd>Kaizen. Valuation. Java. ERP Integration. Orchestration & Agentic AI.</dd>
+                  <dd>Kaizen. Valuation. Java. ERP Integration. Orchestration &amp; Agentic AI.</dd>
                 </div>
                 <div>
                   <dt>// status</dt>
@@ -405,7 +427,7 @@
         </div>
       </section>
 
-      <section class="dashboard-section section-pad" aria-labelledby="dashboard-title">
+      <section id="dashboard-thinking" class="dashboard-section section-pad" aria-labelledby="dashboard-title">
         <div class="rule-divider" aria-hidden="true">
           <span class="folio">&sect; IV</span>
           <span></span>
@@ -422,8 +444,9 @@
           <p class="eyebrow">How I think in dashboards</p>
           <h2 id="dashboard-title">If you can't see it, you can't manage it, <span class="accent-italic">and you definitely can't sell it upstairs.</span></h2>
           <p>
-            Human's are visual learners, and dashboards are a powerful way to visualize data and insights. Not the kind that decorates a status meeting; the kind that
+            Humans are visual learners, and dashboards are a powerful way to visualize data and insights. Not the kind that decorates a status meeting; the kind that
             forces a decision.
+          </p>
         </div>
 
         <div class="dashboard-visual reveal" data-parallax="0.04">
@@ -593,7 +616,7 @@
               Open project brief
             </button>
           </article>
-          <!-- <article class="lab-card reveal" data-project-status="archive">
+          <article class="lab-card reveal" data-project-status="archive">
             <span class="status-chip neutral">Coming soon</span>
             <h3>Next case study, reserved seat</h3>
             <p>
@@ -616,7 +639,7 @@
             >
               Open archive pattern
             </button>
-          </article> -->
+          </article>
         </div>
       </section>
 
@@ -693,7 +716,7 @@
           />
           <div>
             <p class="eyebrow">The short version</p>
-            <h2 id="resume-title">MBA specialized in Finance who trudged through startup & seasoned Product Analysis.</h2>
+            <h2 id="resume-title">MBA specialized in Finance who trudged through startup &amp; seasoned Product Analysis.</h2>
             <p>
               The MBA taught me how value gets made and lost. The Product Analysis years taught me how
               work actually happens. Most of what I do now is sit between those two views, so the strategy
@@ -778,7 +801,27 @@
 
     <footer class="site-footer">
       <p>Built and maintained by Isaiah Moragne. Updated as the work grows.</p>
-      <a href="#top">Return to top</a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div>
+          <h2>Portfolio</h2>
+          <a href="#top">Home</a>
+          <a href="#case-studies">Case studies</a>
+          <a href="./dcf-model.html">DCF case</a>
+        </div>
+        <div>
+          <h2>Framework</h2>
+          <a href="#method">Method</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#dashboard-thinking">Dashboard thinking</a>
+          <a href="#notes">Notes</a>
+        </div>
+        <div>
+          <h2>Proof</h2>
+          <a href="#lab">Lab</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
     </footer>
 
     <dialog class="command-dialog" data-command-dialog aria-labelledby="command-title">
@@ -810,13 +853,17 @@
             <span>Operating Method</span>
             <small>How complex work becomes measurable value</small>
           </a>
+          <a href="#capabilities" data-command-item>
+            <span>Capabilities</span>
+            <small>Skills tied to business evidence</small>
+          </a>
           <a href="#lab" data-command-item>
             <span>Project Lab</span>
             <small>Current and future project shells</small>
           </a>
-          <a href="#capabilities" data-command-item>
-            <span>Capabilities</span>
-            <small>Skills tied to business evidence</small>
+          <a href="#dashboard-thinking" data-command-item>
+            <span>Dashboard Thinking</span>
+            <small>How visibility becomes a decision tool</small>
           </a>
           <a href="#notes" data-command-item>
             <span>Notes</span>
@@ -855,5 +902,6 @@
     </dialog>
 
     <script src="./scripts/app.js" defer></script>
+    <script type="module" src="./scripts/experience.js"></script>
   </body>
 </html>

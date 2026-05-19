@@ -59,11 +59,12 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -3;
-  opacity: 0.17;
+  opacity: 0.58;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(19, 19, 19, 0.2), rgba(19, 19, 19, 0.82)),
-    url("./assets/images/background.png") center/cover no-repeat fixed;
+    radial-gradient(circle at 18% 16%, rgba(163, 138, 126, 0.13), transparent 18rem),
+    radial-gradient(circle at 84% 24%, rgba(224, 217, 205, 0.07), transparent 22rem),
+    linear-gradient(135deg, rgba(19, 19, 19, 0.24), rgba(28, 27, 27, 0.72) 42%, rgba(19, 19, 19, 0.96));
 }
 
 body::after {
@@ -78,6 +79,213 @@ body::after {
     linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.4));
   background-size: 96px 96px, 96px 96px, auto;
   mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
+}
+
+.ceramic-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.82;
+  background:
+    radial-gradient(circle at 72% 20%, rgba(163, 138, 126, 0.09), transparent 21rem),
+    linear-gradient(120deg, rgba(224, 217, 205, 0.025), transparent 28% 74%, rgba(163, 138, 126, 0.038)),
+    var(--obsidian);
+}
+
+.ceramic-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 44%, transparent 0 38%, rgba(0, 0, 0, 0.34) 74%, rgba(0, 0, 0, 0.78)),
+    linear-gradient(180deg, rgba(19, 19, 19, 0.26), rgba(19, 19, 19, 0.92));
+}
+
+.ceramic-arch {
+  position: absolute;
+  right: clamp(4rem, 8vw, 9rem);
+  top: clamp(5rem, 9vh, 8rem);
+  width: clamp(18rem, 28vw, 30rem);
+  aspect-ratio: 0.72;
+  border: 1px solid rgba(199, 178, 166, 0.2);
+  border-bottom-color: rgba(125, 125, 125, 0.11);
+  border-radius: 999px 999px 8px 8px;
+  background:
+    linear-gradient(180deg, rgba(224, 217, 205, 0.045), transparent 28%),
+    linear-gradient(110deg, rgba(58, 57, 57, 0.22), rgba(24, 23, 23, 0.68));
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.52);
+  transform-origin: 50% 80%;
+}
+
+.ceramic-arch span {
+  position: absolute;
+  inset: 7%;
+  border: 1px solid rgba(224, 217, 205, 0.08);
+  border-bottom: 0;
+  border-radius: 999px 999px 3px 3px;
+}
+
+.ceramic-arch span + span {
+  inset: 15%;
+  border-color: rgba(163, 138, 126, 0.12);
+}
+
+.ceramic-slab {
+  position: absolute;
+  border: 1px solid rgba(224, 217, 205, 0.08);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 28% 22%, rgba(224, 217, 205, 0.07), transparent 9rem),
+    linear-gradient(135deg, rgba(58, 57, 57, 0.3), rgba(24, 23, 23, 0.74));
+  box-shadow: inset 0 1px 0 rgba(224, 217, 205, 0.05), 0 32px 68px -44px rgba(0, 0, 0, 0.9);
+}
+
+.ceramic-slab::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background:
+    linear-gradient(100deg, transparent 0 44%, rgba(224, 217, 205, 0.16) 45%, transparent 46%),
+    radial-gradient(circle at 20% 80%, rgba(125, 125, 125, 0.18), transparent 7rem);
+  mix-blend-mode: screen;
+}
+
+.ceramic-slab-a {
+  left: max(1.2rem, calc((100vw - var(--max)) / 2));
+  top: 18vh;
+  width: clamp(10rem, 18vw, 18rem);
+  height: clamp(8rem, 15vw, 14rem);
+  opacity: 0.72;
+}
+
+.ceramic-slab-b {
+  right: 8vw;
+  bottom: 7vh;
+  width: clamp(10rem, 18vw, 18rem);
+  height: clamp(6rem, 11vw, 10rem);
+  transform: rotate(-3deg);
+  opacity: 0.78;
+}
+
+.ceramic-moon {
+  position: absolute;
+  right: clamp(1.5rem, 4vw, 4rem);
+  top: 19vh;
+  width: clamp(8rem, 16vw, 15rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(224, 217, 205, 0.1);
+  border-radius: 50%;
+  opacity: 0.28;
+  background:
+    radial-gradient(circle at 38% 34%, rgba(224, 217, 205, 0.18), transparent 2.4rem),
+    radial-gradient(circle at 58% 58%, rgba(125, 125, 125, 0.22), transparent 4.6rem),
+    linear-gradient(145deg, rgba(58, 57, 57, 0.46), rgba(19, 19, 19, 0.86));
+  box-shadow: inset -18px -22px 42px rgba(0, 0, 0, 0.58);
+}
+
+.ceramic-plinth {
+  position: absolute;
+  right: clamp(3rem, 8vw, 8rem);
+  bottom: 3.5vh;
+  width: clamp(14rem, 25vw, 26rem);
+  height: clamp(3rem, 6vw, 5.6rem);
+  border: 1px solid rgba(224, 217, 205, 0.075);
+  border-radius: 7px;
+  opacity: 0.42;
+  background:
+    linear-gradient(8deg, rgba(224, 217, 205, 0.055), transparent 18%),
+    linear-gradient(115deg, rgba(58, 57, 57, 0.36), rgba(24, 23, 23, 0.86));
+  box-shadow: 0 26px 50px -30px rgba(0, 0, 0, 0.95);
+  transform: skewX(-9deg);
+}
+
+.ceramic-dot-field {
+  position: absolute;
+  left: 54vw;
+  bottom: 9vh;
+  width: 13rem;
+  height: 8rem;
+  opacity: 0.32;
+  background-image: radial-gradient(circle, rgba(199, 178, 166, 0.34) 1px, transparent 1.5px);
+  background-size: 14px 14px;
+  mask-image: linear-gradient(90deg, transparent, black 24%, black 76%, transparent);
+}
+
+.ceramic-rule {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(163, 138, 126, 0.56), transparent);
+  transform-origin: center;
+}
+
+.ceramic-rule-a {
+  left: 6vw;
+  top: 42vh;
+  width: 32vw;
+}
+
+.ceramic-rule-b {
+  right: 8vw;
+  top: 62vh;
+  width: 24vw;
+}
+
+.ceramic-linework {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: rgba(199, 178, 166, 0.18);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ceramic-linework [data-ceramic-draw] {
+  opacity: 0.62;
+}
+
+.ceramic-seal {
+  position: absolute;
+  left: clamp(1.25rem, 4vw, 3.5rem);
+  bottom: clamp(1.5rem, 5vh, 4rem);
+  width: 4.4rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(163, 138, 126, 0.38);
+  border-radius: 50%;
+  color: rgba(199, 178, 166, 0.5);
+  font-family: "Noto Serif", Georgia, serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  opacity: 0.44;
+}
+
+.ceramic-content-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(19, 19, 19, 0.72), rgba(19, 19, 19, 0.42) 34%, rgba(19, 19, 19, 0.2) 62%, rgba(19, 19, 19, 0.58)),
+    linear-gradient(180deg, rgba(19, 19, 19, 0.3), transparent 22%, transparent 68%, rgba(19, 19, 19, 0.62));
+}
+
+body[data-page="dcf"] .ceramic-backdrop {
+  opacity: 0.76;
+}
+
+body[data-page="dcf"] .ceramic-arch {
+  right: clamp(2rem, 5vw, 5rem);
+  opacity: 0.72;
+}
+
+body[data-page="dcf"] .ceramic-content-veil {
+  background:
+    linear-gradient(90deg, rgba(19, 19, 19, 0.78), rgba(19, 19, 19, 0.58) 44%, rgba(19, 19, 19, 0.38) 68%, rgba(19, 19, 19, 0.62)),
+    linear-gradient(180deg, rgba(19, 19, 19, 0.42), transparent 24%, transparent 64%, rgba(19, 19, 19, 0.72));
 }
 
 img {
@@ -135,9 +343,20 @@ svg {
   background: linear-gradient(90deg, rgba(163, 138, 126, 0.65), rgba(224, 217, 205, 0.95));
 }
 
+.site-header,
+main,
+.site-footer {
+  position: relative;
+}
+
+main,
+.site-footer {
+  z-index: 2;
+}
+
 .site-header {
   position: fixed;
-  top: 1rem;
+  top: max(1rem, env(safe-area-inset-top));
   left: 1rem;
   right: 1rem;
   z-index: 120;
@@ -270,6 +489,27 @@ svg {
 
 .section-pad {
   padding: 6rem max(1.25rem, calc((100vw - var(--max)) / 2)) 0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.4rem;
+  color: var(--stone);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.breadcrumb a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  color: var(--on-surface);
 }
 
 .hero {
@@ -1073,16 +1313,24 @@ h3 {
 .site-footer {
   max-width: var(--max);
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr);
+  gap: 2rem;
   padding: 2.5rem 1.25rem 3rem;
   color: var(--stone);
   font-size: 0.92rem;
 }
 
-.site-footer a {
+.site-footer p {
+  max-width: 28rem;
+}
+
+.site-footer a,
+.footer-nav h2 {
   font-weight: 800;
+}
+
+.site-footer a {
   text-decoration: none;
 }
 
@@ -1091,10 +1339,31 @@ h3 {
   color: var(--on-surface);
 }
 
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.footer-nav div {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.footer-nav h2 {
+  margin: 0 0 0.15rem;
+  color: var(--ink-soft);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .command-dialog,
 .brief-dialog {
   width: min(760px, calc(100vw - 2rem));
-  max-height: min(760px, calc(100vh - 2rem));
+  max-height: min(760px, calc(100dvh - 2rem));
   border: 0;
   padding: 0;
   background: transparent;
@@ -1589,7 +1858,7 @@ h3 {
   }
 
   .site-header {
-    top: 0.65rem;
+    top: max(0.65rem, env(safe-area-inset-top));
     left: 0.65rem;
     right: 0.65rem;
   }
@@ -1601,6 +1870,36 @@ h3 {
 
   .site-nav {
     display: none;
+  }
+
+  .ceramic-backdrop {
+    opacity: 0.58;
+  }
+
+  body[data-page="dcf"] .ceramic-backdrop {
+    opacity: 0.58;
+  }
+
+  .ceramic-arch,
+  .ceramic-moon,
+  .ceramic-slab-a,
+  .ceramic-seal {
+    display: none;
+  }
+
+  .ceramic-slab-b {
+    right: -4rem;
+    bottom: 4rem;
+  }
+
+  .ceramic-dot-field {
+    left: 42vw;
+    bottom: 8vh;
+    opacity: 0.24;
+  }
+
+  .ceramic-content-veil {
+    background: rgba(19, 19, 19, 0.68);
   }
 
   .site-nav a {
@@ -1731,9 +2030,13 @@ h3 {
   }
 
   .site-footer {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .footer-nav {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2200,6 +2503,13 @@ h3 {
 .hero-wordmark .hero-given,
 .hero-wordmark .hero-family {
   display: block;
+}
+.hero-wordmark-rule {
+  display: block;
+  width: min(10rem, 42vw);
+  height: 1px;
+  margin: 0.5rem 0 0.35rem;
+  background: linear-gradient(90deg, var(--rule), transparent);
 }
 .hero-wordmark .hero-family {
   display: inline-block;

@@ -53,7 +53,28 @@
   <body data-page="dcf">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
-
+    <div class="ceramic-backdrop" data-ceramic-backdrop aria-hidden="true">
+      <div class="ceramic-vignette"></div>
+      <div class="ceramic-arch">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="ceramic-slab ceramic-slab-a"></div>
+      <div class="ceramic-slab ceramic-slab-b"></div>
+      <div class="ceramic-moon"></div>
+      <div class="ceramic-plinth"></div>
+      <div class="ceramic-dot-field"></div>
+      <div class="ceramic-rule ceramic-rule-a"></div>
+      <div class="ceramic-rule ceramic-rule-b"></div>
+      <div class="ceramic-seal">IM</div>
+      <svg class="ceramic-linework" viewBox="0 0 1200 900" preserveAspectRatio="none">
+        <path data-ceramic-draw d="M70 710 C250 610 360 665 520 540 S850 360 1110 430" />
+        <path data-ceramic-draw d="M880 92 L1036 92 Q1088 92 1088 144 L1088 528" />
+        <path data-ceramic-draw d="M116 158 L330 158 L330 360 L116 360 Z" />
+        <circle data-ceramic-draw cx="955" cy="290" r="52" />
+      </svg>
+      <div class="ceramic-content-veil"></div>
+    </div>
     <header class="site-header" data-header>
       <a class="brand" href="./index.html" aria-label="Return to portfolio home">
         <span class="brand-mark" aria-hidden="true">I</span>
@@ -72,7 +93,7 @@
       </nav>
 
       <a class="nav-cta" href="./index.html">
-        <span>Home</span>
+        <span>Portfolio</span>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M5 12h14m-6-6 6 6-6 6" />
         </svg>
@@ -86,6 +107,14 @@
         <span>Scope &middot; DCF &middot; WACC &middot; checks &middot; source audit</span>
         <span>Status &middot; <b>Published MVP</b></span>
       </aside>
+
+      <nav class="breadcrumb page-shell" aria-label="Breadcrumb">
+        <a href="./index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="./index.html#case-studies">Case Studies</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Dynamic DCF Valuation Model</span>
+      </nav>
 
       <section id="top" class="case-hero section-pad" aria-labelledby="case-hero-title">
         <div class="page-shell case-hero-grid">
@@ -652,7 +681,7 @@
         </div>
       </section>
 
-      <section class="contact-section section-pad">
+      <section id="case-next-step" class="contact-section section-pad">
         <div class="rule-divider" aria-hidden="true">
           <span class="folio">&sect; VI</span>
           <span></span>
@@ -683,10 +712,31 @@
 
     <footer class="site-footer">
       <p>Flagship case for isaiahmba.com. Workbook refreshed periodically.</p>
-      <a href="#top">Return to top</a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div>
+          <h2>Case</h2>
+          <a href="#top">Top</a>
+          <a href="#overview">Overview</a>
+          <a href="#model-preview">Model preview</a>
+          <a href="#workbook-map">Workbook map</a>
+        </div>
+        <div>
+          <h2>Portfolio</h2>
+          <a href="./index.html">Home</a>
+          <a href="./index.html#case-studies">Case studies</a>
+          <a href="./index.html#capabilities">Capabilities</a>
+        </div>
+        <div>
+          <h2>Proof</h2>
+          <a href="./assets/portfolios/DCF%20Model/DCF%20Model%20Showcase%20-%20Isaiah%20Moragne,%20MBA.xlsx" target="_blank" rel="noopener">Workbook</a>
+          <a href="./assets/portfolios/DCF%20Model/DCF%20Model%20Template.xltx" target="_blank" rel="noopener">Template</a>
+          <a href="./index.html#contact">Contact</a>
+        </div>
+      </nav>
     </footer>
 
     <script src="./scripts/app.js" defer></script>
     <script src="./scripts/dcf-model.js" defer></script>
+    <script type="module" src="./scripts/experience.js"></script>
   </body>
 </html>
