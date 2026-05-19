@@ -358,35 +358,41 @@
           </div>
 
           <div class="dcf-app reveal" data-dcf-app>
-            <div
-              class="preview-switcher dcf-scenario"
-              role="group"
-              aria-label="Valuation scenario"
-            >
-              <button
-                class="filter-button"
-                type="button"
-                data-dcf-scenario="bear"
-                aria-pressed="false"
+            <div class="dcf-scenario-bar">
+              <div
+                class="dcf-scenario"
+                role="group"
+                aria-label="Valuation scenario"
               >
-                Bear
-              </button>
-              <button
-                class="filter-button active"
-                type="button"
-                data-dcf-scenario="base"
-                aria-pressed="true"
-              >
-                Base
-              </button>
-              <button
-                class="filter-button"
-                type="button"
-                data-dcf-scenario="bull"
-                aria-pressed="false"
-              >
-                Bull
-              </button>
+                <button
+                  class="dcf-seg"
+                  type="button"
+                  data-dcf-scenario="bear"
+                  aria-pressed="false"
+                >
+                  Bear
+                </button>
+                <button
+                  class="dcf-seg active"
+                  type="button"
+                  data-dcf-scenario="base"
+                  aria-pressed="true"
+                >
+                  Base
+                </button>
+                <button
+                  class="dcf-seg"
+                  type="button"
+                  data-dcf-scenario="bull"
+                  aria-pressed="false"
+                >
+                  Bull
+                </button>
+              </div>
+              <p class="dcf-scenario-note" data-dcf-scenario-note>
+                Conservative growth, steady margin expansion, restrained
+                terminal value.
+              </p>
             </div>
 
             <div class="dcf-layout">
@@ -418,40 +424,68 @@
               </form>
 
               <div class="dcf-results">
-                <div class="dcf-output-grid">
-                  <article class="dcf-stat dcf-stat--hero">
-                    <span>Implied share price</span>
-                    <strong data-dcf-out="impliedPrice">$0.00</strong>
-                    <small
-                      >vs current
-                      <span data-dcf-out="currentPrice">$0.00</span></small
+                <section class="dcf-verdict" aria-label="Valuation verdict">
+                  <div class="dcf-verdict-price">
+                    <p class="dcf-eyebrow">Implied value per share</p>
+                    <strong class="dcf-bignum" data-dcf-out="impliedPrice"
+                      >$0.00</strong
                     >
-                  </article>
-                  <article class="dcf-stat">
-                    <span>Upside / (downside)</span>
+                    <p class="dcf-verdict-sub">
+                      Market price
+                      <span data-dcf-out="currentPrice">$0.00</span>
+                    </p>
+                  </div>
+
+                  <div class="dcf-gauge" aria-hidden="true">
+                    <div class="dcf-gauge-scale">
+                      <span>0</span>
+                      <span>parity</span>
+                      <span>2&times;</span>
+                    </div>
+                    <div class="dcf-gauge-track">
+                      <span class="dcf-gauge-parity"></span>
+                      <span class="dcf-gauge-fill" data-dcf-gauge></span>
+                      <span class="dcf-gauge-market" data-dcf-gauge-market></span>
+                    </div>
+                    <div class="dcf-gauge-key">
+                      <span>Intrinsic estimate</span>
+                      <span>Market = parity</span>
+                    </div>
+                  </div>
+
+                  <div class="dcf-call" data-dcf-call data-tone="down">
+                    <span class="dcf-call-word" data-dcf-verdict>OVERVALUED</span>
                     <strong data-dcf-out="upside" data-tone="down">0%</strong>
-                  </article>
-                  <article class="dcf-stat">
-                    <span>Enterprise value</span>
-                    <strong data-dcf-out="enterpriseValue">$0</strong>
-                  </article>
-                  <article class="dcf-stat">
-                    <span>Equity value</span>
-                    <strong data-dcf-out="equityValue">$0</strong>
-                  </article>
-                  <article class="dcf-stat">
+                    <small>vs market</small>
+                  </div>
+                </section>
+
+                <section class="dcf-bridge" aria-label="Valuation bridge">
+                  <div class="dcf-bridge-step">
                     <span>PV of forecast FCFs</span>
                     <strong data-dcf-out="sumPvFcf">$0</strong>
-                  </article>
-                  <article class="dcf-stat">
+                  </div>
+                  <span class="dcf-bridge-op" aria-hidden="true">&plus;</span>
+                  <div class="dcf-bridge-step">
                     <span>PV of terminal value</span>
                     <strong data-dcf-out="pvTerminalValue">$0</strong>
-                  </article>
-                  <article class="dcf-stat">
-                    <span>WACC (effective)</span>
+                  </div>
+                  <span class="dcf-bridge-op" aria-hidden="true">&equals;</span>
+                  <div class="dcf-bridge-step is-key">
+                    <span>Enterprise value</span>
+                    <strong data-dcf-out="enterpriseValue">$0</strong>
+                  </div>
+                  <span class="dcf-bridge-op" aria-hidden="true">&rarr;</span>
+                  <div class="dcf-bridge-step is-key">
+                    <span>Equity value</span>
+                    <strong data-dcf-out="equityValue">$0</strong>
+                  </div>
+                  <span class="dcf-bridge-op" aria-hidden="true">&middot;</span>
+                  <div class="dcf-bridge-step">
+                    <span>WACC effective</span>
                     <strong data-dcf-out="wacc">0%</strong>
-                  </article>
-                </div>
+                  </div>
+                </section>
 
                 <article class="preview-card dcf-panel">
                   <h3>Five-year unlevered free cash flow</h3>
@@ -483,7 +517,8 @@
                   </div>
                 </article>
 
-                <article class="preview-card dcf-panel">
+                <div class="dcf-pair">
+                  <article class="preview-card dcf-panel">
                   <h3>
                     Sensitivity &middot; implied price (WACC &times; terminal
                     growth)
@@ -539,7 +574,8 @@
                     centre will not tie out. The model shows these weak points
                     instead of hiding them.
                   </div>
-                </article>
+                  </article>
+                </div>
               </div>
             </div>
           </div>

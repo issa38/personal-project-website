@@ -379,6 +379,33 @@
     return (value / 1e9).toFixed(2) + "B";
   }
 
+  // Accounting convention for table cells: negatives in parentheses.
+  function fmtAccounting(value) {
+    if (!isFinite(value)) return "n/a";
+    var abs = Math.abs(value);
+    var body;
+    if (abs >= 1e12) body = "$" + (abs / 1e12).toFixed(2) + "T";
+    else if (abs >= 1e9) body = "$" + (abs / 1e9).toFixed(1) + "B";
+    else if (abs >= 1e6) body = "$" + (abs / 1e6).toFixed(1) + "M";
+    else body = "$" + abs.toFixed(0);
+    return value < 0 ? "(" + body + ")" : body;
+  }
+
+  // Short scenario framing shown next to the selector.
+  var SCENARIO_NOTES = {
+    bear: "Growth fades toward inflation; margins barely move; higher discount rate.",
+    base: "Conservative growth, steady margin expansion, restrained terminal value.",
+    bull: "Faster growth and richer margins, still short of heroic; lower discount rate."
+  };
+
+  // Plain-language read on intrinsic vs market.
+  function verdictFor(upside) {
+    if (!isFinite(upside)) return { word: "NO VALUE", tone: "flat" };
+    if (upside > 0.05) return { word: "UNDERVALUED", tone: "up" };
+    if (upside < -0.05) return { word: "OVERVALUED", tone: "down" };
+    return { word: "FAIRLY VALUED", tone: "flat" };
+  }
+
   var ENGINE = {
     BASE: BASE,
     SCENARIOS: SCENARIOS,
@@ -388,11 +415,14 @@
     runChecks: runChecks,
     format: {
       bigDollars: fmtBigDollars,
+      accounting: fmtAccounting,
       money: fmtMoney,
       pct: fmtPct,
       signedPct: fmtSignedPct,
       shares: fmtShares
-    }
+    },
+    verdictFor: verdictFor,
+    SCENARIO_NOTES: SCENARIO_NOTES
   };
 
   // Expose the pure engine for tests and console inspection.
@@ -645,10 +675,27 @@
     var sensBody = root.querySelector("[data-dcf-sens-body]");
     var checksBody = root.querySelector("[data-dcf-checks]");
     var overallEl = root.querySelector("[data-dcf-overall]");
+    var verdictEl = root.querySelector("[data-dcf-verdict]");
+    var callEl = root.querySelector("[data-dcf-call]");
+    var gaugeEl = root.querySelector("[data-dcf-gauge]");
+    var scenarioNoteEl = root.querySelector("[data-dcf-scenario-note]");
     var f = ENGINE.format;
+    var reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // Update text and pulse a brief highlight when the value actually moves.
     function setText(el, value) {
-      if (el && el.textContent !== value) el.textContent = value;
+      if (!el || el.textContent === value) return;
+      el.textContent = value;
+      if (reduceMotion || el.dataset.dcfInit !== "1") {
+        el.dataset.dcfInit = "1";
+        return;
+      }
+      el.classList.remove("is-flash");
+      void el.offsetWidth;
+      el.classList.add("is-flash");
     }
 
     function render() {
@@ -663,39 +710,59 @@
       setText(out.pvTerminalValue, f.bigDollars(result.pvTerminalValue));
       setText(out.wacc, f.pct(result.effWacc, 2));
       setText(out.currentPrice, f.money(state.inputs.currentPrice));
+
+      var verdict = ENGINE.verdictFor(result.upside);
       if (out.upside) {
-        out.upside.textContent = f.signedPct(result.upside, 1);
-        out.upside.dataset.tone = result.upside >= 0 ? "up" : "down";
+        setText(out.upside, f.signedPct(result.upside, 1));
+        out.upside.dataset.tone = verdict.tone;
+      }
+      if (verdictEl) setText(verdictEl, verdict.word);
+      if (callEl) callEl.dataset.tone = verdict.tone;
+      if (scenarioNoteEl) {
+        setText(
+          scenarioNoteEl,
+          ENGINE.SCENARIO_NOTES[state.scenario] || ENGINE.SCENARIO_NOTES.base
+        );
+      }
+      if (gaugeEl) {
+        // Intrinsic value as a share of 2x market price; parity sits at 50%.
+        var ratio =
+          state.inputs.currentPrice > 0
+            ? result.impliedPrice / state.inputs.currentPrice
+            : 0;
+        gaugeEl.style.width = clamp(ratio / 2, 0, 1) * 100 + "%";
+        gaugeEl.dataset.tone = verdict.tone;
       }
 
+      // Accounting cell: parenthesised + tinted when negative.
+      function dCell(v, strong) {
+        var cls = "num" + (v < 0 ? " neg" : "") + (strong ? " key" : "");
+        return '<td class="' + cls + '">' + f.accounting(v) + "</td>";
+      }
       var rows = result.years
         .map(function (y) {
           return (
-            "<tr><th scope=\"row\">FY" +
+            '<tr><th scope="row">FY' +
             y.year +
-            "E</th><td>" +
-            f.bigDollars(y.revenue) +
-            "</td><td>" +
+            "E</th>" +
+            dCell(y.revenue) +
+            '<td class="num' +
+            (y.growth < 0 ? " neg" : "") +
+            '">' +
             f.pct(y.growth, 1) +
-            "</td><td>" +
-            f.bigDollars(y.ebit) +
-            "</td><td>" +
-            f.bigDollars(y.tax) +
-            "</td><td>" +
-            f.bigDollars(y.nopat) +
-            "</td><td>" +
-            f.bigDollars(y.dna) +
-            "</td><td>" +
-            f.bigDollars(y.capex) +
-            "</td><td>" +
-            f.bigDollars(y.changeNwc) +
-            "</td><td>" +
-            f.bigDollars(y.fcf) +
-            "</td><td>" +
+            "</td>" +
+            dCell(y.ebit) +
+            dCell(y.tax) +
+            dCell(y.nopat) +
+            dCell(y.dna) +
+            dCell(y.capex) +
+            dCell(y.changeNwc) +
+            dCell(y.fcf, true) +
+            '<td class="num">' +
             y.discountFactor.toFixed(4) +
-            "</td><td>" +
-            f.bigDollars(y.pvFcf) +
-            "</td></tr>"
+            "</td>" +
+            dCell(y.pvFcf, true) +
+            "</tr>"
           );
         })
         .join("");
@@ -712,11 +779,20 @@
           "</tr>";
       }
       if (sensBody) {
+        var flat = [];
+        sensitivity.rows.forEach(function (r) {
+          r.cells.forEach(function (c) {
+            if (isFinite(c)) flat.push(c);
+          });
+        });
+        var lo = Math.min.apply(null, flat);
+        var hi = Math.max.apply(null, flat);
+        var span = hi - lo || 1;
         sensBody.innerHTML = sensitivity.rows
           .map(function (r) {
             var isCenterRow = Math.abs(r.wacc - result.effWacc) < 1e-9;
             return (
-              "<tr><th scope=\"row\">" +
+              '<tr><th scope="row">' +
               f.pct(r.wacc, 2) +
               "</th>" +
               r.cells
@@ -726,11 +802,15 @@
                     Math.abs(
                       sensitivity.growthAxis[ci] - result.effTermGrowth
                     ) < 1e-9;
+                  if (!isFinite(c)) return '<td class="num heat-na">n/a</td>';
+                  var heat = Math.round(((c - lo) / span) * 4); // 0..4
                   return (
-                    "<td" +
-                    (center ? ' class="is-center"' : "") +
-                    ">" +
-                    (isFinite(c) ? f.money(c) : "n/a") +
+                    '<td class="num' +
+                    (center ? " is-center" : "") +
+                    '" data-heat="' +
+                    heat +
+                    '">' +
+                    f.money(c) +
                     "</td>"
                   );
                 })
