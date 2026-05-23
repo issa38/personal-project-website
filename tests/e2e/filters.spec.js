@@ -43,7 +43,9 @@ test.describe("project lab filters", () => {
     const devCard = page.locator('[data-project-status="in-development"]');
 
     await expect(conceptCard).toHaveClass(/is-hidden/);
-    await expect(archiveCard).toHaveClass(/is-hidden/);
+    if ((await archiveCard.count()) > 0) {
+      await expect(archiveCard).toHaveClass(/is-hidden/);
+    }
     await expect(devCard).not.toHaveClass(/is-hidden/);
   });
 

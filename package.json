@@ -12,7 +12,7 @@
     "test:e2e": "playwright test",
     "test:a11y": "playwright test tests/e2e/a11y.spec.js",
     "test:links": "linkinator http://localhost:4173 --recurse --skip \"linkedin.com|github.com|fonts.googleapis.com|fonts.gstatic.com\"",
-    "test:html": "html-validate index.html dcf-model.html",
+    "test:html": "html-validate index.html dcf-model.html activation-funnel.html",
     "test": "npm run test:html && npm run test:e2e",
     "ci": "npm run test:html && npm run test:e2e"
   },

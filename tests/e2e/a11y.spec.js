@@ -4,6 +4,7 @@ import { expect, test } from "@playwright/test";
 const pages = [
   { name: "home", path: "/index.html" },
   { name: "dcf case study", path: "/dcf-model.html" },
+  { name: "activation funnel case study", path: "/activation-funnel.html" },
 ];
 
 for (const { name, path } of pages) {
