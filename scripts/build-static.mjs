@@ -8,6 +8,7 @@ const publishEntries = [
   "_headers",
   "CNAME",
   "assets",
+  "activation-funnel.html",
   "dcf-model.html",
   "index.html",
   "robots.txt",
