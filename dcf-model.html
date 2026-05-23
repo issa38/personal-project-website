@@ -348,172 +348,236 @@
             <small>Model preview</small>
           </div>
           <div class="section-heading reveal">
-            <p class="eyebrow">Model Preview</p>
-            <h2>The workbook, <span class="accent-italic">surfaced on the page.</span></h2>
+            <p class="eyebrow">Interactive Model</p>
+            <h2>The workbook, <span class="accent-italic">running in your browser.</span></h2>
             <p>
-              This is the MVP proof layer: enough of the model is visible here to communicate structure, assumptions,
-              and quality controls, while the workbook remains available as the full artifact.
+              This is the live version of the model. Pick a scenario, push on any assumption, and watch the
+              valuation, the forecast, the sensitivity grid, and the integrity checks recompute in real time.
+              The Excel workbook stays available as the full source artifact; nothing here needs it to run.
             </p>
           </div>
 
-          <div class="preview-shell reveal">
-            <div class="preview-switcher" role="tablist" aria-label="DCF preview sections">
-              <button
-                class="filter-button active"
-                type="button"
-                role="tab"
-                id="preview-tab-summary"
-                aria-selected="true"
-                aria-controls="preview-panel-summary"
-                data-preview-button="summary"
+          <div class="dcf-app reveal" data-dcf-app>
+            <div class="dcf-scenario-bar">
+              <div
+                class="dcf-scenario"
+                role="group"
+                aria-label="Valuation scenario"
               >
-                DCF Summary
-              </button>
-              <button
-                class="filter-button"
-                type="button"
-                role="tab"
-                id="preview-tab-inputs"
-                aria-selected="false"
-                aria-controls="preview-panel-inputs"
-                data-preview-button="inputs"
-              >
-                Inputs + WACC
-              </button>
-              <button
-                class="filter-button"
-                type="button"
-                role="tab"
-                id="preview-tab-checks"
-                aria-selected="false"
-                aria-controls="preview-panel-checks"
-                data-preview-button="checks"
-              >
-                Checks + Audit
-              </button>
+                <button
+                  class="dcf-seg"
+                  type="button"
+                  data-dcf-scenario="bear"
+                  aria-pressed="false"
+                >
+                  Bear
+                </button>
+                <button
+                  class="dcf-seg active"
+                  type="button"
+                  data-dcf-scenario="base"
+                  aria-pressed="true"
+                >
+                  Base
+                </button>
+                <button
+                  class="dcf-seg"
+                  type="button"
+                  data-dcf-scenario="bull"
+                  aria-pressed="false"
+                >
+                  Bull
+                </button>
+              </div>
+              <p class="dcf-scenario-note" data-dcf-scenario-note>
+                Conservative growth, steady margin expansion, restrained
+                terminal value.
+              </p>
             </div>
 
-            <section
-              class="preview-panel is-active"
-              role="tabpanel"
-              id="preview-panel-summary"
-              aria-labelledby="preview-tab-summary"
-              data-preview-panel="summary"
-            >
-              <div class="preview-grid">
-                <article class="preview-card">
-                  <h3>Valuation Summary</h3>
-                  <table class="data-table">
-                    <tbody>
-                      <tr><th>PV of forecast FCFs</th><td>$645.85B</td></tr>
-                      <tr><th>PV of terminal value</th><td>$1.91T</td></tr>
-                      <tr><th>Enterprise value</th><td>$2.55T</td></tr>
-                      <tr><th>Net debt / (cash)</th><td>$54.74B</td></tr>
-                      <tr><th>Equity value</th><td>$2.61T</td></tr>
-                      <tr><th>Diluted shares</th><td>15.00B</td></tr>
-                    </tbody>
-                  </table>
+            <div class="dcf-layout">
+              <form class="dcf-controls" data-dcf-form aria-label="DCF assumptions">
+                <fieldset class="dcf-fieldset">
+                  <legend>Forecast drivers</legend>
+                  <div class="dcf-control-list" data-dcf-group="drivers"></div>
+                  <div class="dcf-control">
+                    <label class="dcf-control-label" for="dcf-timing"
+                      >Terminal value timing</label
+                    >
+                    <select class="dcf-select" id="dcf-timing" data-dcf-timing>
+                      <option value="Year-End">Year-End</option>
+                      <option value="Mid-Year">Mid-Year</option>
+                    </select>
+                  </div>
+                </fieldset>
+                <fieldset class="dcf-fieldset">
+                  <legend>Cost of capital &amp; structure</legend>
+                  <div class="dcf-control-list" data-dcf-group="capital"></div>
+                </fieldset>
+                <button
+                  class="button button-secondary dcf-reset"
+                  type="button"
+                  data-dcf-reset
+                >
+                  Reset to workbook base case
+                </button>
+              </form>
+
+              <div class="dcf-results">
+                <section class="dcf-verdict" aria-label="Valuation verdict">
+                  <div class="dcf-verdict-price">
+                    <p class="dcf-eyebrow">Implied value per share</p>
+                    <strong class="dcf-bignum" data-dcf-out="impliedPrice"
+                      >$0.00</strong
+                    >
+                    <p class="dcf-verdict-sub">
+                      Market price
+                      <span data-dcf-out="currentPrice">$0.00</span>
+                    </p>
+                  </div>
+
+                  <div class="dcf-gauge" aria-hidden="true">
+                    <div class="dcf-gauge-scale">
+                      <span>0</span>
+                      <span>parity</span>
+                      <span>2&times;</span>
+                    </div>
+                    <div class="dcf-gauge-track">
+                      <span class="dcf-gauge-parity"></span>
+                      <span class="dcf-gauge-fill" data-dcf-gauge></span>
+                      <span class="dcf-gauge-market" data-dcf-gauge-market></span>
+                    </div>
+                    <div class="dcf-gauge-key">
+                      <span>Intrinsic estimate</span>
+                      <span>Market = parity</span>
+                    </div>
+                  </div>
+
+                  <div class="dcf-call" data-dcf-call data-tone="down">
+                    <span class="dcf-call-word" data-dcf-verdict>OVERVALUED</span>
+                    <strong data-dcf-out="upside" data-tone="down">0%</strong>
+                    <small>vs market</small>
+                  </div>
+                </section>
+
+                <section class="dcf-bridge" aria-label="Valuation bridge">
+                  <div class="dcf-bridge-step">
+                    <span>PV of forecast FCFs</span>
+                    <strong data-dcf-out="sumPvFcf">$0</strong>
+                  </div>
+                  <span class="dcf-bridge-op" aria-hidden="true">&plus;</span>
+                  <div class="dcf-bridge-step">
+                    <span>PV of terminal value</span>
+                    <strong data-dcf-out="pvTerminalValue">$0</strong>
+                  </div>
+                  <span class="dcf-bridge-op" aria-hidden="true">&equals;</span>
+                  <div class="dcf-bridge-step is-key">
+                    <span>Enterprise value</span>
+                    <strong data-dcf-out="enterpriseValue">$0</strong>
+                  </div>
+                  <span class="dcf-bridge-op" aria-hidden="true">&rarr;</span>
+                  <div class="dcf-bridge-step is-key">
+                    <span>Equity value</span>
+                    <strong data-dcf-out="equityValue">$0</strong>
+                  </div>
+                  <span class="dcf-bridge-op" aria-hidden="true">&middot;</span>
+                  <div class="dcf-bridge-step">
+                    <span>WACC effective</span>
+                    <strong data-dcf-out="wacc">0%</strong>
+                  </div>
+                </section>
+
+                <article class="preview-card dcf-panel">
+                  <h3>Five-year unlevered free cash flow</h3>
+                  <div
+                    class="dcf-table-scroll"
+                    role="group"
+                    aria-label="Five-year free cash flow forecast, scrollable"
+                    tabindex="0"
+                  >
+                    <table class="data-table dcf-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Line ($)</th>
+                          <th scope="col">Revenue</th>
+                          <th scope="col">Growth</th>
+                          <th scope="col">EBIT</th>
+                          <th scope="col">Tax</th>
+                          <th scope="col">NOPAT</th>
+                          <th scope="col">D&amp;A</th>
+                          <th scope="col">CapEx</th>
+                          <th scope="col">&Delta; NWC</th>
+                          <th scope="col">FCF</th>
+                          <th scope="col">DF</th>
+                          <th scope="col">PV FCF</th>
+                        </tr>
+                      </thead>
+                      <tbody data-dcf-forecast></tbody>
+                    </table>
+                  </div>
                 </article>
 
-                <article class="preview-card">
-                  <h3>Market Bridge</h3>
-                  <table class="data-table">
-                    <tbody>
-                      <tr><th>Implied share price</th><td>$173.76</td></tr>
-                      <tr><th>Current share price</th><td>$270.71</td></tr>
-                      <tr><th>Implied upside / downside</th><td>-35.8%</td></tr>
-                      <tr><th>Current market cap</th><td>$4.00T</td></tr>
-                      <tr><th>Base fiscal year</th><td>2025</td></tr>
-                      <tr><th>Revenue source status</th><td>OK</td></tr>
-                    </tbody>
-                  </table>
+                <div class="dcf-pair">
+                  <article class="preview-card dcf-panel">
+                  <h3>
+                    Sensitivity &middot; implied price (WACC &times; terminal
+                    growth)
+                  </h3>
+                  <div
+                    class="dcf-table-scroll"
+                    role="group"
+                    aria-label="WACC and terminal growth sensitivity grid, scrollable"
+                    tabindex="0"
+                  >
+                    <table class="data-table dcf-table dcf-sens">
+                      <thead data-dcf-sens-head></thead>
+                      <tbody data-dcf-sens-body></tbody>
+                    </table>
+                  </div>
                 </article>
+
+                <article class="preview-card dcf-panel">
+                  <div class="dcf-checks-head">
+                    <h3>Model checks</h3>
+                    <span
+                      class="dcf-status"
+                      data-dcf-overall
+                      data-status="FAIL"
+                      role="status"
+                      aria-label="Overall model check status"
+                      >FAIL</span
+                    >
+                  </div>
+                  <div
+                    class="dcf-table-scroll"
+                    role="group"
+                    aria-label="Model integrity checks, scrollable"
+                    tabindex="0"
+                  >
+                    <table class="data-table dcf-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Check</th>
+                          <th scope="col">Observed</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody data-dcf-checks></tbody>
+                    </table>
+                  </div>
+                  <div class="data-callout">
+                    <strong>Audit note:</strong>
+                    The base case fails its own checks on purpose. Cost of debt
+                    came back empty from the data query and falls to a zero
+                    manual placeholder, and the WACC/g sensitivity grid uses a
+                    different net-debt sign than the headline bridge, so its
+                    centre will not tie out. The model shows these weak points
+                    instead of hiding them.
+                  </div>
+                  </article>
+                </div>
               </div>
-            </section>
-
-            <section
-              class="preview-panel"
-              role="tabpanel"
-              id="preview-panel-inputs"
-              aria-labelledby="preview-tab-inputs"
-              data-preview-panel="inputs"
-              hidden
-            >
-              <div class="preview-grid">
-                <article class="preview-card">
-                  <h3>Key Controls</h3>
-                  <table class="data-table">
-                    <tbody>
-                      <tr><th>Equity risk premium</th><td>5.0%</td></tr>
-                      <tr><th>NWC assumption</th><td>3.0% of change in revenue</td></tr>
-                      <tr><th>Terminal growth</th><td>3.0%</td></tr>
-                      <tr><th>Terminal timing</th><td>Year-End</td></tr>
-                      <tr><th>NWC forecast method</th><td>Manual % of revenue change</td></tr>
-                      <tr><th>Selected case</th><td>Base</td></tr>
-                    </tbody>
-                  </table>
-                </article>
-
-                <article class="preview-card">
-                  <h3>WACC Build</h3>
-                  <table class="data-table">
-                    <tbody>
-                      <tr><th>Risk-free rate</th><td>4.354%</td></tr>
-                      <tr><th>Beta</th><td>1.11</td></tr>
-                      <tr><th>Cost of equity</th><td>9.904%</td></tr>
-                      <tr><th>Equity weight</th><td>97.78%</td></tr>
-                      <tr><th>Debt weight</th><td>2.22%</td></tr>
-                      <tr><th>WACC</th><td>9.684%</td></tr>
-                    </tbody>
-                  </table>
-                </article>
-              </div>
-            </section>
-
-            <section
-              class="preview-panel"
-              role="tabpanel"
-              id="preview-panel-checks"
-              aria-labelledby="preview-tab-checks"
-              data-preview-panel="checks"
-              hidden
-            >
-              <div class="preview-grid">
-                <article class="preview-card">
-                  <h3>Model Checks</h3>
-                  <table class="data-table">
-                    <tbody>
-                      <tr><th>Visible workbook errors</th><td>PASS</td></tr>
-                      <tr><th>Scenario selector valid</th><td>PASS</td></tr>
-                      <tr><th>Current share price available</th><td>PASS</td></tr>
-                      <tr><th>Diluted shares available</th><td>PASS</td></tr>
-                      <tr><th>WACC positive</th><td>PASS</td></tr>
-                      <tr><th>WACC &gt; terminal growth</th><td>PASS</td></tr>
-                    </tbody>
-                  </table>
-                </article>
-
-                <article class="preview-card">
-                  <h3>Audit Layer</h3>
-                  <table class="data-table">
-                    <tbody>
-                      <tr><th>Income statement FY</th><td>PASS</td></tr>
-                      <tr><th>Balance sheet FY</th><td>PASS</td></tr>
-                      <tr><th>Cash flow FY</th><td>PASS</td></tr>
-                      <tr><th>Beta source</th><td>PASS</td></tr>
-                      <tr><th>10Y treasury source</th><td>PASS</td></tr>
-                      <tr><th>Cost of debt source</th><td>WARN / fallback</td></tr>
-                    </tbody>
-                  </table>
-                </article>
-              </div>
-
-              <div class="data-callout">
-                <strong>Audit note:</strong>
-                The only current issue is the cost-of-debt source warning. The workbook still completes, but the
-                source audit correctly flags that the debt-cost assumption should be reviewed instead of treated as invisible.
-              </div>
-            </section>
+            </div>
           </div>
         </div>
       </section>
@@ -623,5 +687,6 @@
     </footer>
 
     <script src="./scripts/app.js" defer></script>
+    <script src="./scripts/dcf-model.js" defer></script>
   </body>
 </html>
