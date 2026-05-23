@@ -1613,7 +1613,7 @@ h3 {
 
 .artifact-grid {
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) repeat(2, minmax(180px, 0.7fr));
+  grid-template-columns: repeat(2, minmax(240px, 1fr)) repeat(2, minmax(170px, 0.72fr));
   gap: 1rem;
   align-items: stretch;
 }
@@ -1628,6 +1628,18 @@ h3 {
 .memo-preview > .text-link {
   align-self: flex-start;
   justify-self: start;
+}
+
+.artifact-link-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  align-items: center;
+  margin-top: 0.85rem;
+}
+
+.memo-artifact {
+  border-color: rgba(199, 178, 166, 0.16);
 }
 
 .mockup-card {

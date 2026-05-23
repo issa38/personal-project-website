@@ -127,7 +127,15 @@
               >
                 Open dashboards
               </a>
-              <a class="button button-secondary" href="#impact-memo">Read impact memo</a>
+              <a
+                class="button button-secondary"
+                href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                Download impact memo
+              </a>
+              <a class="button button-ghost" href="#impact-memo">Read memo preview</a>
               <a class="button button-ghost" href="./index.html#case-studies">Back to case studies</a>
             </div>
             <ul class="case-status-list">
@@ -385,8 +393,8 @@
             <p class="eyebrow">Artifact gallery</p>
             <h2>Dashboards, mockups, and memo, not just a repo link.</h2>
             <p>
-              The visual artifacts show the decision path: public data to dashboard, dashboard to intervention,
-              intervention to test plan.
+              The visual artifacts show the decision path: public data to dashboard, dashboard to one-page memo,
+              memo to intervention, and intervention to test plan.
             </p>
           </div>
 
@@ -406,6 +414,33 @@
               >
                 Open public dashboards
               </a>
+            </article>
+            <article class="detail-card dashboard-artifact memo-artifact">
+              <p class="eyebrow">One-page impact memo</p>
+              <h3>Problem, data, segment, intervention, math, scope, and risks.</h3>
+              <p>
+                The project now includes a polished PDF memo and clean Markdown source. It compresses the case into
+                the format a hiring manager or operator can read in one sitting: what broke, why new users matter,
+                what to test first, and how the $53,130 opportunity was calculated.
+              </p>
+              <div class="artifact-link-stack">
+                <a
+                  class="text-link"
+                  href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Download memo PDF
+                </a>
+                <a
+                  class="text-link"
+                  href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.md"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Read Markdown source
+                </a>
+              </div>
             </article>
             <figure class="mockup-card">
               <img
@@ -432,8 +467,9 @@
               <p class="eyebrow">AI-generated, human-reviewed memo</p>
               <h3 id="memo-title">Impact memo preview</h3>
               <p>
-                The memo layer translates the analysis into the language of a growth decision: problem, data,
-                segment, intervention, impact estimate, implementation scope, and risks.
+                The memo layer translates the analysis into the language of a growth decision. The full one-page PDF
+                covers the plan's seven required sections: problem, data, segment, proposed intervention, impact
+                estimate, implementation scope, and risks.
               </p>
             </div>
             <div class="memo-columns">
@@ -455,14 +491,24 @@
                 </ul>
               </div>
             </div>
-            <a
-              class="text-link"
-              href="https://github.com/issa38/ActivationFunnelAnalysis/blob/main/memo/impact_memo.html"
-              target="_blank"
-              rel="noopener"
-            >
-              Open memo source on GitHub
-            </a>
+            <div class="artifact-link-stack">
+              <a
+                class="text-link"
+                href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                Download one-page memo
+              </a>
+              <a
+                class="text-link"
+                href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.md"
+                target="_blank"
+                rel="noopener"
+              >
+                Open Markdown source
+              </a>
+            </div>
           </article>
         </div>
       </section>
@@ -513,7 +559,7 @@
                 </tr>
                 <tr>
                   <th><code>memo/</code></th>
-                  <td>Claude-generated and human-reviewed impact memo.</td>
+                  <td>One-page impact memo in Markdown and PDF, plus a reproducible PDF build script.</td>
                 </tr>
                 <tr>
                   <th><code>validate.py</code></th>
