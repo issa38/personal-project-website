@@ -1,10 +1,10 @@
 const page = document.body.dataset.page;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const header = document.querySelector("[data-header]");
+const header = document.querySelector(".folio-sidebar");
 const scrollProgress = document.querySelector("[data-scroll-progress]");
 const revealItems = document.querySelectorAll(".reveal");
-const navLinks = document.querySelectorAll(".site-nav a");
+const navLinks = document.querySelectorAll(".sidebar-nav a");
 const navSections = Array.from(navLinks)
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
@@ -169,10 +169,66 @@ function initActiveNav() {
         });
       });
     },
-    { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 }
+    { rootMargin: "-30% 0px -60% 0px", threshold: 0.01 }
   );
 
   navSections.forEach((section) => observer.observe(section));
+}
+
+function initMobileSidebarToggle() {
+  const sidebar = document.querySelector(".folio-sidebar");
+  const toggle = document.querySelector(".sidebar-toggle");
+  const backdrop = document.querySelector(".mobile-nav-backdrop");
+  if (!sidebar || !toggle) return;
+
+  function openSidebar() {
+    sidebar.classList.add("is-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Close navigation");
+    if (backdrop) {
+      backdrop.classList.add("is-visible");
+      backdrop.setAttribute("aria-hidden", "false");
+    }
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation");
+    if (backdrop) {
+      backdrop.classList.remove("is-visible");
+      backdrop.setAttribute("aria-hidden", "true");
+    }
+    document.body.style.overflow = "";
+  }
+
+  toggle.addEventListener("click", () => {
+    if (sidebar.classList.contains("is-open")) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener("click", closeSidebar);
+  }
+
+  // Close when a nav link is clicked on mobile
+  document.querySelectorAll(".sidebar-nav-item").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 720) closeSidebar();
+    });
+  });
+
+  // Close on Escape
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sidebar.classList.contains("is-open")) {
+      closeSidebar();
+      toggle.focus();
+    }
+  });
 }
 
 function openDialog(dialog) {
@@ -294,7 +350,7 @@ function initStrategyCanvas() {
 
   function drawGrid(originX, originY) {
     context.save();
-    context.strokeStyle = "rgba(224, 217, 205, 0.06)";
+    context.strokeStyle = "rgba(197, 186, 165, 0.055)";
     context.lineWidth = 1;
     for (let x = -width; x < width * 2; x += 92) {
       context.beginPath();
@@ -334,14 +390,16 @@ function initStrategyCanvas() {
       const node = projected[index];
       const next = projected[(index + 1) % projected.length];
       const jump = projected[(index + 9) % projected.length];
-      context.strokeStyle = `rgba(163, 138, 126, ${0.05 + node.z * 0.08})`;
+      // Warm amber connectors
+      context.strokeStyle = `rgba(147, 121, 89, ${0.04 + node.z * 0.09})`;
       context.beginPath();
       context.moveTo(node.x, node.y);
       context.lineTo(next.x, next.y);
       context.stroke();
 
       if (index % 3 === 0) {
-        context.strokeStyle = `rgba(224, 217, 205, ${0.02 + node.z * 0.035})`;
+        // Slate blue-grey cross-connectors — the cool counterpoint
+        context.strokeStyle = `rgba(133, 144, 144, ${0.025 + node.z * 0.04})`;
         context.beginPath();
         context.moveTo(node.x, node.y);
         context.lineTo(jump.x, jump.y);
@@ -351,7 +409,13 @@ function initStrategyCanvas() {
 
     projected.forEach((node, index) => {
       const size = 2.2 + node.z * 3.8;
-      context.fillStyle = index % 5 === 0 ? "rgba(163, 138, 126, 0.38)" : "rgba(224, 217, 205, 0.24)";
+      // Tricolor nodes: amber / linen / slate
+      const fillColor = index % 9 === 0
+        ? `rgba(133, 144, 144, ${0.38 + node.z * 0.22})`   // slate
+        : index % 5 === 0
+          ? `rgba(147, 121, 89, ${0.42 + node.z * 0.18})`  // amber
+          : `rgba(197, 186, 165, ${0.22 + node.z * 0.14})`; // linen
+      context.fillStyle = fillColor;
       context.beginPath();
       context.arc(node.x, node.y, size, 0, Math.PI * 2);
       context.fill();
@@ -443,6 +507,7 @@ setScrollProgress();
 setParallax();
 initReveals();
 initActiveNav();
+initMobileSidebarToggle();
 
 if (page === "home") {
   initCaseFilters();

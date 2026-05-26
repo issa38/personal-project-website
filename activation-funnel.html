@@ -10,7 +10,7 @@
     />
     <meta name="author" content="Isaiah Moragne" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#131313" />
+    <meta name="theme-color" content="#1a2421" />
     <link rel="canonical" href="https://isaiahmba.com/activation-funnel.html" />
     <meta property="og:title" content="Activation Funnel Redesign Lab | Isaiah Moragne" />
     <meta
@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
     />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
@@ -175,33 +175,10 @@
             <p class="eyebrow">The signal</p>
             <h2 id="metrics-title">One segment carries the opportunity.</h2>
           </div>
-          <div class="snapshot-grid activation-metric-strip reveal">
-            <article class="snapshot-card">
-              <span>New-user activation</span>
-              <strong>0.64%</strong>
-              <p>Across 240,441 new users.</p>
-            </article>
-            <article class="snapshot-card">
-              <span>Returning activation</span>
-              <strong>9.73%</strong>
-              <p>Across 29,713 returning users.</p>
-            </article>
-            <article class="snapshot-card">
-              <span>Gap</span>
-              <strong>15&times;</strong>
-              <p>Returning users activate at roughly fifteen times the new-user rate.</p>
-            </article>
-            <article class="snapshot-card">
-              <span>Revenue opportunity</span>
-              <strong>$53,130</strong>
-              <p>Conservative estimate from a +50% relative lift.</p>
-            </article>
-            <article class="snapshot-card">
-              <span>Test sample</span>
-              <strong>24,088</strong>
-              <p>12,044 users per group over an estimated 14 days.</p>
-            </article>
-          </div>
+          <div id="activation-comparison-root"
+               data-init-activation-comparison
+               class="reveal"
+               aria-label="Interactive activation gap comparison"></div>
         </div>
       </section>
 
@@ -344,26 +321,35 @@
           </div>
 
           <div class="preview-grid experiment-grid reveal">
-            <article class="preview-card">
+            <article class="preview-card"
+                     data-variant-preset="control"
+                     aria-label="Select Control A scenario">
               <span class="status-chip neutral">Control A</span>
               <h3>Current experience</h3>
               <p>No changes. New users continue through the existing product and checkout path.</p>
+              <p class="acfw-card-hint">Click to model in sizer ↓</p>
             </article>
-            <article class="preview-card recommended-card">
+            <article class="preview-card recommended-card variant-active"
+                     data-variant-preset="variantB"
+                     aria-label="Select Variant B scenario">
               <span class="status-chip">Recommended first</span>
               <h3>Variant B: guest checkout fast lane</h3>
               <p>
                 Make guest checkout the default for new users, remove account creation before purchase, and offer
                 account creation after the order is complete.
               </p>
+              <p class="acfw-card-hint">Click to model in sizer ↓</p>
             </article>
-            <article class="preview-card">
+            <article class="preview-card"
+                     data-variant-preset="variantC"
+                     aria-label="Select Variant C scenario">
               <span class="status-chip neutral">Sequential test</span>
               <h3>Variant C: first-purchase welcome nudge</h3>
               <p>
                 After a new user views two or more products, show a non-intrusive free-shipping nudge for the first
                 order. This waits until after Variant B establishes the friction baseline.
               </p>
+              <p class="acfw-card-hint">Click to model in sizer ↓</p>
             </article>
             <article class="preview-card">
               <span class="status-chip neutral">Readout</span>
@@ -374,6 +360,11 @@
               </p>
             </article>
           </div>
+
+          <div id="activation-sizer-root"
+               data-init-activation-sizer
+               class="reveal"
+               aria-label="Interactive opportunity sizer"></div>
         </div>
       </section>
 
@@ -640,6 +631,9 @@
       <a href="#top">Return to top</a>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./scripts/app.js" defer></script>
+    <script src="./scripts/activation-widget.js" defer></script>
   </body>
 </html>

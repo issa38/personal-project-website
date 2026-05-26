@@ -10,7 +10,7 @@
     />
     <meta name="author" content="Isaiah Moragne" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#131313" />
+    <meta name="theme-color" content="#1a2421" />
     <link rel="canonical" href="https://isaiahmba.com/dcf-model.html" />
     <meta property="og:title" content="Dynamic DCF Valuation Model | Isaiah Moragne" />
     <meta
@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
     />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
@@ -183,42 +183,23 @@
             <small>Snapshot</small>
           </div>
           <div class="section-heading reveal">
-            <p class="eyebrow">Where the numbers land</p>
-            <h2>What the model is <span class="accent-italic">saying right now.</span></h2>
+            <p class="eyebrow">Interactive model — live in your browser</p>
+            <h2>Try the assumptions. <span class="accent-italic">See how the price moves.</span></h2>
             <p>
-              Not a stock pick, a snapshot of the math. The point of putting these in public is so you
-              can see exactly how I got here, push on the assumptions, and decide for yourself whether the
-              structure earns its conclusion.
+              Pick a scenario or drag any slider. The implied share price recomputes instantly from a
+              5-year EBIT-based DCF using year-by-year inputs from the Model Inputs worksheet.
+              The full workbook is in §&thinsp;IV below.
             </p>
           </div>
 
-          <div class="snapshot-grid reveal">
-            <article class="snapshot-card">
-              <span>Implied Share Price</span>
-              <strong>$173.76</strong>
-              <p>Base-case output from the DCF tab.</p>
-            </article>
-            <article class="snapshot-card">
-              <span>Current Share Price</span>
-              <strong>$270.71</strong>
-              <p>Workbook market reference at the time of refresh.</p>
-            </article>
-            <article class="snapshot-card">
-              <span>Implied Upside / Downside</span>
-              <strong>-35.8%</strong>
-              <p>The gap between intrinsic value and market price in the selected case.</p>
-            </article>
-            <article class="snapshot-card">
-              <span>WACC</span>
-              <strong>9.68%</strong>
-              <p>Built from risk-free rate, beta, ERP, and capital structure.</p>
-            </article>
-            <article class="snapshot-card">
-              <span>Integrity Note</span>
-              <strong>1 debt-cost warning</strong>
-              <p>Checks pass except the cost-of-debt fallback note in the audit layer.</p>
-            </article>
-          </div>
+          <div
+            id="dcf-widget-root"
+            data-init-dcf-widget
+            data-dcf-compact="false"
+            data-dcf-chart="true"
+            data-dcf-scenario="base"
+            class="reveal"
+          ></div>
         </div>
       </section>
 
@@ -724,7 +705,13 @@
       <a href="#top">Return to top</a>
     </footer>
 
+    <!-- Anime.js — required by dcf-widget.js for spring animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Chart.js — Phase 2 FCF chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./scripts/app.js" defer></script>
+    <script src="./scripts/dcf-chart.js" defer></script>
+    <script src="./scripts/dcf-widget.js" defer></script>
     <script src="./scripts/dcf-model.js" defer></script>
   </body>
 </html>

@@ -5,3 +5,4 @@ test-results/
 .playwright-cache/
 *.log
 .claude/
+CloudfareToken.txt
