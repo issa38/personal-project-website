@@ -1184,6 +1184,7 @@ h3 {
   grid-column: 1;
   grid-row: 1 / span 5;
   min-height: 100%;
+  max-height: 420px;
 }
 
 .case-card--featured .card-meta,
@@ -2198,7 +2199,8 @@ h3 {
   }
 
   .case-card--featured .card-visual {
-    min-height: 280px;
+    height: 220px;
+    min-height: unset;
   }
 
   .dashboard-grid {
