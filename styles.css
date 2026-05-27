@@ -49,6 +49,7 @@ nav {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* clip horizontal overflow at html, not body — body overflow-x:hidden causes iOS Safari to shift the scroll container and silently drops tap events on links in portrait mode */
 }
 
 body {
@@ -61,7 +62,6 @@ body {
   color: var(--on-surface);
   font-size: 16px;
   line-height: 1.65;
-  overflow-x: hidden;
 }
 
 body::before {
@@ -167,6 +167,7 @@ svg {
   z-index: 200;
   width: 100%;
   height: 2px;
+  pointer-events: none;
   transform: scaleX(0);
   transform-origin: left;
   background: linear-gradient(90deg, var(--clay) 0%, var(--clay-soft) 52%, var(--slate) 100%);
@@ -601,6 +602,7 @@ svg {
   inset: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
   z-index: -1;
   opacity: 0.24;
   mix-blend-mode: screen;

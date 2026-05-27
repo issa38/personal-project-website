@@ -215,8 +215,8 @@ function initMobileSidebarToggle() {
     backdrop.addEventListener("click", closeSidebar);
   }
 
-  // Close when a nav link is clicked on mobile
-  document.querySelectorAll(".sidebar-nav-item").forEach((link) => {
+  // Close when any link inside the sidebar is clicked on mobile
+  sidebar.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       if (window.innerWidth <= 720) closeSidebar();
     });
