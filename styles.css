@@ -503,11 +503,13 @@ svg {
   background: rgba(18, 20, 19, 0.7);
   backdrop-filter: blur(4px);
   opacity: 0;
+  pointer-events: none; /* invisible → must not eat touches */
   transition: opacity 240ms ease;
 }
 
 .mobile-nav-backdrop.is-visible {
   opacity: 1;
+  pointer-events: auto; /* drawer is open → backdrop captures taps to close it */
 }
 
 /* ── .nav-cta (used on .sidebar-cta) ────────────────────── */
