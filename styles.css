@@ -73,7 +73,10 @@ body::before {
   pointer-events: none;
   background:
     linear-gradient(180deg, rgba(13, 15, 14, 0.25), rgba(13, 15, 14, 0.82)),
-    url("https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=70") center/cover no-repeat fixed;
+    url("https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=70") center/cover no-repeat;
+    /* NOTE: background-attachment:fixed intentionally omitted. The element is already
+       position:fixed so the image stays locked without it — and "fixed" causes
+       iOS Safari to flicker/repaint on every scroll tick. */
 }
 
 body::after {
@@ -87,6 +90,7 @@ body::after {
     linear-gradient(180deg, rgba(226, 227, 224, 0.025) 1px, transparent 1px),
     linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.4));
   background-size: 96px 96px, 96px 96px, auto;
+  -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
   mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
 }
 
@@ -5150,4 +5154,174 @@ body::after {
   .acfw-sizer { padding: 1.25rem; }
 
   .acfw-preset-tabs { flex-wrap: wrap; }
+}
+
+/* ============================================================
+   MOBILE SAFETY NET
+   Touch targets · Safe-area insets · iOS/Android fixes · XS screens
+   All rules are additive — no desktop styles are changed here.
+   ============================================================ */
+
+/* ── 1. Eliminate the legacy 300ms tap delay on all interactive elements ── */
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+textarea,
+summary {
+  touch-action: manipulation;
+}
+
+/* Silence the blue tap flash on additional form controls */
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── 2. Touch targets — 44 px minimum (iOS HIG / WCAG 2.5.8) ──────────── */
+@media (max-width: 720px) {
+  /* Homepage sidebar: monogram + hamburger buttons */
+  .sidebar-brand {
+    width: 44px;
+    height: 44px;
+  }
+  .sidebar-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Sidebar drawer: social links + command button */
+  .sidebar-social-link,
+  .sidebar-cmd-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Sidebar drawer: "Contact" CTA */
+  .nav-cta {
+    min-height: 44px;
+  }
+
+  /* DCF widget scenario buttons (Bear / Base / Bull) */
+  .dcfw-scenario-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Activation funnel segment tabs collapse at 900 px */
+@media (max-width: 900px) {
+  .acfw-seg-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ── 3. Hero byline: fix inline-flex text overflow ─────────────────────── */
+/* .hero-byline is display:inline-flex which expands to its content width
+   (~787 px in JetBrains Mono). On viewports < ~900 px this clips silently
+   behind overflow-x:hidden on <body>. Resetting to block-level flex lets
+   the text wrap naturally inside the container. */
+@media (max-width: 900px) {
+  .hero-byline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.55rem;
+  }
+}
+
+/* ── 4. Safe-area insets — notch / Dynamic Island iPhones ──────────────── */
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (max-width: 720px) {
+    /* Homepage compact bar: grow to absorb the notch, push items below it */
+    .folio-sidebar:not(.is-open) {
+      height: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+      padding-top: env(safe-area-inset-top, 0px);
+      /* Landscape: honour side insets too */
+      padding-left: max(1rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    }
+
+    /* Content: offset matches the taller notch-aware bar */
+    .folio-content {
+      padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+    }
+
+    /* Full-screen drawer: push content below the notch */
+    .folio-sidebar.is-open {
+      padding-top: calc(1.5rem + env(safe-area-inset-top, 0px));
+      padding-left: max(1.75rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1.75rem, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  /* Inner-page floating header (activation-funnel.html, dcf-model.html) */
+  @media (max-width: 720px) {
+    .site-header {
+      top: max(0.65rem, calc(0.65rem + env(safe-area-inset-top, 0px)));
+    }
+  }
+
+  /* Home-indicator gap at bottom of screen */
+  .site-footer {
+    padding-bottom: max(3rem, calc(2rem + env(safe-area-inset-bottom, 0px)));
+  }
+
+  /* Inner-page shells: honour landscape side insets */
+  @media (max-width: 720px) {
+    .page-shell {
+      padding-left: env(safe-area-inset-left, 0px);
+      padding-right: env(safe-area-inset-right, 0px);
+    }
+  }
+}
+
+/* ── 5. Very small screens — iPhone SE (390 px) and small Androids ──────── */
+@media (max-width: 390px) {
+  /* Tighten hero wordmark so it doesn't need a third wrapping line */
+  .hero-wordmark {
+    font-size: clamp(2.6rem, 12.5vw, 3.2rem);
+  }
+  .hero-wordmark-tail {
+    font-size: 1rem;
+  }
+
+  /* Manifesto italic: small nudge down */
+  .hero-manifesto {
+    font-size: 1.22rem;
+  }
+
+  /* Reduce horizontal gutters to reclaim 8 px per side */
+  .section-pad {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .hero-stage {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Rule-divider running head (right column) is too cramped — hide it */
+  .rule-divider > span:last-child {
+    display: none;
+  }
+
+  /* Section folio large numeral: step down one size */
+  .section-folio strong {
+    font-size: 2rem;
+  }
+
+  /* Dialogs: use almost full width */
+  .command-dialog,
+  .brief-dialog {
+    width: calc(100vw - 1rem);
+  }
 }
