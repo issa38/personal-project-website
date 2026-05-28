@@ -24,6 +24,19 @@ test.describe("command menu", () => {
     await expect(filtered.first()).toBeAttached();
     await expect(visible).toHaveCount(1);
   });
+
+  test("Escape closes and resets the command menu filter", async ({ page }) => {
+    await page.goto("/index.html");
+    await page.keyboard.press("Control+K");
+    await page.locator("[data-command-search]").fill("resume");
+    await page.keyboard.press("Escape");
+
+    await expect(page.locator("[data-command-dialog]")).toBeHidden();
+
+    await page.keyboard.press("Control+K");
+    await expect(page.locator("[data-command-search]")).toHaveValue("");
+    await expect(page.locator("[data-command-item].is-filtered")).toHaveCount(0);
+  });
 });
 
 test.describe("strategy brief dialog", () => {

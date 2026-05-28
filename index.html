@@ -432,16 +432,26 @@
             </p>
           </div>
 
-          <div class="toolbar reveal" role="group" aria-label="Filter case studies">
-            <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
-            <button class="filter-button" type="button" data-filter="operations" aria-pressed="false">Operations</button>
-            <button class="filter-button" type="button" data-filter="finance" aria-pressed="false">Finance</button>
-            <button class="filter-button" type="button" data-filter="ai" aria-pressed="false">AI Systems</button>
+          <div class="proof-browser reveal">
+            <div>
+              <p class="eyebrow">Proof browser</p>
+              <p>
+                Filter by the evidence a reviewer needs fastest: model quality, growth math,
+                workflow diagnosis, or decision support.
+              </p>
+            </div>
+            <div class="toolbar proof-toolbar" role="group" aria-label="Filter case studies by proof type">
+              <button class="filter-button active" type="button" data-filter="all" data-filter-label="All" aria-pressed="true">All</button>
+              <button class="filter-button" type="button" data-filter="valuation" data-filter-label="Valuation" aria-pressed="false">Valuation</button>
+              <button class="filter-button" type="button" data-filter="growth" data-filter-label="Growth" aria-pressed="false">Growth</button>
+              <button class="filter-button" type="button" data-filter="workflow" data-filter-label="Workflow" aria-pressed="false">Workflow</button>
+              <button class="filter-button" type="button" data-filter="decision" data-filter-label="Decision support" aria-pressed="false">Decision Support</button>
+            </div>
           </div>
-          <p class="filter-status" data-case-filter-status role="status" aria-live="polite">Showing all case studies.</p>
+          <p class="filter-status" data-case-filter-status role="status" aria-live="polite">Showing all 3 proof entries.</p>
 
           <div class="case-grid" data-filter-grid>
-            <article class="case-card case-card--featured reveal" data-tags="finance operations ai">
+            <article class="case-card case-card--featured reveal" data-tags="valuation decision" data-proof-title="Dynamic DCF Valuation Model">
               <img
                 class="card-visual"
                 src="./assets/images/tech nature.png"
@@ -454,6 +464,11 @@
                 <span>Published MVP</span>
               </div>
               <h3>Dynamic DCF Valuation Model</h3>
+              <div class="proof-meta">
+                <span>Model artifact</span>
+                <span>Inspectable assumptions</span>
+                <span>Decision support</span>
+              </div>
               <p>
                 A live, inspectable DCF on any public company (currently Apple). Built so the assumptions,
                 WACC, and integrity checks are all out in the open, not buried three sheets deep.
@@ -485,7 +500,7 @@
               </div>
             </article>
 
-            <article class="case-card case-card--activation reveal" data-tags="operations finance ai">
+            <article class="case-card case-card--activation reveal" data-tags="growth decision" data-proof-title="Activation Funnel Redesign Lab">
               <img
                 class="card-visual"
                 src="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/variant_b.png"
@@ -498,6 +513,11 @@
                 <span>Growth Analytics</span>
               </div>
               <h3>Activation Funnel Redesign Lab</h3>
+              <div class="proof-meta">
+                <span>Growth analytics</span>
+                <span>A/B test design</span>
+                <span>Revenue sizing</span>
+              </div>
               <p>
                 GA4 BigQuery ecommerce analysis that finds the highest-leverage activation gap, prices the
                 revenue opportunity, designs the A/B test, and turns the result into an AI-assisted impact memo.
@@ -529,7 +549,7 @@
               </div>
             </article>
 
-            <article class="case-card reveal" data-tags="operations finance ai">
+            <article class="case-card reveal" data-tags="workflow" data-proof-title="Finding the value hiding in routine work">
               <img
                 class="card-visual"
                 src="./assets/images/AdobeStock_251514935.jpeg"
@@ -542,6 +562,11 @@
                 <span>Featured</span>
               </div>
               <h3>Finding the value hiding in routine work</h3>
+              <div class="proof-meta">
+                <span>Workflow audit</span>
+                <span>Cost-of-delay math</span>
+                <span>Automation fit</span>
+              </div>
               <p>
                 A framework I'm developing for the kind of operational audit everyone benefits
                 from. The slow leaks between teams, tools, and decisions that don't show up on any dashboard. Trying to identify and solve the sunk cost of operations.

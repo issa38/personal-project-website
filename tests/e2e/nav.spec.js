@@ -5,12 +5,12 @@ test.describe("active nav highlight", () => {
     await page.goto("/index.html");
 
     await page.locator("#method").scrollIntoViewIfNeeded();
-    await expect(page.locator('.site-nav a[href="#method"]')).toHaveClass(/is-active/, {
+    await expect(page.locator('.sidebar-nav a[href="#method"]')).toHaveClass(/is-active/, {
       timeout: 5_000,
     });
 
     await page.locator("#lab").scrollIntoViewIfNeeded();
-    await expect(page.locator('.site-nav a[href="#lab"]')).toHaveClass(/is-active/, {
+    await expect(page.locator('.sidebar-nav a[href="#lab"]')).toHaveClass(/is-active/, {
       timeout: 5_000,
     });
   });

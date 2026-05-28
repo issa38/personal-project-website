@@ -93,19 +93,24 @@ function initCaseFilters() {
     activeAttr: "aria-pressed",
     onSelect: (button) => {
       const filter = button.dataset.filter;
+      const visibleCards = [];
       let visibleCount = 0;
       cards.forEach((card) => {
         const tags = card.dataset.tags?.split(" ") ?? [];
         const visible = filter === "all" || tags.includes(filter);
         if (visible) visibleCount += 1;
+        if (visible) visibleCards.push(card);
         card.classList.toggle("is-hidden", !visible);
       });
       if (status) {
-        const label = button.textContent?.trim().toLowerCase() ?? "selected";
+        const label = button.dataset.filterLabel ?? button.textContent?.trim() ?? "Selected";
+        const noun = visibleCount === 1 ? "proof entry" : "proof entries";
+        const titles = visibleCards.map((card) => card.dataset.proofTitle).filter(Boolean);
+        const titleCopy = titles.length > 0 ? `: ${titles.join(", ")}.` : ".";
         status.textContent =
           filter === "all"
-            ? `Showing all ${visibleCount} case studies.`
-            : `Showing ${visibleCount} ${label} case study entries.`;
+            ? `Showing all ${visibleCount} ${noun}${titleCopy}`
+            : `Showing ${visibleCount} ${label.toLowerCase()} ${noun}${titleCopy}`;
       }
     },
   });
@@ -257,6 +262,11 @@ function initCommandMenu() {
 
   if (!commandDialog || !commandOpen) return;
 
+  function resetCommandFilter() {
+    if (commandSearch) commandSearch.value = "";
+    commandItems.forEach((item) => item.classList.remove("is-filtered"));
+  }
+
   commandOpen.addEventListener("click", () => {
     openDialog(commandDialog);
     commandSearch?.focus();
@@ -272,6 +282,15 @@ function initCommandMenu() {
 
   commandItems.forEach((item) => {
     item.addEventListener("click", () => closeDialog(commandDialog));
+  });
+
+  commandDialog.addEventListener("close", resetCommandFilter);
+
+  commandDialog.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    event.preventDefault();
+    closeDialog(commandDialog);
+    commandOpen.focus();
   });
 
   window.addEventListener("keydown", (event) => {

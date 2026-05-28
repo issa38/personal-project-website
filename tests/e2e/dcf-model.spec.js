@@ -79,8 +79,8 @@ test.describe("interactive DCF model", () => {
     const group = page.locator(".dcf-scenario");
     await expect(group).toHaveAttribute("role", "group");
 
-    const base = page.locator('[data-dcf-scenario="base"]');
-    const bull = page.locator('[data-dcf-scenario="bull"]');
+    const base = group.locator('[data-dcf-scenario="base"]');
+    const bull = group.locator('[data-dcf-scenario="bull"]');
     await expect(base).toHaveAttribute("aria-pressed", "true");
 
     await bull.click();

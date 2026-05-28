@@ -284,13 +284,12 @@ svg {
 
 .sidebar-vol {
   margin: 0 0 0.85rem;
-  color: var(--clay);
+  color: var(--clay-soft);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.63rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.65;
 }
 
 .sidebar-wordmark {
@@ -379,8 +378,8 @@ svg {
   font-size: 0.6rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--clay);
-  opacity: 0.6;
+  color: var(--clay-soft);
+  opacity: 0.9;
   transition: opacity 160ms ease;
 }
 
@@ -423,11 +422,11 @@ svg {
 
 .sidebar-location,
 .sidebar-version {
-  color: var(--stone);
+  color: var(--ink-soft);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.6rem;
   letter-spacing: 0.04em;
-  opacity: 0.65;
+  opacity: 0.9;
 }
 
 .sidebar-controls {
@@ -1118,6 +1117,28 @@ h3 {
   background: rgba(255, 255, 255, 0.02);
 }
 
+.proof-browser {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  gap: 1rem;
+  align-items: end;
+  margin: 1.6rem 0 0.65rem;
+  padding: 1rem;
+  border: 1px solid rgba(226, 227, 224, 0.08);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.proof-browser p:last-child {
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+}
+
+.proof-toolbar {
+  justify-self: end;
+  margin-bottom: 0;
+}
+
 .filter-button {
   min-height: 44px;
   border: 0;
@@ -1191,6 +1212,7 @@ h3 {
 
 .case-card--featured .card-meta,
 .case-card--featured h3,
+.case-card--featured .proof-meta,
 .case-card--featured p,
 .case-card--featured .insight-list,
 .case-card--featured .text-link,
@@ -1228,6 +1250,28 @@ h3 {
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proof-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.65rem 0 0.75rem;
+}
+
+.proof-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 0.65rem;
+  border: 1px solid rgba(226, 227, 224, 0.1);
+  border-radius: 999px;
+  background: rgba(140, 155, 115, 0.08);
+  color: var(--stone);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -2178,6 +2222,15 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .proof-browser {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .proof-toolbar {
+    justify-self: stretch;
+  }
+
   .case-grid,
   .capability-grid,
   .lab-grid {
@@ -2192,6 +2245,7 @@ h3 {
   .case-card--featured .card-visual,
   .case-card--featured .card-meta,
   .case-card--featured h3,
+  .case-card--featured .proof-meta,
   .case-card--featured p,
   .case-card--featured .insight-list,
   .case-card--featured .text-link,
@@ -2448,6 +2502,10 @@ h3 {
   .toolbar {
     width: 100%;
     border-radius: var(--radius);
+  }
+
+  .proof-browser {
+    padding: 0.85rem;
   }
 
   .filter-button {
