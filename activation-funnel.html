@@ -19,21 +19,19 @@
     />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://isaiahmba.com/activation-funnel.html" />
-    <meta property="og:image" content="https://isaiahmba.com/assets/og-preview.svg" />
+    <meta property="og:image" content="https://isaiahmba.com/assets/og-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Activation Funnel Redesign Lab | Isaiah Moragne" />
     <meta
       name="twitter:description"
       content="GA4 BigQuery activation analysis with segmentation, opportunity sizing, experiment design, dashboards, and an AI-assisted impact memo."
     />
-    <meta name="twitter:image" content="https://isaiahmba.com/assets/og-preview.svg" />
+    <meta name="twitter:image" content="https://isaiahmba.com/assets/og-preview.png" />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    />
+    <link rel="preload" href="./assets/fonts/eb-garamond.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
       {
@@ -75,18 +73,13 @@
       <a class="nav-cta" href="./index.html">
         <span>Home</span>
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M5 12h14m-6-6 6 6-6 6" />
+          <path d="M5 12h14" /><path d="M13 6l6 6-6 6" />
         </svg>
       </a>
     </header>
 
     <main id="main">
-      <aside class="ledger-strip" aria-label="Case ledger">
-        <span><i class="led-dot" aria-hidden="true"></i><b>Published case</b> &middot; Growth PM analytics</span>
-        <span>Dataset &middot; <b>Nov 2020 - Jan 2021</b></span>
-        <span>Stack &middot; BigQuery &middot; SQL &middot; Python &middot; Looker Studio &middot; Claude</span>
-        <span>Status &middot; <b>Case study live</b></span>
-      </aside>
+      <div class="scroll-sentinel" data-scroll-sentinel aria-hidden="true"></div>
 
       <nav class="breadcrumb-nav page-shell" aria-label="Breadcrumb">
         <ol>
@@ -99,12 +92,11 @@
       <section id="top" class="case-hero section-pad" aria-labelledby="case-hero-title">
         <div class="page-shell case-hero-grid">
           <div class="case-hero-copy reveal">
-            <p class="eyebrow">Activation Funnel Redesign Lab</p>
+            <p class="eyebrow">Growth analytics case</p>
             <h1 id="case-hero-title">Most activation analyses stop at the funnel chart.</h1>
             <p class="hero-lede">
-              This one prices the gap and designs the test. I used the public GA4 BigQuery ecommerce dataset to
-              turn user behavior into a growth experiment: find the highest-leverage drop-off segment, size the
-              conservative revenue upside, and define the first variant worth shipping.
+              This one prices the gap and designs the test, from public GA4 ecommerce data to the first
+              variant worth shipping.
             </p>
             <div class="hero-actions" role="group" aria-label="Case study actions">
               <a
@@ -113,10 +105,9 @@
                 target="_blank"
                 rel="noopener"
               >
-                <span>View on GitHub</span>
+                <span>View the repo</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 17 17 7" />
-                  <path d="M8 7h9v9" />
+                  <path d="M7 17L17 7" /><path d="M8 7h9v9" />
                 </svg>
               </a>
               <a
@@ -127,26 +118,11 @@
               >
                 Open dashboards
               </a>
-              <a
-                class="button button-secondary"
-                href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                Download impact memo
-              </a>
-              <a class="button button-ghost" href="#impact-memo">Read memo preview</a>
-              <a class="button button-ghost" href="./index.html#case-studies">Back to case studies</a>
             </div>
-            <ul class="case-status-list">
-              <li>Published growth case</li>
-              <li>AI-assisted memo</li>
-              <li>Experiment-ready</li>
-            </ul>
           </div>
 
           <aside class="hero-panel case-hero-rail reveal" aria-labelledby="case-snapshot-title">
-            <p class="eyebrow" id="case-snapshot-title">Executive Snapshot</p>
+            <h2 class="panel-title" id="case-snapshot-title">Executive snapshot</h2>
             <div class="rail-metric-list">
               <div>
                 <span>Highest-leverage segment</span>
@@ -165,6 +141,16 @@
                 <strong>$53,130 incremental revenue</strong>
               </div>
             </div>
+            <div class="rail-actions">
+              <a
+                class="text-link"
+                href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                Download the impact memo
+              </a>
+            </div>
           </aside>
         </div>
       </section>
@@ -172,7 +158,6 @@
       <section id="metrics" class="section-pad" aria-labelledby="metrics-title">
         <div class="page-shell">
           <div class="section-heading reveal compact-heading">
-            <p class="eyebrow">The signal</p>
             <h2 id="metrics-title">One segment carries the opportunity.</h2>
           </div>
           <section id="activation-comparison-root"
@@ -182,32 +167,21 @@
         </div>
       </section>
 
-      <section id="finding" class="section-pad">
-        <div class="rule-divider" aria-hidden="true">
-          <span class="folio">&sect; I</span>
-          <span></span>
-          <span>Finding &middot; where the money leaks</span>
-        </div>
+      <section id="finding" class="section-pad" aria-labelledby="finding-title">
         <div class="page-shell detail-grid">
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;I</strong>
-            <span class="folio-rule"></span>
-            <small>Finding</small>
-          </div>
           <div class="section-heading reveal">
-            <p class="eyebrow">Business-readable insight</p>
-            <h2>New users are not a small conversion problem. <span class="accent-italic">They are the market.</span></h2>
+            <h2 id="finding-title">New users are not a small conversion problem. <span class="accent-italic">They are the market.</span></h2>
             <p>
-              New users make up 89% of visitors in the dataset. Even though returning users prove that the store can
-              convert buyers, the first-purchase experience is where most of the value is stranded.
+              New users are 89% of visitors. Returning users prove the store can convert. The first-purchase
+              experience is where the value is stranded.
             </p>
           </div>
           <article class="detail-card reveal">
             <h3>Why this segment won</h3>
             <p>
-              The leverage score gap was not close: new users scored 238,902, about 8.9&times; higher than the next
-              segment. The low rate matters because it sits on top of 240,441 users, not because it makes an elegant
-              chart.
+              The leverage score gap was not close: new users scored 238,902, about 8.9&times; the next
+              segment. The low rate matters because it sits on top of 240,441 users, not because it makes an
+              elegant chart.
             </p>
             <ul class="case-bullet-list">
               <li>Total unique users: 270,154.</li>
@@ -220,35 +194,23 @@
             <h3>Why device friction was ruled out</h3>
             <p>
               Mobile and desktop cart-to-checkout rates were nearly identical: 44.7% for mobile and 44.3% for
-              desktop. That makes a mobile-only checkout redesign too narrow as the first move.
+              desktop. A mobile-only checkout redesign is too narrow as the first move.
             </p>
             <p>
-              The stronger read is structural first-purchase friction. The recommended intervention focuses on helping
-              a new visitor complete a first order before asking them to become a registered customer.
+              The stronger read is structural first-purchase friction. The intervention helps a new visitor
+              complete a first order before asking them to become a registered customer.
             </p>
           </article>
         </div>
       </section>
 
-      <section id="pipeline" class="section-pad">
-        <div class="rule-divider" aria-hidden="true">
-          <span class="folio">&sect; II</span>
-          <span></span>
-          <span>Pipeline &middot; data to decision</span>
-        </div>
+      <section id="pipeline" class="section-pad" aria-labelledby="pipeline-title">
         <div class="page-shell">
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;II</strong>
-            <span class="folio-rule"></span>
-            <small>Pipeline</small>
-          </div>
           <div class="section-heading reveal">
-            <p class="eyebrow">Analysis pipeline</p>
-            <h2>The project moves from public data to an executive recommendation.</h2>
+            <h2 id="pipeline-title">From public data to an executive recommendation.</h2>
             <p>
-              The dataset is <code>bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*</code>, covering
-              November 2020 through January 2021. The workflow is intentionally layered so each artifact can be
-              inspected by a hiring manager, analyst, or engineer.
+              The dataset is <code>bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*</code>,
+              November 2020 through January 2021. Each layer can be inspected on its own.
             </p>
           </div>
           <ol class="pipeline-list reveal">
@@ -298,25 +260,13 @@
         </div>
       </section>
 
-      <section id="experiment" class="section-pad">
-        <div class="rule-divider" aria-hidden="true">
-          <span class="folio">&sect; III</span>
-          <span></span>
-          <span>Experiment &middot; what to test first</span>
-        </div>
+      <section id="experiment" class="section-pad" aria-labelledby="experiment-title">
         <div class="page-shell">
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;III</strong>
-            <span class="folio-rule"></span>
-            <small>Experiment</small>
-          </div>
           <div class="section-heading reveal">
-            <p class="eyebrow">Experiment design</p>
-            <h2>Variant B is the first test because it removes friction before adding incentives.</h2>
+            <h2 id="experiment-title">Variant B goes first because it removes friction before adding incentives.</h2>
             <p>
               The conservative target is a +50% relative lift, moving new-user activation from 0.64% to 0.96%.
-              At a $69.09 average order value, that lift creates an estimated 769 incremental purchasers and
-              $53,130 in incremental revenue over the measurement window.
+              At a $69.09 average order value, that is 769 incremental purchasers and $53,130 in revenue.
             </p>
           </div>
 
@@ -327,7 +277,7 @@
               <span class="status-chip neutral">Control A</span>
               <h3>Current experience</h3>
               <p>No changes. New users continue through the existing product and checkout path.</p>
-              <p class="acfw-card-hint">Click to model in sizer ↓</p>
+              <p class="acfw-card-hint">Select to model in the sizer</p>
             </article>
             <article class="preview-card recommended-card variant-active"
                      data-variant-preset="variantB"
@@ -338,7 +288,7 @@
                 Make guest checkout the default for new users, remove account creation before purchase, and offer
                 account creation after the order is complete.
               </p>
-              <p class="acfw-card-hint">Click to model in sizer ↓</p>
+              <p class="acfw-card-hint">Select to model in the sizer</p>
             </article>
             <article class="preview-card"
                      data-variant-preset="variantC"
@@ -346,10 +296,10 @@
               <span class="status-chip neutral">Sequential test</span>
               <h3>Variant C: first-purchase welcome nudge</h3>
               <p>
-                After a new user views two or more products, show a non-intrusive free-shipping nudge for the first
-                order. This waits until after Variant B establishes the friction baseline.
+                After a new user views two or more products, show a free-shipping nudge for the first
+                order. This waits until Variant B establishes the friction baseline.
               </p>
-              <p class="acfw-card-hint">Click to model in sizer ↓</p>
+              <p class="acfw-card-hint">Select to model in the sizer</p>
             </article>
             <article class="preview-card">
               <span class="status-chip neutral">Readout</span>
@@ -368,34 +318,22 @@
         </div>
       </section>
 
-      <section id="artifacts" class="section-pad">
-        <div class="rule-divider" aria-hidden="true">
-          <span class="folio">&sect; IV</span>
-          <span></span>
-          <span>Artifacts &middot; proof of work</span>
-        </div>
+      <section id="artifacts" class="section-pad" aria-labelledby="artifacts-title">
         <div class="page-shell">
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;IV</strong>
-            <span class="folio-rule"></span>
-            <small>Artifacts</small>
-          </div>
           <div class="section-heading reveal">
-            <p class="eyebrow">Artifact gallery</p>
-            <h2>Dashboards, mockups, and memo, not just a repo link.</h2>
+            <h2 id="artifacts-title">Dashboards, mockups, and memo, not just a repo link.</h2>
             <p>
-              The visual artifacts show the decision path: public data to dashboard, dashboard to one-page memo,
-              memo to intervention, and intervention to test plan.
+              The artifacts show the decision path: public data to dashboard, dashboard to memo, memo to
+              intervention, intervention to test plan.
             </p>
           </div>
 
           <div class="artifact-grid reveal">
             <article class="detail-card dashboard-artifact">
-              <p class="eyebrow">Looker Studio</p>
               <h3>Funnel conversion and cohort retention dashboards</h3>
               <p>
-                Public dashboards connect to BigQuery views for funnel steps and cohort retention. They are linked
-                rather than embedded here to keep the portfolio fast and dependency-light.
+                Public Looker Studio dashboards connect to BigQuery views for funnel steps and cohort retention.
+                They are linked rather than embedded to keep the portfolio fast.
               </p>
               <a
                 class="text-link"
@@ -403,16 +341,15 @@
                 target="_blank"
                 rel="noopener"
               >
-                Open public dashboards
+                Open dashboards
               </a>
             </article>
             <article class="detail-card dashboard-artifact memo-artifact">
-              <p class="eyebrow">One-page impact memo</p>
-              <h3>Problem, data, segment, intervention, math, scope, and risks.</h3>
+              <h3>One-page impact memo</h3>
               <p>
-                The project now includes a polished PDF memo and clean Markdown source. It compresses the case into
-                the format a hiring manager or operator can read in one sitting: what broke, why new users matter,
-                what to test first, and how the $53,130 opportunity was calculated.
+                A polished PDF memo with clean Markdown source. It compresses the case into what a hiring manager
+                can read in one sitting: what broke, why new users matter, what to test first, and how the
+                $53,130 opportunity was calculated.
               </p>
               <div class="artifact-link-stack">
                 <a
@@ -421,7 +358,7 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  Download memo PDF
+                  Download the impact memo
                 </a>
                 <a
                   class="text-link"
@@ -429,7 +366,7 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  Read Markdown source
+                  Open the Markdown source
                 </a>
               </div>
             </article>
@@ -437,6 +374,8 @@
               <img
                 src="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/variant_b.png"
                 alt="Variant B checkout mockup showing guest checkout as the primary path"
+                width="390"
+                height="844"
                 loading="lazy"
                 decoding="async"
               />
@@ -446,6 +385,8 @@
               <img
                 src="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/variant_c.png"
                 alt="Variant C product page mockup showing a first-purchase free shipping nudge"
+                width="390"
+                height="844"
                 loading="lazy"
                 decoding="async"
               />
@@ -455,12 +396,10 @@
 
           <article id="impact-memo" class="memo-preview reveal" aria-labelledby="memo-title">
             <div>
-              <p class="eyebrow">AI-generated, human-reviewed memo</p>
               <h3 id="memo-title">Impact memo preview</h3>
               <p>
-                The memo layer translates the analysis into the language of a growth decision. The full one-page PDF
-                covers the plan's seven required sections: problem, data, segment, proposed intervention, impact
-                estimate, implementation scope, and risks.
+                AI-generated, human-reviewed. The full one-page PDF covers seven sections: problem, data,
+                segment, proposed intervention, impact estimate, implementation scope, and risks.
               </p>
             </div>
             <div class="memo-columns">
@@ -482,46 +421,17 @@
                 </ul>
               </div>
             </div>
-            <div class="artifact-link-stack">
-              <a
-                class="text-link"
-                href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                Download one-page memo
-              </a>
-              <a
-                class="text-link"
-                href="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/impact_memo.md"
-                target="_blank"
-                rel="noopener"
-              >
-                Open Markdown source
-              </a>
-            </div>
           </article>
         </div>
       </section>
 
-      <section id="repo-map" class="section-pad">
-        <div class="rule-divider" aria-hidden="true">
-          <span class="folio">&sect; V</span>
-          <span></span>
-          <span>Architecture &middot; how the repo maps to the work</span>
-        </div>
+      <section id="repo-map" class="section-pad" aria-labelledby="repo-title">
         <div class="page-shell detail-grid">
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;V</strong>
-            <span class="folio-rule"></span>
-            <small>Repo map</small>
-          </div>
           <div class="section-heading reveal">
-            <p class="eyebrow">Repo architecture</p>
-            <h2>The repository is organized around the analytical workflow.</h2>
+            <h2 id="repo-title">The repository follows the analytical workflow.</h2>
             <p>
-              The case is technical enough to audit, but the structure points back to the business question:
-              where should the team intervene first, and how would we know whether it worked?
+              Technical enough to audit, but the structure points back to the business question: where should
+              the team intervene first, and how would we know it worked?
             </p>
           </div>
           <article class="preview-shell reveal repo-table-wrap">
@@ -560,25 +470,23 @@
             </table>
           </article>
           <article class="data-callout reveal">
-            <p class="eyebrow">Why it matters</p>
             <h3>Growth PM is not just finding a bad metric.</h3>
             <p>
-              This case demonstrates the full loop: define activation, identify leverage, rule out tempting but weak
+              This case runs the full loop: define activation, identify leverage, rule out tempting but weak
               explanations, size the business impact, choose the first test, and explain the risk in plain English.
             </p>
           </article>
         </div>
       </section>
 
-      <section class="contact-section section-pad">
+      <section class="contact-section section-pad" aria-labelledby="closing-title">
         <div class="page-shell contact-panel reveal">
           <div>
             <p class="eyebrow">Closing read</p>
-            <h2>From funnel chart to product decision.</h2>
+            <h2 id="closing-title">From funnel chart to product decision.</h2>
             <p>
-              The work is useful because it connects product analytics to monetization judgment. The recommendation is
-              not "conversion is low." It is: new users are the highest-leverage segment, the likely first move is guest
-              checkout, the upside can be priced conservatively, and the test has enough sample to read.
+              The recommendation is not "conversion is low." It is: new users are the highest-leverage segment,
+              the first move is guest checkout, the upside is priced conservatively, and the test has enough sample to read.
             </p>
           </div>
           <div class="contact-actions">
@@ -591,7 +499,6 @@
               View the repo
             </a>
             <a class="button button-secondary" href="./dcf-model.html">Related DCF case</a>
-            <a class="button button-secondary" href="./index.html#case-studies">Back to case studies</a>
           </div>
         </div>
       </section>
@@ -599,7 +506,6 @@
       <section class="related-cases section-pad" aria-labelledby="related-cases-title">
         <div class="page-shell">
           <div class="section-heading reveal compact-heading">
-            <p class="eyebrow">Published case studies</p>
             <h2 id="related-cases-title">A compact case library for business judgment.</h2>
           </div>
           <div class="related-case-grid reveal">
@@ -612,7 +518,7 @@
               <span class="status-chip">Finance case</span>
               <h3>Dynamic DCF Valuation Model</h3>
               <p>Inspectable public-company valuation model with assumptions, WACC, checks, and workbook architecture.</p>
-              <a class="text-link" href="./dcf-model.html">Open DCF case</a>
+              <a class="text-link" href="./dcf-model.html">Open case study</a>
             </article>
           </div>
         </div>
@@ -631,8 +537,12 @@
       <a href="#top">Return to top</a>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
+      integrity="sha384-/Mc/2ffICYME94wcPOYwoL99IzpbvFsDTty0/5V5t22x2n26tp8JRSsxKjvgZuZs"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="./scripts/app.js" defer></script>
     <script src="./scripts/activation-widget.js" defer></script>
   </body>

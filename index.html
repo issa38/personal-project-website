@@ -6,7 +6,7 @@
     <title>Isaiah Moragne | Strategic Builder Portfolio</title>
     <meta
       name="description"
-      content="Isaiah Moragne is a Finance MBA and requirements analyst who finds where businesses leak value and builds the systems that fix it. Portfolio of case studies, projects, and notes."
+      content="Isaiah Moragne is a Finance MBA and product requirements analyst who finds where businesses leak value and builds the systems that fix it. Portfolio of case studies, projects, and notes."
     />
     <meta name="author" content="Isaiah Moragne" />
     <meta name="robots" content="index, follow" />
@@ -19,34 +19,20 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://isaiahmba.com/" />
-    <meta property="og:image" content="https://isaiahmba.com/assets/og-preview.svg" />
+    <meta property="og:image" content="https://isaiahmba.com/assets/og-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Isaiah Moragne | Strategic Builder Portfolio" />
     <meta
       name="twitter:description"
       content="Strategic case studies, project lab, and notes focused on operations, finance, data, and AI-enabled value creation."
     />
-    <meta name="twitter:image" content="https://isaiahmba.com/assets/og-preview.svg" />
+    <meta name="twitter:image" content="https://isaiahmba.com/assets/og-preview.png" />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    />
+    <link rel="preload" href="./assets/fonts/eb-garamond.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="./styles.css" />
-    <!-- Hero entrance: hide elements before Anime.js runs to prevent flash -->
-    <style id="hero-init">
-      .hero-nameplate,
-      .hero-vol,
-      .hero-wordmark .hero-given,
-      .hero-wordmark-rule,
-      .hero-wordmark-tail,
-      .hero-byline,
-      .hero-lede-block,
-      .hero-rail,
-      .hero-baseline { opacity: 0; }
-    </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -54,8 +40,8 @@
         "name": "Isaiah Moragne",
         "url": "https://isaiahmba.com/",
         "email": "mailto:isaiahmoragne12@gmail.com",
-        "jobTitle": "Strategic Builder",
-        "description": "Product and business-minded builder focused on operations, finance, requirements analysis, Lean, Kaizen, Python, and agentic AI systems.",
+        "jobTitle": "Product Requirements Analyst",
+        "description": "Finance MBA and product requirements analyst focused on operations, finance, requirements analysis, Lean, Kaizen, Python, and agentic AI systems.",
         "sameAs": [
           "https://www.linkedin.com/in/isaiahmoragne/",
           "https://github.com/issa38"
@@ -78,18 +64,13 @@
     <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
     <div class="grain-overlay" aria-hidden="true"></div>
 
-    <!-- ── Folio Split-Panel Shell ─────────────────────────── -->
     <div class="folio-shell">
 
-      <!-- ── LEFT: Persistent identity sidebar ─────────────── -->
       <aside class="folio-sidebar" aria-label="Portfolio navigation">
-
-        <!-- Amber vertical accent line -->
         <div class="sidebar-accent" aria-hidden="true"></div>
 
-        <!-- Head: monogram + mobile hamburger -->
         <div class="sidebar-head">
-          <a class="sidebar-brand" href="#top" aria-label="Isaiah Moragne, return to cover">
+          <a class="sidebar-brand" href="#top" aria-label="Isaiah Moragne, return to top">
             <span class="sidebar-monogram">IM</span>
           </a>
           <button
@@ -100,80 +81,38 @@
             aria-controls="sidebar-body"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 7h16M4 12h16M4 17h10" />
+              <path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" />
             </svg>
           </button>
         </div>
 
-        <!-- Body: identity block + nav -->
         <div class="sidebar-body" id="sidebar-body">
-
-          <!-- Identity -->
           <div class="sidebar-identity">
-            <p class="sidebar-vol">Vol. 0.5 / Issue 01</p>
             <h2 class="sidebar-wordmark">
               <span class="sidebar-given">Isaiah</span>
               <span class="sidebar-family">Moragne</span>
             </h2>
-            <p class="sidebar-descriptor">MBA &middot; Finance</p>
+            <p class="sidebar-descriptor">MBA, Finance</p>
             <p class="sidebar-tagline">Strategy then Action.</p>
           </div>
 
-          <!-- Primary navigation -->
           <nav class="sidebar-nav" aria-label="Primary navigation">
-            <a class="sidebar-nav-item" href="#top">
-              <span class="snav-folio">§ 00</span>
-              <span class="snav-label">Cover</span>
-            </a>
-            <a class="sidebar-nav-item" href="#method">
-              <span class="snav-folio">§ I – II</span>
-              <span class="snav-label">Method</span>
-            </a>
-            <a class="sidebar-nav-item" href="#case-studies">
-              <span class="snav-folio">§ III</span>
-              <span class="snav-label">Case Studies</span>
-            </a>
-            <a class="sidebar-nav-item" href="#dcf-live">
-              <span class="snav-folio">§ III·V</span>
-              <span class="snav-label">Live DCF</span>
-            </a>
-            <a class="sidebar-nav-item" href="#dashboard">
-              <span class="snav-folio">§ IV</span>
-              <span class="snav-label">Dashboards</span>
-            </a>
-            <a class="sidebar-nav-item" href="#capabilities">
-              <span class="snav-folio">§ V</span>
-              <span class="snav-label">Capabilities</span>
-            </a>
-            <a class="sidebar-nav-item" href="#lab">
-              <span class="snav-folio">§ VI</span>
-              <span class="snav-label">Lab</span>
-            </a>
-            <a class="sidebar-nav-item" href="#notes">
-              <span class="snav-folio">§ VII</span>
-              <span class="snav-label">Notes</span>
-            </a>
-            <a class="sidebar-nav-item" href="#resume">
-              <span class="snav-folio">§ VIII</span>
-              <span class="snav-label">Resume</span>
-            </a>
-            <a class="sidebar-nav-item" href="#contact">
-              <span class="snav-folio">§ IX</span>
-              <span class="snav-label">Contact</span>
-            </a>
+            <a class="sidebar-nav-item" href="#top">Cover</a>
+            <a class="sidebar-nav-item" href="#method">Method</a>
+            <a class="sidebar-nav-item" href="#case-studies">Case Studies</a>
+            <a class="sidebar-nav-item" href="#dcf-live">Live DCF</a>
+            <a class="sidebar-nav-item" href="#capabilities">Capabilities</a>
+            <a class="sidebar-nav-item" href="#lab">Lab</a>
+            <a class="sidebar-nav-item" href="#resume">Resume</a>
+            <a class="sidebar-nav-item" href="#contact">Contact</a>
           </nav>
         </div>
 
-        <!-- Foot: status + social + CTA -->
         <div class="sidebar-foot">
-          <div class="sidebar-meta">
-            <span class="sidebar-status">
-              <i class="led-dot" aria-hidden="true"></i>
-              Open to work
-            </span>
-            <span class="sidebar-location">Based in the U.S.</span>
-            <span class="sidebar-version">v. 0.4 &middot; Last entry 2026.05</span>
-          </div>
+          <p class="sidebar-status">
+            <i class="led-dot" aria-hidden="true"></i>
+            Open to work
+          </p>
           <div class="sidebar-controls">
             <a
               href="https://www.linkedin.com/in/isaiahmoragne/"
@@ -183,9 +122,8 @@
               aria-label="LinkedIn profile"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
+                <path d="M8 11v5" /><path d="M8 8v.01" /><path d="M12 16v-5" /><path d="M16 16v-3a2 2 0 0 0-4 0" />
+                <path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z" />
               </svg>
             </a>
             <a
@@ -196,7 +134,7 @@
               aria-label="GitHub profile"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
               </svg>
             </a>
             <button
@@ -206,246 +144,132 @@
               aria-label="Open command menu (Ctrl+K)"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+                <path d="M7 9a2 2 0 1 1 2-2v10a2 2 0 1 1-2-2h10a2 2 0 1 1-2 2V7a2 2 0 1 1 2 2z" />
               </svg>
             </button>
-            <a class="nav-cta sidebar-cta" href="#contact">
-              <span>Contact</span>
+            <a class="nav-cta sidebar-cta" href="mailto:isaiahmoragne12@gmail.com">
+              <span>Email Isaiah</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5 12h14m-6-6 6 6-6 6" />
+                <path d="M5 12h14" /><path d="M13 6l6 6-6 6" />
               </svg>
             </a>
           </div>
         </div>
-
       </aside>
 
-      <!-- ── RIGHT: Scrollable editorial content ─────────────── -->
       <main id="main" class="folio-content">
+        <div class="scroll-sentinel" data-scroll-sentinel aria-hidden="true"></div>
 
-        <!-- ══ § 00 / Cover — Hero ══════════════════════════════ -->
         <section id="top" class="hero hero-editorial" aria-labelledby="hero-title">
-          <canvas id="strategy-canvas" class="strategy-canvas" aria-hidden="true"></canvas>
-
           <div class="hero-stage">
-            <header class="hero-nameplate reveal">
-              <p class="hero-vol">Vol. 0.5 / Issue 01 / Functional Model</p>
-              <h1 id="hero-title" class="hero-wordmark">
-                <span class="hero-given">Isaiah Moragne</span>
-                <span class="hero-wordmark-rule" aria-hidden="true"></span>
-                <span class="hero-wordmark-tail">MBA in Finance. Product analyst. I find where value hides, then build the fix.</span>
-              </h1>
-              <p class="hero-byline">
-                <span class="hero-byline-dot" aria-hidden="true"></span>
-                <b>MBA, Finance</b> &middot; Product Requirements Analyst &middot; open to strategy, ops, finance, and product roles.
-              </p>
-            </header>
-
             <div class="hero-body">
-              <div class="hero-lede-block reveal">
-                <p class="hero-manifesto">
-                  <em>I find where businesses leak value,</em> then build the thing that fixes it.
-                </p>
+              <div class="hero-lede-block">
+                <p class="eyebrow">MBA, Finance. Product Requirements Analyst.</p>
+                <h1 id="hero-title" class="hero-wordmark">Isaiah Moragne</h1>
                 <p class="hero-lede">
-                  MBA on one side, Product Requirements background on the other. I spend most of my time at the
-                  seam between the two; mapping how work actually flows in ugly text flow sheets, pricing the gaps
-                  not just on tender but also time, and building the smallest thing that makes the next decision easier.
-                </p>
-                <p class="hero-lede">
-                  Sometimes that's a DCF Model. Sometimes it's a script to pull data from documents.
-                  Other times it's an agent that triages requests and drafts answers so the team can focus on the questions. The tool is never the point, but it's usually the last step.
+                  I find where businesses leak value, then build the smallest thing that fixes it.
                 </p>
                 <div class="hero-actions" role="group" aria-label="Primary actions">
-                  <a class="button button-primary" href="./activation-funnel.html">
-                    <span>Read activation case</span>
+                  <a class="button button-primary" href="#case-studies">
+                    <span>Browse case studies</span>
                     <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M5 12h14m-6-6 6 6-6 6" />
+                      <path d="M5 12h14" /><path d="M13 6l6 6-6 6" />
                     </svg>
                   </a>
-                  <a class="button button-secondary" href="#case-studies">Browse case files</a>
-                  <a class="button button-ghost" href="#resume">Resume</a>
+                  <a
+                    class="button button-secondary"
+                    href="./assets/files/Isaiah%20Moragne%20-%20Resume.pdf"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Open resume
+                  </a>
                 </div>
               </div>
 
-              <aside class="hero-rail reveal" aria-label="Spec sheet and portrait">
-                <dl class="hero-spec">
-                  <div>
-                    <dt>// title</dt>
-                    <dd>Finance MBA | Senior Product Analyst</dd>
-                  </div>
-                  <div>
-                    <dt>// toolkit</dt>
-                    <dd>Kaizen. Valuation. Java. ERP Integration. Orchestration &amp; Agentic AI.</dd>
-                  </div>
-                  <div>
-                    <dt>// status</dt>
-                    <dd><b>Open to work</b>, strategy &middot; ops &middot; finance &middot; product</dd>
-                  </div>
-                  <div>
-                    <dt>// based</dt>
-                    <dd>U.S.A; or wherever I'm needed</dd>
-                  </div>
-                  <div>
-                    <dt>// latest</dt>
-                    <dd>Activation Funnel Redesign Lab (see <a href="./activation-funnel.html">&sect; III</a>)</dd>
-                  </div>
-                </dl>
-
-                <figure
-                  class="hero-portrait-frame fig-frame"
-                  data-fig="Fig. 01"
-                  data-fig-caption="Working portrait, 2026. Photo by Isaiah."
-                >
-                  <img
-                    src="./assets/images/Isaiah Moragne - Casual Cropped.jpg"
-                    alt="Portrait of Isaiah Moragne"
-                    decoding="async"
-                    fetchpriority="high"
-                  />
-                </figure>
-              </aside>
+              <figure class="hero-portrait-frame">
+                <img
+                  src="./assets/images/portrait.webp"
+                  alt="Portrait of Isaiah Moragne"
+                  width="1200"
+                  height="1500"
+                  decoding="async"
+                  fetchpriority="high"
+                />
+              </figure>
             </div>
-
-            <footer class="hero-baseline" aria-hidden="true">
-              <span>Folio &sect; 00 / Cover</span>
-              <span class="hero-baseline-arrow">&darr;&nbsp;&nbsp;Read on</span>
-            </footer>
           </div>
         </section>
 
-        <!-- ══ Rule + § I ═══════════════════════════════════════ -->
-        <div class="rule-divider" aria-hidden="true">
-          <span class="folio">&sect; 00 / &sect; I</span>
-          <span></span>
-          <span>Folio, opening &middot; principles</span>
-        </div>
-
-        <div class="section-folio reveal" aria-hidden="true">
-          <strong>&sect;&thinsp;I</strong>
-          <span class="folio-rule"></span>
-          <small>Working principles, rule of four</small>
-        </div>
-
-        <section class="metrics-band reveal" aria-label="How I work">
-          <article>
-            <span class="metric-label">How I start</span>
-            <strong>With the work itself</strong>
-            <p>Before tools, before slides. I study what people actually do and see where it lags. </p>
-          </article>
-          <article>
-            <span class="metric-label">Where I lean technical</span>
-            <strong>Modeling &amp; AI agents</strong>
-            <p>Used when they earn their place and not just for the sake of zeitgeist. I'd rather ship a mathematically modeled spreadsheet than a sales pitch with estimates or an internal AI LLM that just generates noise.</p>
-          </article>
-          <article>
-            <span class="metric-label">Where I lean human</span>
-            <strong>Lean &amp; Kaizen</strong>
-            <p>Small, honest improvements that the team will still be using six months later. Changes made with purpose and not for metrics.</p>
-          </article>
-          <article>
-            <span class="metric-label">What I'm chasing</span>
-            <strong>Compounding value</strong>
-            <p>The small bets that get more valuable the longer they stay in the system. Time value doesn't end with money.</p>
-          </article>
-        </section>
-
-        <!-- ══ § II — Method ═════════════════════════════════════ -->
         <section id="method" class="method-section section-pad" aria-labelledby="method-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; II</span>
-            <span></span>
-            <span>Working method &middot; the loop</span>
+          <div class="section-heading reveal">
+            <h2 id="method-title">Four steps, in this order. <span class="accent-italic">Skipping one is where projects bleed time.</span></h2>
+            <p>
+              The same loop, whether the problem is a valuation, a workflow audit, or a process nobody owns.
+              It is not glamorous, but it is why the work sticks.
+            </p>
           </div>
 
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;II</strong>
-            <span class="folio-rule"></span>
-            <small>The loop, in order</small>
-          </div>
-
-          <div class="method-intro with-marginalia">
-            <div class="section-heading reveal">
-              <p class="eyebrow">How I actually work</p>
-              <h2 id="method-title">Four steps, in this order. <span class="accent-italic">Skipping one is usually where projects bleed time and money.</span></h2>
-              <p>
-                I keep coming back to the same loop, whether the problem is a valuation, a workflow audit, or a
-                half-broken process nobody owns. It's not glamorous, but it's why the work tends to stick.
-              </p>
+          <dl class="principle-list reveal">
+            <div>
+              <dt>How I start</dt>
+              <dd>With the work itself. Before tools, before slides, I study what people actually do and where it lags.</dd>
             </div>
-            <aside class="marginalia reveal" aria-label="Margin note">
-              <span class="mn-label">// margin note</span>
-              <p>
-                <em>The order matters more than the tools.</em> Watching the work before pricing the gap before
-                building the fix; doing them out of order is how you end up with a beautiful dashboard
-                nobody opens.
-              </p>
-              <p>(field notebook, 2025-11)</p>
-            </aside>
-          </div>
+            <div>
+              <dt>Where I lean technical</dt>
+              <dd>Modeling and AI agents, used when they earn their place. A modeled spreadsheet beats a pitch built on estimates.</dd>
+            </div>
+            <div>
+              <dt>Where I lean human</dt>
+              <dd>Lean and Kaizen. Small, honest improvements the team is still using six months later.</dd>
+            </div>
+            <div>
+              <dt>What I am chasing</dt>
+              <dd>Compounding value: the small bets that get more valuable the longer they stay in the system.</dd>
+            </div>
+          </dl>
 
-          <div class="method-grid">
-            <article class="method-card is-editorial reveal">
-              <span>01</span>
+          <ol class="method-grid">
+            <li class="method-card reveal">
               <h3>Watch the work first</h3>
-              <p>Who hands what to whom, what gets redone, what's secretly held together by one person's email folder or attendance record.</p>
-            </article>
-            <article class="method-card is-editorial reveal">
-              <span>02</span>
+              <p>Who hands what to whom, what gets redone, and what is secretly held together by one person's inbox.</p>
+            </li>
+            <li class="method-card reveal">
               <h3>Put a dollar on the gap</h3>
-              <p>Friction is easy to ignore until it's priced. Time lost, decisions delayed, risk carried. Pick a number.</p>
+              <p>Friction is easy to ignore until it is priced. Time lost, decisions delayed, risk carried. Pick a number.</p>
               <a class="text-link" href="./activation-funnel.html">See the activation opportunity math</a>
-            </article>
-            <article class="method-card is-editorial reveal">
-              <span>03</span>
+            </li>
+            <li class="method-card reveal">
               <h3>Build the smallest fix that works</h3>
               <p>Sometimes a checklist. Sometimes Python. Sometimes an agent. The tool comes last, not first.</p>
               <a class="text-link" href="./dcf-model.html">See the model architecture</a>
-            </article>
-            <article class="method-card is-editorial reveal">
-              <span>04</span>
+            </li>
+            <li class="method-card reveal">
               <h3>Hand it off so it survives me</h3>
-              <p>If the team can't run it without me in the room, it's not a system; it's a favor.</p>
-            </article>
-          </div>
+              <p>If the team cannot run it without me in the room, it is not a system. It is a favor.</p>
+            </li>
+          </ol>
         </section>
 
-        <!-- ══ § III — Case Studies ══════════════════════════════ -->
         <section id="case-studies" class="section-pad content-section" aria-labelledby="case-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; III</span>
-            <span></span>
-            <span>Case files &middot; the receipts</span>
-          </div>
-
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;III</strong>
-            <span class="folio-rule"></span>
-            <small>Case files</small>
-          </div>
-
           <div class="section-heading reveal">
             <p class="eyebrow">Case studies</p>
             <h2 id="case-title">The work, <span class="accent-italic">shown with its receipts.</span></h2>
             <p>
-              What was the actual problem? What did I assume? What got built? And what would I do differently
-              with another revision?
+              What was the actual problem, what did I assume, what got built, and what would I change next time.
             </p>
           </div>
 
           <div class="proof-browser reveal">
             <div>
-              <p class="eyebrow">Proof browser</p>
-              <p>
-                Filter by the evidence a reviewer needs fastest: model quality, growth math,
-                workflow diagnosis, or decision support.
-              </p>
+              <p>Filter by the evidence a reviewer needs fastest.</p>
             </div>
             <div class="toolbar proof-toolbar" role="group" aria-label="Filter case studies by proof type">
               <button class="filter-button active" type="button" data-filter="all" data-filter-label="All" aria-pressed="true">All</button>
               <button class="filter-button" type="button" data-filter="valuation" data-filter-label="Valuation" aria-pressed="false">Valuation</button>
               <button class="filter-button" type="button" data-filter="growth" data-filter-label="Growth" aria-pressed="false">Growth</button>
               <button class="filter-button" type="button" data-filter="workflow" data-filter-label="Workflow" aria-pressed="false">Workflow</button>
-              <button class="filter-button" type="button" data-filter="decision" data-filter-label="Decision support" aria-pressed="false">Decision Support</button>
+              <button class="filter-button" type="button" data-filter="decision" data-filter-label="Decision support" aria-pressed="false">Decision</button>
             </div>
           </div>
           <p class="filter-status" data-case-filter-status role="status" aria-live="polite">Showing all 3 proof entries.</p>
@@ -454,13 +278,15 @@
             <article class="case-card case-card--featured reveal" data-tags="valuation decision" data-proof-title="Dynamic DCF Valuation Model">
               <img
                 class="card-visual"
-                src="./assets/images/tech nature.png"
-                alt="A dark stone desk with a tablet displaying blueprint data, pencil, and hand-drawn architectural paper — evoking precise analytical work"
+                src="./assets/images/tech-nature.webp"
+                alt="A dark stone desk with a tablet showing blueprint data, a pencil, and hand-drawn architectural paper"
+                width="1200"
+                height="1200"
                 loading="lazy"
                 decoding="async"
               />
               <div class="card-meta">
-                <span>Flagship Case</span>
+                <span>Flagship case</span>
                 <span>Published MVP</span>
               </div>
               <h3>Dynamic DCF Valuation Model</h3>
@@ -470,16 +296,16 @@
                 <span>Decision support</span>
               </div>
               <p>
-                A live, inspectable DCF on any public company (currently Apple). Built so the assumptions,
-                WACC, and integrity checks are all out in the open, not buried three sheets deep.
+                A live, inspectable DCF on any public company (currently Apple). The assumptions, WACC, and
+                integrity checks are all out in the open, not buried three sheets deep.
               </p>
               <dl class="insight-list">
                 <div>
                   <dt>Live example</dt>
-                  <dd>AAPL base case; implied price, market bridge, and an audit trail you can actually follow.</dd>
+                  <dd>AAPL base case: implied price, market bridge, and an audit trail you can follow.</dd>
                 </div>
                 <div>
-                  <dt>What's in the workbook</dt>
+                  <dt>In the workbook</dt>
                   <dd>DCF output, model inputs, WACC build, working capital, three statements, checks, source audit.</dd>
                 </div>
                 <div>
@@ -488,14 +314,14 @@
                 </div>
               </dl>
               <div class="card-link-row">
-                <a class="text-link" href="./dcf-model.html">Open flagship case</a>
+                <a class="text-link" href="./dcf-model.html">Open case study</a>
                 <a
                   class="text-link"
                   href="./assets/portfolios/DCF%20Model/DCF%20Model%20Showcase%20-%20Isaiah%20Moragne,%20MBA.xlsx"
                   target="_blank"
                   rel="noopener"
                 >
-                  Open workbook
+                  Download workbook
                 </a>
               </div>
             </article>
@@ -505,12 +331,14 @@
                 class="card-visual"
                 src="./assets/portfolios/Activation%20Funnel%20Redesign%20Lab/variant_b.png"
                 alt="Guest checkout fast lane mockup from the Activation Funnel Redesign Lab"
+                width="390"
+                height="844"
                 loading="lazy"
                 decoding="async"
               />
               <div class="card-meta">
-                <span>Published Case</span>
-                <span>Growth Analytics</span>
+                <span>Published case</span>
+                <span>Growth analytics</span>
               </div>
               <h3>Activation Funnel Redesign Lab</h3>
               <div class="proof-meta">
@@ -520,7 +348,7 @@
               </div>
               <p>
                 GA4 BigQuery ecommerce analysis that finds the highest-leverage activation gap, prices the
-                revenue opportunity, designs the A/B test, and turns the result into an AI-assisted impact memo.
+                revenue opportunity, designs the A/B test, and ends in a one-page impact memo.
               </p>
               <dl class="insight-list">
                 <div>
@@ -544,7 +372,7 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  View repo
+                  View the repo
                 </a>
               </div>
             </article>
@@ -552,13 +380,15 @@
             <article class="case-card reveal" data-tags="workflow" data-proof-title="Finding the value hiding in routine work">
               <img
                 class="card-visual"
-                src="./assets/images/AdobeStock_251514935.jpeg"
-                alt="A railway path disappearing through a dense green tree tunnel toward an open light — evoking the process of finding hidden value in complex operations"
+                src="./assets/images/forest-path.webp"
+                alt="A railway path through a dense green tree tunnel toward open light"
+                width="1600"
+                height="1067"
                 loading="lazy"
                 decoding="async"
               />
               <div class="card-meta">
-                <span>Framework Draft</span>
+                <span>Framework draft</span>
                 <span>Featured</span>
               </div>
               <h3>Finding the value hiding in routine work</h3>
@@ -568,21 +398,21 @@
                 <span>Automation fit</span>
               </div>
               <p>
-                A framework I'm developing for the kind of operational audit everyone benefits
-                from. The slow leaks between teams, tools, and decisions that don't show up on any dashboard. Trying to identify and solve the sunk cost of operations.
+                A framework for the operational audit every team needs: the slow leaks between teams, tools,
+                and decisions that never show up on a dashboard.
               </p>
               <dl class="insight-list">
                 <div>
                   <dt>The question</dt>
-                  <dd>Where is the team paying a tax it doesn't know it's remitting?</dd>
+                  <dd>Where is the team paying a tax it does not know it is remitting?</dd>
                 </div>
                 <div>
-                  <dt>How I'd answer it</dt>
-                  <dd>Process mapping, cost-of-delay math, a little operational analysis, and an AI subagent to track financial impacts only where it earns its keep. Mathematical changes only last as long as someone cares, AI never gets bored.</dd>
+                  <dt>How I would answer it</dt>
+                  <dd>Process mapping, cost-of-delay math, and an AI agent to track financial impact only where it earns its keep. Manual fixes last as long as someone cares. An agent never gets bored.</dd>
                 </div>
                 <div>
                   <dt>What changes</dt>
-                  <dd>Faster handoffs, fewer "who owns this?" emails, and decisions that don't drift for a week or a quarter.</dd>
+                  <dd>Faster handoffs, fewer "who owns this?" emails, and decisions that do not drift for a quarter.</dd>
                 </div>
               </dl>
               <button
@@ -600,26 +430,12 @@
           </div>
         </section>
 
-        <!-- ══ DCF Live Preview ════════════════════════════════════ -->
         <section id="dcf-live" class="section-pad dcfw-section-wrap" aria-labelledby="dcf-live-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; III · V</span>
-            <span></span>
-            <span>Live model &middot; try the numbers</span>
-          </div>
-
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;III&thinsp;·&thinsp;V</strong>
-            <span class="folio-rule"></span>
-            <small>Live model</small>
-          </div>
-
           <div class="section-heading reveal">
-            <p class="eyebrow">Interactive DCF preview</p>
             <h2 id="dcf-live-title">The model, <span class="accent-italic">running in your browser.</span></h2>
             <p>
-              Pick a scenario or push on any assumption. Implied share price updates live from a
-              5-year EBIT-based DCF on Apple (AAPL) using year-by-year workbook inputs.
+              Pick a scenario or push on any assumption. The implied share price updates live from a
+              5-year EBIT-based DCF on Apple.
             </p>
           </div>
 
@@ -634,9 +450,9 @@
 
           <div class="dcfw-cta-row reveal">
             <a class="button button-primary" href="./dcf-model.html">
-              <span>Open full case &amp; workbook</span>
+              <span>Open case study</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5 12h14m-6-6 6 6-6 6" />
+                <path d="M5 12h14" /><path d="M13 6l6 6-6 6" />
               </svg>
             </a>
             <a
@@ -650,144 +466,54 @@
           </div>
         </section>
 
-        <!-- ══ § IV — Dashboards ══════════════════════════════════ -->
-        <section id="dashboard" class="dashboard-section section-pad" aria-labelledby="dashboard-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; IV</span>
-            <span></span>
-            <span>Dashboards &middot; how I see</span>
-          </div>
-
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;IV</strong>
-            <span class="folio-rule"></span>
-            <small>Dashboards I'd actually build</small>
-          </div>
-
-          <div class="dashboard-copy reveal">
-            <p class="eyebrow">How I think in dashboards</p>
-            <h2 id="dashboard-title">If you can't see it, you can't manage it. <span class="accent-italic">You definitely can't sell it upstairs.</span></h2>
-            <p>
-              Humans are visual learners. Dashboards are how I make complexity tractable — not the kind that decorates a status meeting, but the kind that
-              forces a decision.
-            </p>
-          </div>
-
-          <div class="dashboard-visual reveal" data-parallax="0.04">
-            <img
-              src="./assets/images/transitional hallway.png"
-              alt="A long illuminated corridor suggesting forward momentum and deliberate direction"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-
-          <div class="dash-metrics reveal" role="group" aria-label="Example analysis snapshot from activation funnel case" data-stagger-group>
-            <article>
-              <span>New visitor activation</span>
-              <strong data-count-up data-count-target="0.64" data-count-decimals="2" data-count-suffix="%">0.64%</strong>
-              <p>vs. 9.73% for returning users</p>
-            </article>
-            <article>
-              <span>Revenue opportunity</span>
-              <strong data-count-up data-count-target="53130" data-count-decimals="0" data-count-prefix="$" data-count-format="thousands">$53,130</strong>
-              <p>at a +50% relative lift on new users</p>
-            </article>
-            <article>
-              <span>Incremental purchasers</span>
-              <strong data-count-up data-count-target="769" data-count-decimals="0">769</strong>
-              <p>modeled from the activation gap analysis</p>
-            </article>
-            <article>
-              <span>Recommended action</span>
-              <strong>Variant B</strong>
-              <p>guest checkout fast lane, run first</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- ══ § V — Capabilities ════════════════════════════════ -->
         <section id="capabilities" class="capabilities-section section-pad" aria-labelledby="capabilities-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; V</span>
-            <span></span>
-            <span>Capabilities &middot; the toolkit</span>
-          </div>
-
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;V</strong>
-            <span class="folio-rule"></span>
-            <small>Toolkit, in plain English</small>
-          </div>
-
           <div class="section-heading reveal">
-            <p class="eyebrow">What I'm good at</p>
-            <h2 id="capabilities-title">Six skills I keep reinforcing, <span class="accent-italic">and what they actually look like.</span></h2>
+            <h2 id="capabilities-title">Six skills I keep reinforcing, <span class="accent-italic">and what they look like in practice.</span></h2>
           </div>
 
-          <div class="capability-grid">
-            <article class="capability-card is-editorial reveal">
-              <span>Requirements Analysis</span>
-              <h3>Asking the questions before anyone writes code.</h3>
-              <p>I figure out what a project actually needs to do, so the team isn't rebuilding it in three months.</p>
-            </article>
-            <article class="capability-card is-editorial reveal">
-              <span>Business Administration</span>
-              <h3>Knowing which projects are worth the trouble, understanding value.</h3>
-              <p>I look at initiatives the way a CFO would: margin, risk, growth, and what optionality it buys you later. Is it pure accounting or economic value?</p>
-              <a class="text-link" href="./dcf-model.html">Open valuation case</a>
-            </article>
-            <article class="capability-card is-editorial reveal">
-              <span>Lean &amp; Kaizen</span>
-              <h3>Fixing workflows without a six-month consulting deck.</h3>
-              <p>Small, durable improvements. The team owns them after I leave, which is the only kind that ever lasts.</p>
-            </article>
-            <article class="capability-card is-editorial reveal">
-              <span>Python &amp; data tooling</span>
-              <h3>Building the thing instead of asking IT for it.</h3>
-              <p>Analysis scripts, automations, lightweight dashboards. Whatever shortens the gap between question and answer. Consistent 1% growth always outpaces business cycles.</p>
-              <a class="text-link" href="./activation-funnel.html">Open growth analytics case</a>
-            </article>
-            <article class="capability-card is-editorial reveal">
-              <span>Agentic AI</span>
-              <h3>Putting agents where they actually pay rent.</h3>
-              <p>Triage, research, summarization, and the boring orchestration work. Not chatbots for the sake of justifying expenditures.</p>
-            </article>
-            <article class="capability-card is-editorial reveal">
-              <span>Executive communication</span>
-              <h3>Turning a tangle into one slide leadership can sign off on.</h3>
-              <p>Most decisions die in translation. I spend a lot of my time making sure they don't. Attach weight to the words we carry.</p>
-              <a class="text-link" href="./activation-funnel.html#impact-memo">Read impact memo</a>
-            </article>
-          </div>
+          <dl class="capability-list">
+            <div class="reveal">
+              <dt>Requirements analysis</dt>
+              <dd>Asking the questions before anyone writes code, so the team is not rebuilding it in three months.</dd>
+            </div>
+            <div class="reveal">
+              <dt>Business administration</dt>
+              <dd>Looking at initiatives the way a CFO would: margin, risk, growth, and the options it buys later.
+                <a class="text-link" href="./dcf-model.html">Open the valuation case</a></dd>
+            </div>
+            <div class="reveal">
+              <dt>Lean and Kaizen</dt>
+              <dd>Fixing workflows without a six-month consulting deck. The team owns the improvement after I leave.</dd>
+            </div>
+            <div class="reveal">
+              <dt>Python and data tooling</dt>
+              <dd>Analysis scripts, automations, and lightweight dashboards that shorten the gap between question and answer.
+                <a class="text-link" href="./activation-funnel.html">Open the growth analytics case</a></dd>
+            </div>
+            <div class="reveal">
+              <dt>Agentic AI</dt>
+              <dd>Triage, research, summarization, and the boring orchestration work. Not chatbots for their own sake.</dd>
+            </div>
+            <div class="reveal">
+              <dt>Executive communication</dt>
+              <dd>Turning a tangle into one slide leadership can sign off on. Most decisions die in translation.
+                <a class="text-link" href="./activation-funnel.html#impact-memo">Read the impact memo</a></dd>
+            </div>
+          </dl>
         </section>
 
-        <!-- ══ § VI — Lab ════════════════════════════════════════ -->
         <section id="lab" class="section-pad content-section" aria-labelledby="lab-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; VI</span>
-            <span></span>
-            <span>The lab &middot; still cooking</span>
-          </div>
-
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;VI</strong>
-            <span class="folio-rule"></span>
-            <small>The lab</small>
-          </div>
-
           <div class="section-heading reveal">
-            <p class="eyebrow">The lab</p>
             <h2 id="lab-title">Where I think out loud, <span class="accent-italic">before the case study is ready.</span></h2>
             <p>
-              Most of these are still cooking. I'd rather show the in-progress versions and update them as
-              they get sharper than pretend I have a back catalog I don't. New entries land here first.
+              Most of these are still cooking. I would rather show in-progress versions and sharpen them
+              than pretend to a back catalog I do not have.
             </p>
           </div>
 
           <div class="toolbar reveal" role="group" aria-label="Filter project lab">
             <button class="filter-button active" type="button" data-project-filter="all" aria-pressed="true">All</button>
-            <button class="filter-button" type="button" data-project-filter="in-development" aria-pressed="false">In Development</button>
+            <button class="filter-button" type="button" data-project-filter="in-development" aria-pressed="false">In development</button>
             <button class="filter-button" type="button" data-project-filter="concept" aria-pressed="false">Concept</button>
             <button class="filter-button" type="button" data-project-filter="archive" aria-pressed="false">Archive</button>
           </div>
@@ -795,15 +521,15 @@
 
           <div class="lab-grid" data-project-grid>
             <article class="lab-card reveal" data-project-status="in-development">
-              <span class="status-chip">In Development</span>
+              <span class="status-chip">In development</span>
               <h3>Strategic Workflow Mapper</h3>
               <p>
-                A tool I'm building to turn the "describe your process" interview into a real artifact; one
-                that flags handoff risk and points at automation candidates instead of just being a pretty diagram.
+                A tool that turns the "describe your process" interview into a real artifact: one that flags
+                handoff risk and points at automation candidates instead of being a pretty diagram.
               </p>
               <ul class="tag-list">
                 <li>EDI</li>
-                <li>Process Design</li>
+                <li>Process design</li>
                 <li>Agentic AI</li>
               </ul>
               <button
@@ -822,12 +548,12 @@
               <span class="status-chip neutral">Concept</span>
               <h3>Value Capture Scorecard</h3>
               <p>
-                An idea I keep sketching: a one-page scorecard for the "should we even do this project?" meeting.
-                Value, complexity, risk, and whether the team is ready, on a single page nobody can hide from.
+                A one-page scorecard for the "should we even do this project?" meeting. Value, complexity,
+                risk, and whether the team is ready, on a single page nobody can hide from.
               </p>
               <ul class="tag-list">
                 <li>Finance</li>
-                <li>Decision Systems</li>
+                <li>Decision systems</li>
                 <li>Dashboards</li>
               </ul>
               <button
@@ -843,89 +569,58 @@
               </button>
             </article>
           </div>
-        </section>
 
-        <!-- ══ § VII — Notes ══════════════════════════════════════ -->
-        <section id="notes" class="section-pad content-section" aria-labelledby="notes-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; VII</span>
-            <span></span>
-            <span>Notes &middot; said out loud</span>
-          </div>
-
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;VII</strong>
-            <span class="folio-rule"></span>
-            <small>Notes from the field</small>
-          </div>
-
-          <div class="section-heading reveal">
-            <p class="eyebrow">Notes</p>
-            <h2 id="notes-title">Short takes <span class="accent-italic">I keep finding myself saying out loud.</span></h2>
-            <p>
-              Half opinion, half pattern-recognition. These are the things I'd say in a first interview if you
-              asked me what I actually believe about this work. Longer write-ups are on the way.
-            </p>
-          </div>
-
-          <div class="notes-list is-editorial">
-            <article class="note-row is-editorial pull-quote reveal">
+          <div id="notes" class="notes-list" aria-labelledby="notes-title">
+            <h3 id="notes-title" class="notes-title">Short takes</h3>
+            <article class="note-row reveal">
               <span>On strategy</span>
-              <h3>The strategy deck and the actual work should be able to recognize each other.</h3>
-              <p>
-                When they don't, it's usually the strategy that's wrong, not the team. I spend a lot of my time
-                pulling the two back into the same room.
-              </p>
+              <h4>The strategy deck and the actual work should be able to recognize each other.</h4>
+              <p>When they cannot, it is usually the strategy that is wrong, not the team.</p>
             </article>
-            <article class="note-row is-editorial pull-quote reveal">
+            <article class="note-row reveal">
               <span>On AI</span>
-              <h3>An AI agent is just an intern who never sleeps. Manage it like one.</h3>
-              <p>
-                Give it clear scope. Check its work. Don't let it touch anything you can't undo. The teams that
-                treat agents like magic are the same ones that end up cleaning up after them.
-              </p>
+              <h4>An AI agent is an intern who never sleeps. Manage it like one.</h4>
+              <p>Clear scope. Check its work. Never let it touch anything you cannot undo.</p>
             </article>
-            <article class="note-row is-editorial pull-quote reveal">
+            <article class="note-row reveal">
               <span>On evidence</span>
-              <h3>A great technical answer that doesn't change a decision is a hobby.</h3>
-              <p>
-                I'm fine with hobbies, but I don't put them on a portfolio. The question I keep asking is this.
-                what's different on Monday morning because of this work?
-              </p>
+              <h4>A great technical answer that does not change a decision is a hobby.</h4>
+              <p>The question I keep asking: what is different on Monday morning because of this work?</p>
             </article>
           </div>
         </section>
 
-        <!-- ══ § VIII — Resume ════════════════════════════════════ -->
         <section id="resume" class="resume-section section-pad" aria-labelledby="resume-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; VIII</span>
-            <span></span>
-            <span>Resume &middot; the short version</span>
-          </div>
-
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;VIII</strong>
-            <span class="folio-rule"></span>
-            <small>Resume signal</small>
-          </div>
-
           <div class="resume-card reveal">
             <img
               class="resume-photo"
-              src="./assets/images/Diploma.jpg"
+              src="./assets/images/diploma.webp"
               alt="Isaiah at graduation holding a diploma"
+              width="1200"
+              height="960"
               loading="lazy"
               decoding="async"
             />
             <div>
-              <p class="eyebrow">The short version</p>
-              <h2 id="resume-title">MBA in Finance. <span class="accent-italic">Sharpened by product analysis across startup and enterprise.</span></h2>
+              <h2 id="resume-title">MBA in Finance, <span class="accent-italic">sharpened by product analysis at startups and enterprises.</span></h2>
               <p>
-                The MBA taught me how value gets made and lost. The product analysis years taught me how
-                work actually happens. Most of what I do now is bridge those two views — so the strategy
-                the boardroom wants and the system the team actually uses end up being the same thing.
+                The MBA taught me how value gets made and lost. The product years taught me how work
+                actually happens. I bridge the two so the strategy and the system end up being the same thing.
               </p>
+              <dl class="glance-list">
+                <div>
+                  <dt>Title</dt>
+                  <dd>Finance MBA, Product Requirements Analyst</dd>
+                </div>
+                <div>
+                  <dt>Toolkit</dt>
+                  <dd>Kaizen, valuation, Java, ERP integration, orchestration and agentic AI</dd>
+                </div>
+                <div>
+                  <dt>Latest</dt>
+                  <dd><a href="./activation-funnel.html">Activation Funnel Redesign Lab</a></dd>
+                </div>
+              </dl>
             </div>
             <a
               class="button button-primary"
@@ -935,40 +630,25 @@
             >
               <span>Open resume</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 4v11" />
-                <path d="m7 10 5 5 5-5" />
-                <path d="M5 20h14" />
+                <path d="M12 4v12" /><path d="M7 11l5 5 5-5" /><path d="M5 20h14" />
               </svg>
             </a>
           </div>
         </section>
 
-        <!-- ══ § IX — Contact ═════════════════════════════════════ -->
         <section id="contact" class="contact-section section-pad" aria-labelledby="contact-title">
-          <div class="rule-divider" aria-hidden="true">
-            <span class="folio">&sect; IX</span>
-            <span></span>
-            <span>Colophon &middot; get in touch</span>
-          </div>
-
-          <div class="section-folio reveal" aria-hidden="true">
-            <strong>&sect;&thinsp;IX</strong>
-            <span class="folio-rule"></span>
-            <small>Get in touch</small>
-          </div>
-
           <div class="contact-inner reveal">
             <p class="eyebrow">Get in touch</p>
-            <h2 id="contact-title">Hiring for strategy, ops, finance, or product? <span class="accent-italic">I'm available.</span></h2>
+            <h2 id="contact-title">Hiring for strategy, ops, finance, or product? <span class="accent-italic">I am available.</span></h2>
             <p>
-              Email is the fastest path — I read everything that lands there. LinkedIn works too. If you want the long version of my background before we talk, the resume is one click away.
+              Email is the fastest path. I read everything that lands there, and LinkedIn works too.
+              Based in the U.S., open to remote and relocation.
             </p>
             <div class="contact-actions">
               <a class="button button-primary" href="mailto:isaiahmoragne12@gmail.com">
                 <span>Email Isaiah</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 6h16v12H4z" />
-                  <path d="m4 7 8 6 8-6" />
+                  <path d="M4 6h16v12H4z" /><path d="M4 7l8 6 8-6" />
                 </svg>
               </a>
               <a
@@ -979,30 +659,19 @@
               >
                 <span>LinkedIn</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 17 17 7" />
-                  <path d="M8 7h9v9" />
+                  <path d="M7 17L17 7" /><path d="M8 7h9v9" />
                 </svg>
               </a>
               <a class="button button-secondary" href="https://github.com/issa38" target="_blank" rel="noopener">
                 <span>GitHub</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 17 17 7" />
-                  <path d="M8 7h9v9" />
+                  <path d="M7 17L17 7" /><path d="M8 7h9v9" />
                 </svg>
-              </a>
-              <a
-                class="button button-ghost"
-                href="./assets/files/Isaiah%20Moragne%20-%20Resume.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                Resume
               </a>
             </div>
           </div>
         </section>
 
-        <!-- Footer -->
         <footer class="site-footer">
           <p>Built and maintained by Isaiah Moragne. Updated as the work grows.</p>
           <nav class="footer-nav" aria-label="Footer navigation">
@@ -1015,24 +684,22 @@
           <a href="#top">Return to top</a>
         </footer>
 
-      </main><!-- /.folio-content -->
-    </div><!-- /.folio-shell -->
+      </main>
+    </div>
 
-    <!-- ── Mobile nav backdrop ────────────────────────────── -->
     <div class="mobile-nav-backdrop" aria-hidden="true"></div>
 
-    <!-- ── Command dialog ─────────────────────────────────── -->
     <dialog class="command-dialog" data-command-dialog aria-labelledby="command-title">
       <div class="dialog-shell">
         <div class="dialog-header">
           <div>
-            <p class="eyebrow">Command Menu</p>
+            <p class="dialog-kicker">Command menu</p>
             <h2 id="command-title">Navigate the portfolio</h2>
           </div>
           <form method="dialog">
             <button class="icon-button" type="submit" aria-label="Close command menu">
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m6 6 12 12M18 6 6 18" />
+                <path d="M18 6L6 18" /><path d="M6 6l12 12" />
               </svg>
             </button>
           </form>
@@ -1045,7 +712,7 @@
           </a>
           <a href="./activation-funnel.html" data-command-item>
             <span>Activation Funnel Case</span>
-            <small>GA4 BigQuery, activation gap, A/B test, dashboards, and one-page impact memo</small>
+            <small>GA4 BigQuery, activation gap, A/B test, dashboards, and impact memo</small>
           </a>
           <a href="#case-studies" data-command-item>
             <span>Case Studies</span>
@@ -1053,48 +720,44 @@
           </a>
           <a href="#dcf-live" data-command-item>
             <span>Live DCF Model</span>
-            <small>Interactive AAPL valuation — pick a scenario, drag any assumption</small>
+            <small>Interactive AAPL valuation. Pick a scenario, drag any assumption</small>
           </a>
           <a href="#method" data-command-item>
-            <span>Operating Method</span>
+            <span>Method</span>
             <small>How complex work becomes measurable value</small>
           </a>
           <a href="#lab" data-command-item>
             <span>Project Lab</span>
-            <small>Current and future project shells</small>
+            <small>Current and future project shells, plus short takes</small>
           </a>
           <a href="#capabilities" data-command-item>
             <span>Capabilities</span>
             <small>Skills tied to business evidence</small>
           </a>
-          <a href="#notes" data-command-item>
-            <span>Notes</span>
-            <small>Strategy, operations, and AI thinking</small>
-          </a>
           <a href="#resume" data-command-item>
-            <span>Resume Signal</span>
+            <span>Resume</span>
             <small>Profile and professional story</small>
           </a>
           <a href="#contact" data-command-item>
             <span>Contact</span>
             <small>Start a conversation</small>
           </a>
+          <p class="command-empty" data-command-empty hidden>No sections match. Try a different word.</p>
         </div>
       </div>
     </dialog>
 
-    <!-- ── Strategy brief dialog ──────────────────────────── -->
     <dialog class="brief-dialog" data-brief-dialog aria-labelledby="brief-title">
       <div class="dialog-shell">
         <div class="dialog-header">
           <div>
-            <p class="eyebrow" data-brief-kicker>Strategy Brief</p>
-            <h2 id="brief-title" data-brief-title>Strategy Brief</h2>
+            <p class="dialog-kicker" data-brief-kicker>Strategy brief</p>
+            <h2 id="brief-title" data-brief-title>Strategy brief</h2>
           </div>
           <form method="dialog">
             <button class="icon-button" type="submit" aria-label="Close strategy brief">
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m6 6 12 12M18 6 6 18" />
+                <path d="M18 6L6 18" /><path d="M6 6l12 12" />
               </svg>
             </button>
           </form>
@@ -1104,8 +767,12 @@
       </div>
     </dialog>
 
-    <!-- Anime.js v3 — loaded before app scripts for animation orchestration -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
+      integrity="sha384-/Mc/2ffICYME94wcPOYwoL99IzpbvFsDTty0/5V5t22x2n26tp8JRSsxKjvgZuZs"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="./scripts/app.js" defer></script>
     <script src="./scripts/anime-animations.js" defer></script>
     <script src="./scripts/dcf-widget.js" defer></script>

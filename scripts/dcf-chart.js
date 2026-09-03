@@ -1,5 +1,5 @@
 /**
- * dcf-chart.js — Phase 2 FCF bar chart for the DCF widget
+ * dcf-chart.js: FCF bar chart for the DCF widget
  * Requires Chart.js v4 (loaded before this script)
  * Provides window.initDCFWidgetChart(uid, canvas) and window.updateDCFWidgetChart(uid, result)
  */
@@ -16,7 +16,7 @@
       charts[uid].destroy();
     }
 
-    Chart.defaults.color = "rgba(197, 186, 165, 0.55)";
+    Chart.defaults.color = "rgba(226, 227, 224, 0.55)";
     Chart.defaults.font.family = "'Manrope', system-ui, sans-serif";
 
     charts[uid] = new Chart(canvas, {
@@ -27,8 +27,8 @@
           {
             label: "FCF (Nominal)",
             data: [0, 0, 0, 0, 0, 0],
-            backgroundColor: "rgba(147, 121, 89, 0.60)",
-            borderColor: "rgba(147, 121, 89, 0.88)",
+            backgroundColor: "rgba(140, 155, 115, 0.72)",
+            borderColor: "rgba(189, 204, 161, 0.92)",
             borderWidth: 1,
             borderRadius: 3,
             order: 1
@@ -36,8 +36,8 @@
           {
             label: "PV of FCF",
             data: [0, 0, 0, 0, 0, 0],
-            backgroundColor: "rgba(133, 144, 144, 0.38)",
-            borderColor: "rgba(133, 144, 144, 0.65)",
+            backgroundColor: "rgba(190, 201, 196, 0.34)",
+            borderColor: "rgba(190, 201, 196, 0.62)",
             borderWidth: 1,
             borderRadius: 3,
             order: 2
@@ -55,7 +55,7 @@
           legend: {
             position: "bottom",
             labels: {
-              color: "rgba(197, 186, 165, 0.65)",
+              color: "rgba(226, 227, 224, 0.65)",
               boxWidth: 10,
               boxHeight: 10,
               padding: 16,
@@ -63,16 +63,16 @@
             }
           },
           tooltip: {
-            backgroundColor: "rgba(35, 18, 8, 0.96)",
-            borderColor: "rgba(147, 121, 89, 0.22)",
+            backgroundColor: "rgba(26, 28, 27, 0.96)",
+            borderColor: "rgba(140, 155, 115, 0.32)",
             borderWidth: 1,
-            titleColor: "rgba(237, 229, 216, 0.9)",
-            bodyColor: "rgba(197, 186, 165, 0.75)",
+            titleColor: "rgba(226, 227, 224, 0.92)",
+            bodyColor: "rgba(195, 200, 197, 0.78)",
             padding: 10,
             callbacks: {
               label: function (ctx) {
                 var val = ctx.raw;
-                if (!isFinite(val)) return ctx.dataset.label + ": —";
+                if (!isFinite(val)) return ctx.dataset.label + ": n/a";
                 var formatted = val >= 1e12
                   ? "$" + (val / 1e12).toFixed(2) + "T"
                   : "$" + (val / 1e9).toFixed(1) + "B";
@@ -83,14 +83,14 @@
         },
         scales: {
           x: {
-            grid: { color: "rgba(197, 186, 165, 0.055)" },
-            ticks: { color: "rgba(197, 186, 165, 0.55)", font: { size: 11 } },
+            grid: { color: "rgba(226, 227, 224, 0.06)" },
+            ticks: { color: "rgba(226, 227, 224, 0.55)", font: { size: 11 } },
             border: { color: "transparent" }
           },
           y: {
-            grid: { color: "rgba(197, 186, 165, 0.055)" },
+            grid: { color: "rgba(226, 227, 224, 0.06)" },
             ticks: {
-              color: "rgba(197, 186, 165, 0.55)",
+              color: "rgba(226, 227, 224, 0.55)",
               font: { size: 11 },
               callback: function (v) {
                 if (Math.abs(v) >= 1e12) return "$" + (v / 1e12).toFixed(1) + "T";

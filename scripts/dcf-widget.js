@@ -1,13 +1,13 @@
 /**
- * dcf-widget.js — Cognac Folio v2 / Interactive DCF Widget
- * Apple Inc. (AAPL) · 5-year EBIT-based DCF · Three-slider edition
+ * dcf-widget.js: interactive DCF widget
+ * Apple Inc. (AAPL), 5-year EBIT-based DCF, three-slider edition
  *
  * Usage: add data-init-dcf-widget to any div, optionally:
  *   data-dcf-compact="true"   → compact single-column layout
  *   data-dcf-chart="true"     → show Phase 2 FCF bar chart
  *   data-dcf-scenario="base"  → starting scenario (bear|base|bull)
  *
- * Requires Anime.js v3 (optional — degrades gracefully without it)
+ * Requires Anime.js v3 (optional, degrades gracefully without it)
  * Requires dcf-chart.js + Chart.js for chart display (optional)
  */
 (function () {
@@ -27,7 +27,7 @@
   var SCENARIOS = {
     bear: {
       label: "Bear",
-      note: "Negative growth in Y1–Y2, slow recovery, higher discount rate.",
+      note: "Negative growth in Y1 to Y2, slow recovery, higher discount rate.",
       growth:    [-0.0396, -0.0173,  0.0187,  0.0298,  0.0353],
       ebitMargin: [0.3058,  0.2993,  0.2931,  0.2882,  0.2838],
       wacc:       0.1068,
@@ -112,7 +112,7 @@
 
   /* ── Helpers ──────────────────────────────────────────────── */
   function fmtTrillions(n) {
-    if (!isFinite(n)) return "—";
+    if (!isFinite(n)) return "n/a";
     var abs = Math.abs(n);
     if (abs >= 1e12) return (n < 0 ? "-" : "") + "$" + (abs / 1e12).toFixed(2) + "T";
     return (n < 0 ? "-" : "") + "$" + (abs / 1e9).toFixed(0) + "B";
@@ -153,7 +153,7 @@
             '<div class="dcfw-slider-group" data-slider="revenue">',
               '<div class="dcfw-slider-hd">',
                 '<label class="dcfw-slider-label" for="dcfw-rev-' + uid + '">Revenue Growth</label>',
-                '<output class="dcfw-slider-readout" id="dcfw-rev-out-' + uid + '">—</output>',
+                '<output class="dcfw-slider-readout" id="dcfw-rev-out-' + uid + '"></output>',
               '</div>',
               '<div class="dcfw-track-wrap">',
                 '<div class="dcfw-track" aria-hidden="true"><div class="dcfw-fill"></div></div>',
@@ -165,7 +165,7 @@
             '<div class="dcfw-slider-group" data-slider="wacc">',
               '<div class="dcfw-slider-hd">',
                 '<label class="dcfw-slider-label" for="dcfw-wacc-' + uid + '">WACC</label>',
-                '<output class="dcfw-slider-readout" id="dcfw-wacc-out-' + uid + '">—</output>',
+                '<output class="dcfw-slider-readout" id="dcfw-wacc-out-' + uid + '"></output>',
               '</div>',
               '<div class="dcfw-track-wrap">',
                 '<div class="dcfw-track" aria-hidden="true"><div class="dcfw-fill"></div></div>',
@@ -176,7 +176,7 @@
             '<div class="dcfw-slider-group" data-slider="terminal">',
               '<div class="dcfw-slider-hd">',
                 '<label class="dcfw-slider-label" for="dcfw-term-' + uid + '">Terminal Growth</label>',
-                '<output class="dcfw-slider-readout" id="dcfw-term-out-' + uid + '">—</output>',
+                '<output class="dcfw-slider-readout" id="dcfw-term-out-' + uid + '"></output>',
               '</div>',
               '<div class="dcfw-track-wrap">',
                 '<div class="dcfw-track" aria-hidden="true"><div class="dcfw-fill"></div></div>',
@@ -190,28 +190,28 @@
         '<!-- Output -->',
         '<div class="dcfw-output" aria-live="polite" aria-atomic="false">',
           '<p class="dcfw-output-eyebrow">Implied share price</p>',
-          '<strong class="dcfw-output-price" data-dcfw-price>$—</strong>',
+          '<strong class="dcfw-output-price" data-dcfw-price></strong>',
           '<div class="dcfw-market-row">',
             '<span class="dcfw-market-label">vs. Market</span>',
             '<span class="dcfw-market-ref">$' + MARKET_PRICE.toFixed(2) + '</span>',
           '</div>',
           '<div class="dcfw-delta-row">',
-            '<span class="dcfw-delta-abs" data-dcfw-delta-abs>—</span>',
+            '<span class="dcfw-delta-abs" data-dcfw-delta-abs></span>',
             '<span class="dcfw-delta-sep" aria-hidden="true">/</span>',
-            '<span class="dcfw-delta-pct" data-dcfw-delta-pct>—</span>',
+            '<span class="dcfw-delta-pct" data-dcfw-delta-pct></span>',
           '</div>',
           '<div class="dcfw-badge" data-dcfw-badge data-tone="neutral">',
-            '<span class="dcfw-badge-label" data-dcfw-badge-label>—</span>',
+            '<span class="dcfw-badge-label" data-dcfw-badge-label></span>',
           '</div>',
           !compact ? [
             '<div class="dcfw-output-sub">',
               '<div class="dcfw-sub-row">',
                 '<span>Enterprise Value</span>',
-                '<strong data-dcfw-ev>—</strong>',
+                '<strong data-dcfw-ev></strong>',
               '</div>',
               '<div class="dcfw-sub-row">',
                 '<span>Equity Value</span>',
-                '<strong data-dcfw-equity>—</strong>',
+                '<strong data-dcfw-equity></strong>',
               '</div>',
               '<div class="dcfw-sub-row dcfw-sub-dim">',
                 '<span>Net Debt (Gross&minus;Cash)</span>',
@@ -283,11 +283,11 @@
     function syncOutputDom(result) {
       var price = result.impliedPrice;
       if (!isFinite(price)) {
-        if (priceEl)      priceEl.textContent = "—";
-        if (deltaAbsEl)   deltaAbsEl.textContent = "—";
-        if (deltaPctEl)   deltaPctEl.textContent = "—";
+        if (priceEl)      priceEl.textContent = "";
+        if (deltaAbsEl)   deltaAbsEl.textContent = "";
+        if (deltaPctEl)   deltaPctEl.textContent = "";
         if (badgeEl)      badgeEl.dataset.tone = "neutral";
-        if (badgeLabelEl) badgeLabelEl.textContent = "—";
+        if (badgeLabelEl) badgeLabelEl.textContent = "";
         return;
       }
 

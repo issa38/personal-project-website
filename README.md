@@ -1,8 +1,10 @@
 # Strategic Builder Portfolio
 
-A dependency-free portfolio website for Isaiah Moragne, with a live homepage and a dedicated flagship DCF case-study page.
+A static portfolio website for Isaiah Moragne, with a live homepage and two case-study pages (DCF model, activation funnel).
 
-The site is built as static HTML, CSS, and JavaScript so the portfolio is easy to host now and easy to migrate into Astro later. `npm` is available on the machine again, but this first version does not require a package install or build step.
+The site is plain HTML, CSS, and JavaScript with no build step. Fonts are self-hosted from `assets/fonts/`. The only runtime dependencies are two pinned CDN scripts with integrity hashes: Anime.js (homepage staggers and counters) and Chart.js (DCF page chart). `npm` is only needed for the test suite.
+
+Design rules for the site are documented at the top of `styles.css` and in `docs/taste-audit.md`.
 
 ## Run Locally
 
@@ -26,9 +28,13 @@ See `docs/deployment-cloudflare.md` for the Cloudflare Pages and `isaiahmba.com`
 
 - `index.html` contains the homepage structure and routing into the proof layer.
 - `dcf-model.html` contains the flagship public-company DCF case-study MVP.
-- `styles.css` contains the executive visual system, responsive layout, hover states, and reduced-motion support.
-- `scripts/app.js` contains scroll reveals, filters, command menu, preview switching, header state, and the lightweight canvas depth layer.
-- `assets/` contains favicon and social preview artwork.
+- `activation-funnel.html` contains the growth analytics case study.
+- `styles.css` contains the visual system, responsive layout, hover states, and reduced-motion support.
+- `scripts/app.js` contains scroll reveals, filters, command menu, header state, and dialogs.
+- `scripts/anime-animations.js` contains the homepage counters and grid staggers.
+- `assets/` contains the favicon, the social preview PNG, and the design manifest (`DESIGN.md`).
+- `assets/fonts/` contains the self-hosted WOFF2 files (EB Garamond, Hanken Grotesk, JetBrains Mono).
+- `assets/images/` contains the WebP images used on the site; originals live in git history.
 - `assets/files/` contains the public resume PDF.
 - `assets/portfolios/` contains public workbook assets and future portfolio artifacts.
 - `docs/` contains planning, SEO readiness, and content model notes.

@@ -1,43 +1,29 @@
 const page = document.body.dataset.page;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const header = document.querySelector(".folio-sidebar");
-const scrollProgress = document.querySelector("[data-scroll-progress]");
+const header = document.querySelector(".folio-sidebar, [data-header]");
+const scrollSentinel = document.querySelector("[data-scroll-sentinel]");
 const revealItems = document.querySelectorAll(".reveal");
 const navLinks = document.querySelectorAll(".sidebar-nav a");
 const navSections = Array.from(navLinks)
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
-const parallaxItems = document.querySelectorAll("[data-parallax]");
 
 const BRIEF_POINTS_SEPARATOR = "|||";
 
-function setHeaderState() {
-  header?.classList.toggle("is-scrolled", window.scrollY > 16);
-}
-
-function setScrollProgress() {
-  if (!scrollProgress) return;
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
-  scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
-}
-
-function setParallax() {
-  if (prefersReducedMotion || parallaxItems.length === 0) return;
-
-  const reads = Array.from(parallaxItems).map((item) => ({
-    item,
-    speed: Number(item.dataset.parallax) || 0,
-    rect: item.getBoundingClientRect(),
-  }));
-
-  const innerHeight = window.innerHeight;
-  reads.forEach(({ item, speed, rect }) => {
-    const centerOffset = rect.top + rect.height / 2 - innerHeight / 2;
-    const movement = Math.max(-28, Math.min(28, centerOffset * speed * -1));
-    item.style.transform = `translate3d(0, ${movement}px, 0)`;
-  });
+/* Header/sidebar "scrolled" state: an IntersectionObserver on a 1px sentinel at
+   the top of <main> replaces a window scroll listener. */
+function initHeaderState() {
+  if (!header || !scrollSentinel || !("IntersectionObserver" in window)) return;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        header.classList.toggle("is-scrolled", !entry.isIntersecting);
+      });
+    },
+    { rootMargin: "16px 0px 0px 0px", threshold: 0 }
+  );
+  observer.observe(scrollSentinel);
 }
 
 function initReveals() {
@@ -259,12 +245,14 @@ function initCommandMenu() {
   const commandOpen = document.querySelector("[data-command-open]");
   const commandSearch = document.querySelector("[data-command-search]");
   const commandItems = document.querySelectorAll("[data-command-item]");
+  const commandEmpty = document.querySelector("[data-command-empty]");
 
   if (!commandDialog || !commandOpen) return;
 
   function resetCommandFilter() {
     if (commandSearch) commandSearch.value = "";
     commandItems.forEach((item) => item.classList.remove("is-filtered"));
+    if (commandEmpty) commandEmpty.hidden = true;
   }
 
   commandOpen.addEventListener("click", () => {
@@ -274,10 +262,14 @@ function initCommandMenu() {
 
   commandSearch?.addEventListener("input", () => {
     const query = commandSearch.value.trim().toLowerCase();
+    let visible = 0;
     commandItems.forEach((item) => {
       const text = item.textContent?.toLowerCase() ?? "";
-      item.classList.toggle("is-filtered", query.length > 0 && !text.includes(query));
+      const hidden = query.length > 0 && !text.includes(query);
+      item.classList.toggle("is-filtered", hidden);
+      if (!hidden) visible += 1;
     });
+    if (commandEmpty) commandEmpty.hidden = visible > 0;
   });
 
   commandItems.forEach((item) => {
@@ -335,195 +327,7 @@ function initStrategyBriefs() {
   });
 }
 
-function initStrategyCanvas() {
-  const canvas = document.getElementById("strategy-canvas");
-  if (!canvas || prefersReducedMotion) return;
-
-  const context = canvas.getContext("2d");
-  if (!context) return;
-
-  let width = 0;
-  let height = 0;
-  let frame = 0;
-  let pointerX = 0.5;
-  let pointerY = 0.5;
-  let rafId = null;
-  let isVisible = true;
-  let isOnscreen = true;
-
-  const nodes = Array.from({ length: 36 }, (_, index) => ({
-    angle: (Math.PI * 2 * index) / 36,
-    radius: 90 + (index % 6) * 34,
-    speed: 0.0008 + (index % 5) * 0.00016,
-    layer: index % 3,
-  }));
-
-  function resize() {
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.6);
-    width = canvas.offsetWidth;
-    height = canvas.offsetHeight;
-    canvas.width = Math.max(1, Math.floor(width * pixelRatio));
-    canvas.height = Math.max(1, Math.floor(height * pixelRatio));
-    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-  }
-
-  function drawGrid(originX, originY) {
-    context.save();
-    context.strokeStyle = "rgba(197, 186, 165, 0.055)";
-    context.lineWidth = 1;
-    for (let x = -width; x < width * 2; x += 92) {
-      context.beginPath();
-      context.moveTo(x + originX * 18, 0);
-      context.lineTo(x + originX * 18 - 160, height);
-      context.stroke();
-    }
-    for (let y = 0; y < height; y += 92) {
-      context.beginPath();
-      context.moveTo(0, y + originY * 14);
-      context.lineTo(width, y + originY * 14);
-      context.stroke();
-    }
-    context.restore();
-  }
-
-  function draw() {
-    frame += 1;
-    context.clearRect(0, 0, width, height);
-
-    const centerX = width * (0.68 + (pointerX - 0.5) * 0.025);
-    const centerY = height * (0.47 + (pointerY - 0.5) * 0.035);
-    drawGrid(pointerX - 0.5, pointerY - 0.5);
-
-    const projected = nodes.map((node) => {
-      const time = frame * node.speed;
-      const z = Math.sin(node.angle + time * 5) * 0.5 + 0.5;
-      const perspective = 0.64 + z * 0.52;
-      const x = centerX + Math.cos(node.angle + time) * node.radius * perspective;
-      const y = centerY + Math.sin(node.angle + time * 0.85) * node.radius * 0.46 * perspective;
-      return { ...node, x, y, z, perspective };
-    });
-
-    context.save();
-    context.lineWidth = 1;
-    for (let index = 0; index < projected.length; index += 1) {
-      const node = projected[index];
-      const next = projected[(index + 1) % projected.length];
-      const jump = projected[(index + 9) % projected.length];
-      // Warm amber connectors
-      context.strokeStyle = `rgba(147, 121, 89, ${0.04 + node.z * 0.09})`;
-      context.beginPath();
-      context.moveTo(node.x, node.y);
-      context.lineTo(next.x, next.y);
-      context.stroke();
-
-      if (index % 3 === 0) {
-        // Slate blue-grey cross-connectors — the cool counterpoint
-        context.strokeStyle = `rgba(133, 144, 144, ${0.025 + node.z * 0.04})`;
-        context.beginPath();
-        context.moveTo(node.x, node.y);
-        context.lineTo(jump.x, jump.y);
-        context.stroke();
-      }
-    }
-
-    projected.forEach((node, index) => {
-      const size = 2.2 + node.z * 3.8;
-      // Tricolor nodes: amber / linen / slate
-      const fillColor = index % 9 === 0
-        ? `rgba(133, 144, 144, ${0.38 + node.z * 0.22})`   // slate
-        : index % 5 === 0
-          ? `rgba(147, 121, 89, ${0.42 + node.z * 0.18})`  // amber
-          : `rgba(197, 186, 165, ${0.22 + node.z * 0.14})`; // linen
-      context.fillStyle = fillColor;
-      context.beginPath();
-      context.arc(node.x, node.y, size, 0, Math.PI * 2);
-      context.fill();
-    });
-    context.restore();
-
-    rafId = requestAnimationFrame(draw);
-  }
-
-  function start() {
-    if (rafId !== null) return;
-    rafId = requestAnimationFrame(draw);
-  }
-
-  function stop() {
-    if (rafId === null) return;
-    cancelAnimationFrame(rafId);
-    rafId = null;
-  }
-
-  function reconcile() {
-    if (isVisible && isOnscreen) start();
-    else stop();
-  }
-
-  window.addEventListener("resize", resize, { passive: true });
-  window.addEventListener(
-    "pointermove",
-    (event) => {
-      pointerX = event.clientX / Math.max(1, window.innerWidth);
-      pointerY = event.clientY / Math.max(1, window.innerHeight);
-    },
-    { passive: true }
-  );
-
-  document.addEventListener("visibilitychange", () => {
-    isVisible = document.visibilityState === "visible";
-    reconcile();
-  });
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          isOnscreen = entry.isIntersecting;
-        });
-        reconcile();
-      },
-      { threshold: 0 }
-    );
-    observer.observe(canvas);
-  }
-
-  resize();
-  start();
-}
-
-let scrollTicking = false;
-
-function updateScrollEffects() {
-  scrollTicking = false;
-  setHeaderState();
-  setScrollProgress();
-  setParallax();
-}
-
-window.addEventListener(
-  "scroll",
-  () => {
-    if (scrollTicking) return;
-    scrollTicking = true;
-    requestAnimationFrame(updateScrollEffects);
-  },
-  { passive: true }
-);
-
-window.addEventListener(
-  "resize",
-  () => {
-    setHeaderState();
-    setScrollProgress();
-    setParallax();
-  },
-  { passive: true }
-);
-
-setHeaderState();
-setScrollProgress();
-setParallax();
+initHeaderState();
 initReveals();
 initActiveNav();
 initMobileSidebarToggle();
@@ -533,7 +337,6 @@ if (page === "home") {
   initProjectFilters();
   initCommandMenu();
   initStrategyBriefs();
-  initStrategyCanvas();
 }
 
 if (page === "dcf") {

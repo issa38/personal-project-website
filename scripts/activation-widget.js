@@ -142,7 +142,7 @@
 
         // ── Footer note
         '<p class="acfw-panel-foot">',
-          'Cart-to-checkout is nearly identical across devices — structural ',
+          'Cart-to-checkout is nearly identical across devices. Structural ',
           'first-purchase friction is the driver, not device UX.',
         '</p>',
 
